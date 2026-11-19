@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agora Explorer, démo VR du moteur</title>
+  <!-- Mettre ici la même version d'A-Frame que la scène de E1. -->
+  <script src="https://aframe.io/releases/1.7.1/aframe.min.js"></script>
+</head>
+<body>
+  <!--
+    DÉMO D'INTÉGRATION, pas la scène finale (celle-ci est faite par E1).
+    Elle montre les trois branchements utiles :
+      1. créer le moteur et l'exposer (window.agoraGame + événements DOM « agora:* ») ;
+      2. afficher carte, réponses, dé et chrono avec ui/vrUI.js ;
+      3. dessiner un plateau et déplacer le pion en écoutant le moteur.
+    Le curseur ci-dessous valide un bouton après 1,5 s de regard : c'est le
+    système de E1 qui le remplacera. Les boutons du moteur réagissent à `click`.
+
+    Essai : vr-demo.html?profil=4821   (et ?duree=60 pour une partie d'une minute)
+  -->
+  <a-scene background="color: #E8EBF0">
+    <a-entity camera look-controls position="0 1.6 0">
+      <a-entity cursor="fuse: true; fuseTimeout: 1500"
+                raycaster="objects: .clickable; far: 12"
+                position="0 0 -1"
+                geometry="primitive: ring; radiusInner: 0.012; radiusOuter: 0.02"
+                material="color: #1D2433; shader: flat"></a-entity>
+    </a-entity>
+
+    <a-entity geometry="primitive: circle; radius: 5" material="color: #FFFFFF; shader: flat" rotation="-90 0 0"></a-entity>
+    <a-entity id="agora-board"></a-entity>
+    <a-entity id="agora-ui" position="0 1.6 -2.4"></a-entity>
+  </a-scene>
+
+  <script type="module">
+    import { createGame } from './engine/game.js';
+    import { attachVrUI } from './ui/vrUI.js';
+
+    const params = new URLSearchParams(location.search);
+    const realData = await fetch('data/cases.json', { method: 'HEAD' }).then((response) => response.ok).catch(() => false);
+    const seconds = Number(params.get('duree'));
+
+    // 1. Le moteur, accessible depuis n'importe quel composant A-Frame.
+    const game = createGame({
+      dataPath: params.get('data') ?? (realData ? 'data/' : 'data-test/'),
+      ...(seconds > 0 ? { durationMs: seconds * 1000 } : {}),
+    });
+    window.agoraGame = game;
+    game.bridgeToDom(document); // document.addEventListener('agora:question:shown', (e) => e.detail)
+
+    // 2. Carte, réponses, dé, chrono.
+    attachVrUI(game, document.querySelector('#agora-ui'));
+
+    // 3. Plateau minimal : des dalles en cercle autour du joueur, et un pion.
+    function buildBoard(board) {
+      const boardEl = document.querySelector('#agora-board');
+      boardEl.replaceChildren();
+      const place = (index) => {
+        const angle = (index / board.size) * 2 * Math.PI;
+        return { x: 3.2 * Math.sin(angle), z: -3.2 * Math.cos(angle) };
+      };
+      for (const boardCase of board.cases) {
+        const tile = document.createElement('a-entity');
+        tile.setAttribute('geometry', { primitive: 'cylinder', radius: 0.45, height: 0.06 });
+        tile.setAttribute('material', { color: boardCase.color, shader: 'flat' });
+        tile.setAttribute('position', { ...place(boardCase.index), y: 0.03 });
+        boardEl.appendChild(tile);
+      }
+      const pawn = document.createElement('a-entity');
+      pawn.setAttribute('geometry', { primitive: 'sphere', radius: 0.2 });
+      pawn.setAttribute('material', { color: '#1D2433', shader: 'flat' });
+      boardEl.appendChild(pawn);
+
+      const movePawn = (index) => pawn.setAttribute('position', { ...place(index), y: 0.3 });
+      movePawn(board.start);
+      return game.on('pawn:step', ({ position }) => movePawn(position));
+    }
+
+    let stopFollowingPawn = null;
+    game.on('game:ready', ({ board }) => {
+      stopFollowingPawn?.();
+      stopFollowingPawn = buildBoard(board);
+    });
+
+    // La saisie de l'identifiant en VR n'est pas faite ici : elle appellera game.initGame(id).
+    game.initGame(params.get('profil') ?? '4821');
+  </script>
+</body>
+</html>

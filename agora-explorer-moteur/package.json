@@ -1,0 +1,11 @@
+{
+  "name": "agora-explorer-moteur",
+  "version": "0.1.0",
+  "description": "Moteur de jeu d'Agora Explorer (E2) : plateau, dé, questions, timer, états.",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node tools/serve.mjs",
+    "test": "node --test tests/engine.test.js"
+  }
+}

@@ -1,0 +1,41 @@
+[
+  {
+    "id": "4821",
+    "fictif": true,
+    "riasec": { "R": 72, "I": 40, "A": 65, "S": 55, "E": 30, "C": 20 },
+    "aptitudes": {},
+    "hexaco": { "H": 50, "E": 60, "X": 40, "A": 70, "C": 55, "O": 65 },
+    "champ_des_possibles": [
+      { "onet": "35-2014.00", "zone": 2 },
+      { "onet": "27-1024.00", "zone": 4 },
+      { "onet": "37-3011.00", "zone": 1 },
+      { "onet": "47-2111.00", "zone": 3 }
+    ],
+    "classement_entretien": ["35-2014.00", "27-1024.00", "37-3011.00"]
+  },
+  {
+    "id": "1234",
+    "fictif": true,
+    "riasec": { "R": 25, "I": 80, "A": 45, "S": 30, "E": 40, "C": 75 },
+    "aptitudes": {},
+    "hexaco": { "H": 60, "E": 35, "X": 30, "A": 55, "C": 80, "O": 70 },
+    "champ_des_possibles": [
+      { "onet": "15-1252.00", "zone": 4 },
+      { "onet": "13-2011.00", "zone": 4 },
+      { "onet": "27-1024.00", "zone": 4 }
+    ],
+    "classement_entretien": ["15-1252.00", "13-2011.00"]
+  },
+  {
+    "id": "0042",
+    "fictif": true,
+    "riasec": { "R": 35, "I": 50, "A": 40, "S": 90, "E": 45, "C": 40 },
+    "aptitudes": {},
+    "hexaco": { "H": 75, "E": 65, "X": 70, "A": 80, "C": 60, "O": 55 },
+    "champ_des_possibles": [
+      { "onet": "29-1141.00", "zone": 3 },
+      { "onet": "25-2021.00", "zone": 4 }
+    ],
+    "classement_entretien": ["29-1141.00", "25-2021.00"]
+  }
+]
