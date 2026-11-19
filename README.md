@@ -20,8 +20,12 @@ Ouvrez <http://localhost:8000/>, passez ou suivez les consignes, saisissez un co
 de profil fictif (`4821`, `5137`, `5268`, `5394`, `5412`, `5573`, `6025`, `6148`,
 `6291` ou `6370`) puis validez avec **OK**.
 
-Paramètres utiles : `?duree=60` (partie d'une minute), `?brouillon` (joue aussi
-les cartes pas encore relues), `?gaze=1` (sélection au regard sur PC).
+Le jeune choisit ensuite son nombre de tours (10, 15, 20 ou 25). Le plateau est une
+spirale d'autant de cases autour de lui : départ au bord, arrivée au centre. À chaque
+tour, le dé 3D révèle le type de la case suivante et le pion avance d'une case.
+
+Paramètres utiles : `?tours=5` (saute le choix, partie de 5 tours), `?brouillon`
+(joue aussi les cartes pas encore relues), `?gaze=1` (sélection au regard sur PC).
 
 ## Architecture
 
@@ -31,7 +35,7 @@ les cartes pas encore relues), `?gaze=1` (sélection au regard sur PC).
 | Moteur de jeu (E2) | `agora-explorer-moteur/` | plateau, dé, cartes, chrono ; tests : `cd agora-explorer-moteur && npm test` |
 | Classement (C1) | `js/ranking/` | `ranking.js` + adaptateur vers le moteur |
 | Résultats et fiches (E3) | `js/resultats/` | tableau en 3 catégories, fiches en 7 rubriques ; page de test `dev/resultats.html` |
-| Assemblage | `js/integration/` | E1 → E2 + C1 → E3, plateau au sol |
+| Assemblage | `js/integration/` | E1 → choix des tours → E2 + C1 → E3, spirale au sol, dé 3D |
 | Données (C2, C3) | `data/`, `scripts/` | `metiers.json` généré depuis O*NET et ROME (voir `scripts/README.md`), profils fictifs, cartes |
 
 Les cartes de `data/cases.json` ne sont jouées qu'au statut `relu` (relecture humaine).
