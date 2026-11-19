@@ -133,13 +133,13 @@ export function creerPlateau(racine, game) {
     panneauDebout(racine, 'ARRIVÉE', points[points.length - 1], 0.45, '#FF63C8');
 
     const pion = document.createElement('a-entity');
-    pion.setAttribute('geometry', { primitive: 'cone', radiusBottom: 0.13, radiusTop: 0.015, height: 0.36 });
+    pion.setAttribute('geometry', { primitive: 'cone', radiusBottom: 0.22, radiusTop: 0.02, height: 0.6 });
     pion.setAttribute('material', { color: '#FF63C8', shader: 'flat' });
     racine.appendChild(pion);
 
     const deplacer = (index) => {
       const p = points[index];
-      pion.setAttribute('position', { x: p.x, y: 0.27, z: p.z });
+      pion.setAttribute('position', { x: p.x, y: 0.39, z: p.z });
     };
     // Le dé révèle la case : elle prend la couleur et le symbole de son type.
     const reveler = (index) => {

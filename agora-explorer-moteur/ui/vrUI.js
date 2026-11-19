@@ -299,7 +299,9 @@ export function attachVrUI(game, anchorEl, options = {}) {
   }
   const THREE = AFRAME.THREE;
   // hudText(state) : texte du bandeau à la place du chrono (ex. « Tour 3 / 15 »).
-  const { clickableClass = 'clickable', showSkip = false, hudText = null } = options;
+  // cardOnlyForQuestions : la carte n'apparaît que pendant une question (la vue reste libre
+  // pendant le lancer et le déplacement du pion).
+  const { clickableClass = 'clickable', showSkip = false, hudText = null, cardOnlyForQuestions = false } = options;
 
   function createPanel({ width, height, x, y }, draw, onClick = null) {
     const canvas = document.createElement('canvas');
@@ -388,6 +390,9 @@ export function attachVrUI(game, anchorEl, options = {}) {
     shownTime = hudData().time;
     hud.redraw();
     card.redraw();
+    if (cardOnlyForQuestions) {
+      card.entity.setAttribute('visible', state.state === S.QUESTION);
+    }
     rebuildButtons();
   }
 

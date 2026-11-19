@@ -7,8 +7,8 @@
 // Les panneaux (carte et réponses du moteur, dé, résultats, boutons de E1) suivent le rig :
 // ils gardent la place qu'ils avaient face au joueur assis au centre de la scène.
 
-const RECUL = 2.2;        // distance derrière le pion (m)
-const HAUTEUR = 1.6;      // hauteur des yeux du rig, au-dessus du pion
+const RECUL = 3.0;        // distance derrière le pion (m) : le pion est dans le bas-centre de la vue
+const HAUTEUR = 1.3;      // hauteur des yeux du rig, au-dessus du pion
 // Pendant la partie, la carte et les réponses montent un peu : le pion et les cases
 // suivantes restent visibles sous la carte (et dans le cadre sur PC, champ vertical de 80°).
 const DECALAGE_JEU = 0.35;

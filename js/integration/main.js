@@ -180,6 +180,7 @@ function demarrer() {
       return;
     }
     partie.ui = attachVrUI(game, ancrageUI, {
+      cardOnlyForQuestions: true,
       hudText: (etat) => 'Tour ' + Math.min(nbTours, Math.max(1, etat.state === 'playing' ? etat.turn + 1 : etat.turn)) + ' / ' + nbTours
     });
     game.startGame();
