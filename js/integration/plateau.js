@@ -64,14 +64,6 @@ if (!window.AFRAME.components['face-au-joueur']) {
   });
 }
 
-// « DÉPART » / « ARRIVÉE » debout, en relief.
-function panneauDebout(parent, valeur, p, hauteur, couleur, flanc) {
-  const el = creerTexte3D({ texte: valeur, taille: 0.14, largeurMax: 1.4, lignesMax: 1, couleur, couleurFlanc: flanc, profondeur: 0.035 });
-  el.setAttribute('position', { x: p.x, y: hauteur, z: p.z });
-  el.setAttribute('face-au-joueur', '');
-  parent.appendChild(el);
-}
-
 // Numéro ou symbole couché sur une dalle, en relief (sort de la dalle vers le haut).
 function reliefSol(parent, p, texte, taille, couleur, flanc) {
   const pivot = document.createElement('a-entity');
@@ -152,13 +144,28 @@ export function creerPlateau(racine, game) {
       symboles.push({ contenu, numero, p, el: etiquetteSol(racine, p, rayon * 1.5, contenu) });
       i++;
     }
-    panneauDebout(racine, 'DÉPART', points[0], 0.45, '#FFFFFF', '#6A5FB8');
-    panneauDebout(racine, 'ARRIVÉE', points[points.length - 1], 0.45, '#FF63C8', '#8A2C6E');
-
     const pion = document.createElement('a-entity');
     pion.setAttribute('geometry', { primitive: 'cone', radiusBottom: 0.22, radiusTop: 0.02, height: 0.6 });
     pion.setAttribute('material', { color: '#FF63C8', shader: 'flat' });
     racine.appendChild(pion);
+
+    // « Départ » / « Arrivée » ancrés au personnage, juste au-dessus de sa tête (pointe à +0,30 m),
+    // toujours tournés vers la caméra. Visibles seulement sur la première et la dernière case.
+    const libelle = (texte, couleur, flanc) => {
+      const t = creerTexte3D({ texte, taille: 0.11, largeurMax: 1.2, lignesMax: 1, couleur, couleurFlanc: flanc, profondeur: 0.03 });
+      t.setAttribute('position', '0 0.46 0');
+      t.setAttribute('face-au-joueur', '');
+      t.setAttribute('visible', false);
+      pion.appendChild(t);
+      return t;
+    };
+    const depart = libelle('Départ', '#FFFFFF', '#6A5FB8');
+    const arrivee = libelle('Arrivée', '#FFD6F1', '#8A2C6E');
+    const derniere = board.cases.length - 1;
+    const etiqueter = (index) => {
+      depart.setAttribute('visible', index === board.start);
+      arrivee.setAttribute('visible', index === derniere);
+    };
 
     const deplacer = (index) => {
       const p = points[index];
@@ -187,9 +194,14 @@ export function creerPlateau(racine, game) {
       }
     };
     deplacer(board.start);
+    etiqueter(board.start);
     return [
       game.on('pawn:step', ({ position }) => deplacer(position)),
-      game.on('pawn:moving', ({ to }) => reveler(to))
+      game.on('pawn:moving', ({ to }) => {
+        reveler(to);
+        etiqueter(-1);            // masqué pendant le parcours
+      }),
+      game.on('pawn:moved', ({ to }) => etiqueter(to))
     ];
   }
 

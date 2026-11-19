@@ -54,16 +54,14 @@
                   look-controls="magicWindowTrackingEnabled: false">
           <a-entity id="gaze-pointer">
             <a-entity id="gaze-hud" position="0 0 -0.9" visible="false">
-              <!-- Contour sombre derrière l'anneau clair : visible sur fond clair comme sombre -->
-              <a-ring radius-inner="0.0085" radius-outer="0.0215" position="0 0 -0.002"
+              <!-- Anneau creux (le texte visé reste lisible au centre), contour sombre fin :
+                   visible sur fond clair comme sombre. Placé sur le point visé par js/integration/reticule.js -->
+              <a-ring radius-inner="0.0095" radius-outer="0.0205" position="0 0 -0.002"
                       material="shader: flat; color: #120F2E; opacity: 0.8; transparent: true; depthTest: false; depthWrite: false">
               </a-ring>
               <a-ring radius-inner="0.0105" radius-outer="0.0195"
                       material="shader: flat; color: #D2CBFF; depthTest: false; depthWrite: false">
               </a-ring>
-              <a-circle radius="0.0028" position="0 0 0.001"
-                        material="shader: flat; color: #FFFFFF; depthTest: false; depthWrite: false">
-              </a-circle>
               <a-ring id="gaze-fill" radius-inner="0.0105" radius-outer="0.0195"
                       geometry="segmentsPhi: 1; segmentsTheta: 96; thetaStart: 90"
                       material="shader: flat; color: #FF63C8; transparent: true; depthTest: false; depthWrite: false">

@@ -23,6 +23,7 @@ import { attacherPanneaux, placerPresDuJoueur, suivreLePion } from './camera.js'
 import { poserDecor } from './decor.js';
 import { creerTexte3D, chargerPolice } from './texte3d.js';
 import { utiliserTexte3D } from '../resultats/canvas-panneau.js';
+import { alignerReticule } from './reticule.js';
 import { choisirNombreDeTours } from './choixTours.js';
 import { monterResultats } from '../resultats/resultats.js';
 
@@ -119,6 +120,7 @@ function relieferBoutonsE1() {
 function demarrer() {
   solEnArrierePlan();
   utiliserTexte3D(fabriqueTexte3D);
+  alignerReticule(scene);
   chargerPolice().then(relieferBoutonsE1).catch((e) => console.warn('[agora] police 3D :', e));
   poserDecor(scene);
   // Les panneaux de E1 et des résultats suivent le joueur quand la caméra suit le pion.
@@ -195,12 +197,15 @@ function demarrer() {
         partie.ui = null;
       }
       de.detruire();
-      // Podium et tableau : le plateau (pion, « ARRIVÉE ») passerait devant les boutons.
-      scene.querySelector('#plateau-sol').setAttribute('visible', false);
       resultatsAffiches = true;
       masquerBandeauE1();
       const issu = results && results.ranking && Array.isArray(results.ranking.results) ? results.ranking.results : [];
-      scene.emit('partie-terminee', { profil, classement: issu.length > 0 ? issu : classementDeRepli(profil) });
+      // 2,5 s sans carte ni bouton : on voit le personnage arrivé au centre, « Arrivée » au-dessus
+      // de sa tête. Puis le plateau s'efface (il passerait devant le tableau) et les résultats s'affichent.
+      setTimeout(() => {
+        scene.querySelector('#plateau-sol').setAttribute('visible', false);
+        scene.emit('partie-terminee', { profil, classement: issu.length > 0 ? issu : classementDeRepli(profil) });
+      }, 2500);
     })];
 
     arrets.push(arreterCamera);
