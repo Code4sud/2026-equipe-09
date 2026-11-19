@@ -22,7 +22,10 @@ de profil fictif (`4821`, `5137`, `5268`, `5394`, `5412`, `5573`, `6025`, `6148`
 
 Le jeune choisit ensuite son nombre de tours (10, 15, 20 ou 25). Le plateau est une
 spirale d'autant de cases autour de lui : départ au bord, arrivée au centre. À chaque
-tour, le dé 3D révèle le type de la case suivante et le pion avance d'une case.
+tour, le dé 3D révèle le type de la case suivante et le pion avance d'une case ; la
+caméra suit le pion (en VR, le siège se déplace et la tête reste libre). La face
+« Centre des Possibles » du dé tire au sort un des cinq types de carte. À la fin, un
+podium présente les trois premiers métiers, puis le tableau complet et les fiches.
 
 Paramètres utiles : `?tours=5` (saute le choix, partie de 5 tours), `?brouillon`
 (joue aussi les cartes pas encore relues), `?gaze=1` (sélection au regard sur PC).

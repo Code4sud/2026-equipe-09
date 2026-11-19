@@ -7,6 +7,7 @@
 
 import { creerTableau } from './tableau.js';
 import { creerFiche } from './fiche.js';
+import { creerPodium } from './podium.js';
 import { activer } from './canvas-panneau.js';
 
 export function monterResultats(scene, options = {}) {
@@ -53,20 +54,26 @@ export function monterResultats(scene, options = {}) {
 
   const vus = new Set();
   let tableau = null;
+  let podium = null;
   let classementCourant = [];
+  let vueActuelle = 'podium';
+  let vueAvantFiche = 'podium';   // la fiche revient là d'où on l'a ouverte
 
-  const fiche = creerFiche({ garde, onRetour: function () { montrer('tableau'); } });
+  const fiche = creerFiche({ garde, onRetour: function () { montrer(vueAvantFiche); } });
   racine.appendChild(fiche.el);
   activer(fiche.el, false);
 
   function montrer(vue) {
     dernierChangement = Date.now();
     bloqueJusqua = dernierChangement + 300;
+    vueActuelle = vue;
+    if (podium) activer(podium.el, vue === 'podium');
     if (tableau) activer(tableau.el, vue === 'tableau');
     activer(fiche.el, vue === 'fiche');
   }
 
   function ouvrir(item, onglet) {
+    if (vueActuelle !== 'fiche') vueAvantFiche = vueActuelle;
     fiche.afficher(item, metiers.get(item.onet), onglet || 0);
     montrer('fiche');
   }
@@ -75,10 +82,15 @@ export function monterResultats(scene, options = {}) {
     await pret;
     classementCourant = Array.isArray(classement) ? classement : [];
     if (tableau) racine.removeChild(tableau.el);
-    tableau = creerTableau({ classement: classementCourant, metiers, vus, garde, onChoisir: ouvrir });
+    if (podium) racine.removeChild(podium.el);
+    tableau = creerTableau({ classement: classementCourant, metiers, vus, garde, onChoisir: ouvrir,
+      onPodium: function () { montrer('podium'); } });
+    podium = creerPodium({ classement: classementCourant, metiers, vus, garde, onChoisir: ouvrir,
+      onTableau: function () { montrer('tableau'); } });
     racine.appendChild(tableau.el);
+    racine.appendChild(podium.el);
     racine.setAttribute('visible', true);
-    montrer('tableau');
+    montrer('podium');
     scene.emit('resultats-affiches', { nb: classementCourant.length });
   }
 
@@ -105,5 +117,5 @@ export function monterResultats(scene, options = {}) {
     afficher(classement);
   });
 
-  return { afficher, ouvrirFiche, racine };
+  return { afficher, ouvrirFiche, montrer, racine };
 }

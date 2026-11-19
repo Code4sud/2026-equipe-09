@@ -29,7 +29,7 @@ function grouper(classement) {
   return groupes;
 }
 
-export function creerTableau({ classement, metiers, vus, onChoisir, garde }) {
+export function creerTableau({ classement, metiers, vus, onChoisir, garde, onPodium = null }) {
   const el = document.createElement('a-entity');
   const groupes = grouper(Array.isArray(classement) ? classement : []);
 
@@ -54,6 +54,14 @@ export function creerTableau({ classement, metiers, vus, onChoisir, garde }) {
   while (c < CATEGORIES.length) {
     el.appendChild(creerColonne(CATEGORIES[c], groupes[CATEGORIES[c].cle], ANGLES[c]));
     c++;
+  }
+  if (onPodium) {
+    const retour = creerBouton({
+      largeur: 0.8, hauteur: 0.16, libelle: '← Revenir au podium', couleur: '#4B3CA2',
+      onClic: function (e) { if (garde(this, e)) onPodium(); }
+    });
+    retour.setAttribute('position', '0 -1.08 ' + (-RAYON + 0.1));
+    el.appendChild(retour);
   }
   return { el };
 
