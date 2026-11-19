@@ -298,7 +298,8 @@ export function attachVrUI(game, anchorEl, options = {}) {
     throw new Error("vrUI.js : entité d'ancrage introuvable (ex. <a-entity id=\"agora-ui\">).");
   }
   const THREE = AFRAME.THREE;
-  const { clickableClass = 'clickable', showSkip = false } = options;
+  // hudText(state) : texte du bandeau à la place du chrono (ex. « Tour 3 / 15 »).
+  const { clickableClass = 'clickable', showSkip = false, hudText = null } = options;
 
   function createPanel({ width, height, x, y }, draw, onClick = null) {
     const canvas = document.createElement('canvas');
@@ -355,8 +356,8 @@ export function attachVrUI(game, anchorEl, options = {}) {
   let buttons = [];
 
   const hudData = () => ({
-    time: formatTime(state.timer.remainingMs),
-    low: state.timer.remainingMs <= 60_000,
+    time: hudText ? hudText(state) : formatTime(state.timer.remainingMs),
+    low: !hudText && state.timer.remainingMs <= 60_000,
     paused: state.state === S.PAUSED,
   });
   const hud = createPanel(LAYOUT.hud, (canvas) => drawHud(canvas, hudData()));
@@ -392,6 +393,9 @@ export function attachVrUI(game, anchorEl, options = {}) {
 
   const stopListening = game.on('*', (name, payload) => {
     if (name === 'timer:tick') {
+      if (hudText) {
+        return;
+      }
       const time = formatTime(payload.remainingMs);
       if (time !== shownTime) {
         shownTime = time;
