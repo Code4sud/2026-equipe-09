@@ -1,4 +1,5 @@
 import { creerPanneau, police, ajuster } from '../resultats/canvas-panneau.js';
+import { creerTexte3D, glypheDisponible } from './texte3d.js';
 
 // Plateau en spirale au sol, autour du joueur assis : départ à l'extrémité extérieure,
 // arrivée au centre (extrémité intérieure). Une case par tour.
@@ -45,22 +46,42 @@ function versJoueur(p) {
   return Math.atan2(-p.x, -p.z) * 180 / Math.PI;
 }
 
-// Textes dessinés sur canvas : la police intégrée d'A-Frame n'a ni les accents ni les symboles.
-function panneauDebout(parent, valeur, p, hauteur, couleur) {
-  const el = creerPanneau({
-    largeur: 0.9,
-    hauteur: 0.24,
-    dessiner(ctx, w, h) {
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      ctx.fillStyle = couleur;
-      ajuster(ctx, valeur, w - 20, 110, true, 40);
-      ctx.fillText(valeur, w / 2, h / 2);
+// Toujours tourné vers le joueur (rotation verticale seulement) : la caméra suit le pion
+// et peut passer derrière un panneau ; le texte resterait sinon à l'envers.
+if (!window.AFRAME.components['face-au-joueur']) {
+  window.AFRAME.registerComponent('face-au-joueur', {
+    init() {
+      this.cam = new window.AFRAME.THREE.Vector3();
+      this.moi = new window.AFRAME.THREE.Vector3();
+    },
+    tick() {
+      const camera = this.el.sceneEl.camera;
+      if (!camera) return;
+      camera.getWorldPosition(this.cam);
+      this.el.object3D.getWorldPosition(this.moi);
+      this.el.object3D.rotation.y = Math.atan2(this.cam.x - this.moi.x, this.cam.z - this.moi.z);
     }
   });
+}
+
+// « DÉPART » / « ARRIVÉE » debout, en relief.
+function panneauDebout(parent, valeur, p, hauteur, couleur, flanc) {
+  const el = creerTexte3D({ texte: valeur, taille: 0.14, largeurMax: 1.4, lignesMax: 1, couleur, couleurFlanc: flanc, profondeur: 0.035 });
   el.setAttribute('position', { x: p.x, y: hauteur, z: p.z });
-  el.setAttribute('rotation', '0 ' + versJoueur(p) + ' 0');
+  el.setAttribute('face-au-joueur', '');
   parent.appendChild(el);
+}
+
+// Numéro ou symbole couché sur une dalle, en relief (sort de la dalle vers le haut).
+function reliefSol(parent, p, texte, taille, couleur, flanc) {
+  const pivot = document.createElement('a-entity');
+  pivot.setAttribute('position', { x: p.x, y: 0.092, z: p.z });
+  pivot.setAttribute('rotation', '0 ' + versJoueur(p) + ' 0');
+  const t = creerTexte3D({ texte, taille, largeurMax: taille * 3, lignesMax: 1, couleur, couleurFlanc: flanc, profondeur: 0.025 });
+  t.setAttribute('rotation', '-90 0 0');
+  pivot.appendChild(t);
+  parent.appendChild(pivot);
+  return pivot;
 }
 
 // Étiquette posée à plat sur une dalle, lisible depuis le siège ; contenu modifiable (révélation).
@@ -125,12 +146,14 @@ export function creerPlateau(racine, game) {
       dalle.setAttribute('position', { x: p.x, y: 0.06, z: p.z });
       racine.appendChild(dalle);
       dalles.push(dalle);
-      const contenu = { texte: i === 0 ? '' : String(i), couleur: '#D2CBFF' };
-      symboles.push({ contenu, el: etiquetteSol(racine, p, rayon * 1.5, contenu) });
+      // Numéro en relief ; le symbole du type (dessiné, car absent de la police) apparaît à la révélation.
+      const contenu = { texte: '', couleur: '#D2CBFF' };
+      const numero = i === 0 ? null : reliefSol(racine, p, String(i), rayon * 0.6, '#D2CBFF', '#4A3F8F');
+      symboles.push({ contenu, numero, p, el: etiquetteSol(racine, p, rayon * 1.5, contenu) });
       i++;
     }
-    panneauDebout(racine, 'DÉPART', points[0], 0.45, '#FFFFFF');
-    panneauDebout(racine, 'ARRIVÉE', points[points.length - 1], 0.45, '#FF63C8');
+    panneauDebout(racine, 'DÉPART', points[0], 0.45, '#FFFFFF', '#6A5FB8');
+    panneauDebout(racine, 'ARRIVÉE', points[points.length - 1], 0.45, '#FF63C8', '#8A2C6E');
 
     const pion = document.createElement('a-entity');
     pion.setAttribute('geometry', { primitive: 'cone', radiusBottom: 0.22, radiusTop: 0.02, height: 0.6 });
@@ -146,9 +169,22 @@ export function creerPlateau(racine, game) {
       const c = board.cases[index];
       if (!c || index === 0) return;
       dalles[index].setAttribute('material', 'color', c.color);
-      symboles[index].contenu.texte = c.symbol || String(index);
-      symboles[index].contenu.couleur = c.textColor || '#FFFFFF';
-      symboles[index].el.redessiner();
+      const s = symboles[index];
+      const symbole = c.symbol || String(index);
+      if (s.numero) s.numero.setAttribute('visible', false);
+      let enRelief = true;
+      let k = 0;
+      while (k < symbole.length) {
+        if (!glypheDisponible(symbole[k])) enRelief = false;
+        k++;
+      }
+      if (enRelief) {
+        reliefSol(racine, s.p, symbole, rayon * 0.6, c.textColor || '#FFFFFF', '#2A2550');
+      } else {
+        s.contenu.texte = symbole;
+        s.contenu.couleur = c.textColor || '#FFFFFF';
+        s.el.redessiner();
+      }
     };
     deplacer(board.start);
     return [

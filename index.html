@@ -7,6 +7,10 @@
     <title>Agora Explorer · Équipe 09</title>
     <style>
       body { background: #17153F; }
+      /* PC : pointeur précis en croix, main au survol d'un élément sélectionnable */
+      #agora-scene .a-canvas,
+      #agora-scene .a-canvas.a-grab-cursor:hover { cursor: crosshair; }
+      #agora-scene .a-canvas.a-mouse-cursor-hover:hover { cursor: pointer; }
       /* Le bandeau précède la scène en plein écran. Ancrer le bouton au viewport. */
       html.a-fullscreen #agora-scene .a-enter-vr { position: fixed; }
       #agora-scene .a-enter-vr-button {
@@ -50,10 +54,17 @@
                   look-controls="magicWindowTrackingEnabled: false">
           <a-entity id="gaze-pointer">
             <a-entity id="gaze-hud" position="0 0 -0.9" visible="false">
-              <a-ring radius-inner="0.011" radius-outer="0.017"
+              <!-- Contour sombre derrière l'anneau clair : visible sur fond clair comme sombre -->
+              <a-ring radius-inner="0.0085" radius-outer="0.0215" position="0 0 -0.002"
+                      material="shader: flat; color: #120F2E; opacity: 0.8; transparent: true; depthTest: false; depthWrite: false">
+              </a-ring>
+              <a-ring radius-inner="0.0105" radius-outer="0.0195"
                       material="shader: flat; color: #D2CBFF; depthTest: false; depthWrite: false">
               </a-ring>
-              <a-ring id="gaze-fill" radius-inner="0.011" radius-outer="0.017"
+              <a-circle radius="0.0028" position="0 0 0.001"
+                        material="shader: flat; color: #FFFFFF; depthTest: false; depthWrite: false">
+              </a-circle>
+              <a-ring id="gaze-fill" radius-inner="0.0105" radius-outer="0.0195"
                       geometry="segmentsPhi: 1; segmentsTheta: 96; thetaStart: 90"
                       material="shader: flat; color: #FF63C8; transparent: true; depthTest: false; depthWrite: false">
               </a-ring>

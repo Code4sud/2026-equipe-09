@@ -94,8 +94,12 @@ function drawLines(ctx, lines, x, top, lineHeight) {
   lines.forEach((line, index) => ctx.fillText(line, x, top + (index + 0.5) * lineHeight));
 }
 
+// Thème sombre (option theme: 'sombre') : violet très sombre, texte clair, pas d'aplat blanc.
+const SOMBRE = { fond: '#1C1838', texte: '#F1EDFF', bouton: '#29234F', survol: '#463B8C', note: '#FFB4A9' };
+
 // La carte : bandeau de la couleur du type, puis le texte en très grand.
-export function drawCard(canvas, { band, symbol = '', color = INK, textColor = WHITE, jobs = '', text, note = '' }) {
+export function drawCard(canvas, { band, symbol = '', color = INK, textColor = WHITE, jobs = '', text, note = '' }, theme = 'clair') {
+  const sombre = theme === 'sombre';
   const ctx = canvas.getContext('2d');
   const { width, height } = canvas;
   const pad = 48;
@@ -106,11 +110,17 @@ export function drawCard(canvas, { band, symbol = '', color = INK, textColor = W
   ctx.save();
   roundedRect(ctx, 0, 0, width, height, 40);
   ctx.clip();
-  ctx.fillStyle = WHITE;
+  ctx.fillStyle = sombre ? SOMBRE.fond : WHITE;
   ctx.fillRect(0, 0, width, height);
   ctx.fillStyle = color;
   ctx.fillRect(0, 0, width, bandHeight);
   ctx.restore();
+  if (sombre) {
+    roundedRect(ctx, 3, 3, width - 6, height - 6, 38);
+    ctx.lineWidth = 6;
+    ctx.strokeStyle = color;
+    ctx.stroke();
+  }
 
   ctx.fillStyle = textColor;
   ctx.strokeStyle = textColor;
@@ -139,43 +149,49 @@ export function drawCard(canvas, { band, symbol = '', color = INK, textColor = W
   const noteHeight = note ? 56 : 0;
   const box = { x: pad, y: bandHeight + 26, width: width - 2 * pad, height: height - bandHeight - 52 - noteHeight };
   const fitted = fitText(ctx, text, { maxWidth: box.width, maxHeight: box.height, maxSize: 66, minSize: 34 });
-  ctx.fillStyle = INK;
+  ctx.fillStyle = sombre ? SOMBRE.texte : INK;
   ctx.textAlign = 'left';
   drawLines(ctx, fitted.lines, box.x, box.y + (box.height - fitted.lines.length * fitted.lineHeight) / 2, fitted.lineHeight);
 
   if (note) {
-    ctx.fillStyle = ALERT;
+    ctx.fillStyle = sombre ? SOMBRE.note : ALERT;
     ctx.font = `700 32px ${FONT}`;
     ctx.fillText(note, pad, height - 42);
   }
 }
 
 // Un bouton. Survolé (regard ou souris posés dessus), il se remplit de sa couleur.
-export function drawButton(canvas, { label, badge = '', color = INK, textColor = WHITE }, hovered = false) {
+// Thème sombre : fond violet sombre ; survolé, fond plus clair et bordure épaisse.
+// sansTexte : le libellé est affiché à part (texte 3D, option label3D).
+export function drawButton(canvas, { label, badge = '', color = INK, textColor = WHITE }, hovered = false, theme = 'clair', sansTexte = false) {
   const ctx = canvas.getContext('2d');
   const { width, height } = canvas;
-  const border = 8;
+  const sombre = theme === 'sombre';
+  const border = sombre && hovered ? 16 : 8;
 
   ctx.clearRect(0, 0, width, height);
   roundedRect(ctx, border / 2, border / 2, width - border, height - border, 34);
-  ctx.fillStyle = hovered ? color : WHITE;
+  ctx.fillStyle = sombre ? (hovered ? SOMBRE.survol : SOMBRE.bouton) : hovered ? color : WHITE;
   ctx.fill();
   ctx.lineWidth = border;
-  ctx.strokeStyle = color;
+  ctx.strokeStyle = sombre && hovered ? '#FF86D4' : color;
   ctx.stroke();
 
   ctx.textBaseline = 'middle';
   let x = 34;
   if (badge) {
-    ctx.fillStyle = hovered ? textColor : color;
+    ctx.fillStyle = hovered && !sombre ? textColor : color;
     ctx.beginPath();
     ctx.arc(x + 30, height / 2, 30, 0, Math.PI * 2);
     ctx.fill();
-    ctx.fillStyle = hovered ? color : textColor;
+    ctx.fillStyle = hovered && !sombre ? color : textColor;
     ctx.font = `800 34px ${FONT}`;
     ctx.textAlign = 'center';
     ctx.fillText(badge, x + 30, height / 2 + 2);
     x += 82;
+  }
+  if (sansTexte) {
+    return;
   }
   const fitted = fitText(ctx, label, {
     maxWidth: width - x - 30,
@@ -185,19 +201,22 @@ export function drawButton(canvas, { label, badge = '', color = INK, textColor =
     weight: 700,
     lineHeight: 1.15,
   });
-  ctx.fillStyle = hovered ? textColor : INK;
+  ctx.fillStyle = sombre ? SOMBRE.texte : hovered ? textColor : INK;
   ctx.textAlign = badge ? 'left' : 'center';
   drawLines(ctx, fitted.lines, badge ? x : width / 2, (height - fitted.lines.length * fitted.lineHeight) / 2, fitted.lineHeight);
 }
 
 // Le chrono : blanc en jeu, grisé en pause, rosé pendant la dernière minute.
-export function drawHud(canvas, { time, low = false, paused = false }) {
+export function drawHud(canvas, { time, low = false, paused = false }, sansTexte = false) {
   const ctx = canvas.getContext('2d');
   const { width, height } = canvas;
   ctx.clearRect(0, 0, width, height);
   roundedRect(ctx, 0, 0, width, height, 34);
   ctx.fillStyle = INK;
   ctx.fill();
+  if (sansTexte) {
+    return;
+  }
   ctx.fillStyle = paused ? '#AEB7C6' : low ? '#FFB4A9' : WHITE;
   ctx.font = `800 92px ${FONT}`;
   ctx.textAlign = 'center';
@@ -301,7 +320,13 @@ export function attachVrUI(game, anchorEl, options = {}) {
   // hudText(state) : texte du bandeau à la place du chrono (ex. « Tour 3 / 15 »).
   // cardOnlyForQuestions : la carte n'apparaît que pendant une question (la vue reste libre
   // pendant le lancer et le déplacement du pion).
-  const { clickableClass = 'clickable', showSkip = false, hudText = null, cardOnlyForQuestions = false } = options;
+  // theme : 'clair' (par défaut) ou 'sombre'.
+  // label3D(texte, { largeur, hauteur }) : renvoie une entité de texte en relief, posée devant
+  // les boutons et le bandeau à la place du texte dessiné.
+  const {
+    clickableClass = 'clickable', showSkip = false, hudText = null, cardOnlyForQuestions = false,
+    theme = 'clair', label3D = null,
+  } = options;
 
   function createPanel({ width, height, x, y }, draw, onClick = null) {
     const canvas = document.createElement('canvas');
@@ -362,21 +387,47 @@ export function attachVrUI(game, anchorEl, options = {}) {
     low: !hudText && state.timer.remainingMs <= 60_000,
     paused: state.state === S.PAUSED,
   });
-  const hud = createPanel(LAYOUT.hud, (canvas) => drawHud(canvas, hudData()));
-  const card = createPanel(LAYOUT.card, (canvas) => drawCard(canvas, cardContent(state)));
+  const hud = createPanel(LAYOUT.hud, (canvas) => drawHud(canvas, hudData(), Boolean(label3D)));
+  const card = createPanel(LAYOUT.card, (canvas) => drawCard(canvas, cardContent(state), theme));
+  let texteHud = null;
+  function poserTexteHud() {
+    if (!label3D) {
+      return;
+    }
+    if (texteHud) {
+      texteHud.parentNode?.removeChild(texteHud);
+    }
+    texteHud = label3D(hudData().time, { largeur: LAYOUT.hud.width - 0.1, hauteur: LAYOUT.hud.height, taille: 0.13 });
+    texteHud.setAttribute('position', '0 0 0.006');
+    hud.entity.appendChild(texteHud);
+  }
 
   function rebuildButtons() {
     buttons.forEach((button) => button.dispose()); // un bouton retiré de la scène n'est plus cliquable
     const specs = buttonSpecs(game, state, { showSkip });
     const positions = buttonPositions(specs.length);
-    buttons = specs.slice(0, 4).map((spec, index) => createPanel(
-      { ...LAYOUT.button, x: positions[index][0], y: positions[index][1] },
-      (canvas, hovered) => drawButton(canvas, spec, hovered),
-      spec.onClick,
-    ));
+    // Libellé en relief devant le bouton (laisse de la place au badge numéroté à gauche).
+    const relief = (panel, spec, gabarit) => {
+      if (!label3D) {
+        return panel;
+      }
+      const gauche = spec.badge ? 116 / PX_PER_METER : 30 / PX_PER_METER;
+      const largeur = gabarit.width - gauche - 30 / PX_PER_METER;
+      const texte = label3D(spec.label, { largeur, hauteur: gabarit.height, taille: 0.065 });
+      texte.setAttribute('position', `${(-gabarit.width / 2 + gauche + largeur / 2).toFixed(3)} 0 0.006`);
+      panel.entity.appendChild(texte);
+      return panel;
+    };
+    buttons = specs.slice(0, 4).map((spec, index) => {
+      const gabarit = { ...LAYOUT.button, x: positions[index][0], y: positions[index][1] };
+      return relief(createPanel(gabarit, (canvas, hovered) => drawButton(canvas, spec, hovered, theme, Boolean(label3D)), spec.onClick), spec, gabarit);
+    });
     if ([S.PLAYING, S.ROLLING, S.MOVING, S.QUESTION].includes(state.state)) {
       const pause = { label: 'Pause' };
-      buttons.push(createPanel(LAYOUT.pause, (canvas, hovered) => drawButton(canvas, pause, hovered), () => game.pauseGame()));
+      buttons.push(relief(
+        createPanel(LAYOUT.pause, (canvas, hovered) => drawButton(canvas, pause, hovered, theme, Boolean(label3D)), () => game.pauseGame()),
+        pause, LAYOUT.pause,
+      ));
     }
   }
 
@@ -389,6 +440,7 @@ export function attachVrUI(game, anchorEl, options = {}) {
     signature = next;
     shownTime = hudData().time;
     hud.redraw();
+    poserTexteHud();
     card.redraw();
     if (cardOnlyForQuestions) {
       card.entity.setAttribute('visible', state.state === S.QUESTION);
@@ -406,6 +458,7 @@ export function attachVrUI(game, anchorEl, options = {}) {
         shownTime = time;
         state = game.getGameState();
         hud.redraw();
+        poserTexteHud();
       }
       return;
     }

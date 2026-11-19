@@ -3,6 +3,13 @@
 // Nécessite A-Frame (globales AFRAME / THREE) chargé avant.
 
 export const PPM = 700; // pixels de canvas par mètre de panneau
+
+// Libellés des boutons en relief : fabrique fournie par l'assemblage (js/integration/texte3d.js).
+// Sans fabrique, le libellé est dessiné sur le canvas comme avant.
+let fabriqueTexte3D = null;
+export function utiliserTexte3D(fabrique) {
+  fabriqueTexte3D = fabrique;
+}
 const POLICE = 'system-ui, "Segoe UI", Roboto, Arial, sans-serif';
 
 export function police(taille, gras, italique) {
@@ -126,7 +133,7 @@ export function creerPanneau({ largeur, hauteur, dessiner, cliquable = false, on
   el.redessiner = function () {
     const ctx = canvas.getContext('2d');
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    dessiner(ctx, canvas.width, canvas.height);
+    dessiner(ctx, canvas.width, canvas.height, el);
     texture.needsUpdate = true;
   };
   el.redessiner();
@@ -143,13 +150,18 @@ export function creerPanneau({ largeur, hauteur, dessiner, cliquable = false, on
   if (cliquable) {
     el.dataset.clic = '1';
     el.classList.add('clickable');
+    // Survol (souris ou regard) : léger grossissement et redessin en état « survolé ».
     el.addEventListener('mouseenter', function () {
       el.survolDepuis = Date.now();
-      el.object3D.scale.set(1.04, 1.04, 1);
+      el.survol = true;
+      el.object3D.scale.set(1.05, 1.05, 1);
+      el.redessiner();
     });
     el.addEventListener('mouseleave', function () {
       el.survolDepuis = 0;
+      el.survol = false;
       el.object3D.scale.set(1, 1, 1);
+      el.redessiner();
     });
     if (onClic) el.addEventListener('click', onClic);
   }
@@ -157,19 +169,25 @@ export function creerPanneau({ largeur, hauteur, dessiner, cliquable = false, on
 }
 
 export function creerBouton({ largeur, hauteur, libelle, onClic, couleur = '#34447a', estActif = null }) {
-  return creerPanneau({
+  const enRelief = Boolean(fabriqueTexte3D);
+  let texte3D = null;
+  const bouton = creerPanneau({
     largeur,
     hauteur,
     cliquable: true,
     onClic,
-    dessiner: function (ctx, w, h) {
+    dessiner: function (ctx, w, h, el) {
       const actif = estActif ? estActif() : false;
-      ctx.fillStyle = actif ? '#ffffff' : couleur;
-      arrondi(ctx, 4, 4, w - 8, h - 8, Math.min(28, h / 3));
+      const survol = el && el.survol;
+      ctx.fillStyle = actif ? '#ffffff' : survol ? '#5A4CB0' : couleur;
+      const bord = survol ? 12 : 4;
+      arrondi(ctx, bord / 2, bord / 2, w - bord, h - bord, Math.min(28, h / 3));
       ctx.fill();
-      ctx.lineWidth = 4;
-      ctx.strokeStyle = 'rgba(255, 255, 255, 0.7)';
+      ctx.lineWidth = bord;
+      ctx.strokeStyle = survol ? '#FF86D4' : 'rgba(255, 255, 255, 0.7)';
       ctx.stroke();
+      if (texte3D && texte3D.changerCouleur) texte3D.changerCouleur(actif ? '#1b2133' : '#ffffff', actif ? '#8a93a8' : '#6A5FB8');
+      if (enRelief) return;
       ctx.fillStyle = actif ? '#1b2133' : '#ffffff';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
@@ -177,4 +195,11 @@ export function creerBouton({ largeur, hauteur, libelle, onClic, couleur = '#344
       ctx.fillText(libelle, w / 2, h / 2 + 2);
     }
   });
+  if (enRelief) {
+    texte3D = fabriqueTexte3D(libelle, { largeur: largeur - 0.06, hauteur, taille: Math.min(0.065, hauteur * 0.36) });
+    texte3D.setAttribute('position', '0 0 0.006');
+    bouton.appendChild(texte3D);
+    bouton.redessiner();
+  }
+  return bouton;
 }

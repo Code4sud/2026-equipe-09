@@ -21,6 +21,8 @@ import { creerPlateau } from './plateau.js';
 import { creerDe, FACES, DUREE_CENTRE } from './de.js';
 import { attacherPanneaux, placerPresDuJoueur, suivreLePion } from './camera.js';
 import { poserDecor } from './decor.js';
+import { creerTexte3D, chargerPolice } from './texte3d.js';
+import { utiliserTexte3D } from '../resultats/canvas-panneau.js';
 import { choisirNombreDeTours } from './choixTours.js';
 import { monterResultats } from '../resultats/resultats.js';
 
@@ -87,8 +89,37 @@ function classementDeRepli(profil) {
   return sortie;
 }
 
+// Libellés en relief pour les boutons des résultats, du choix des tours et du moteur.
+const fabriqueTexte3D = (texte, o) => creerTexte3D({ texte, taille: o.taille || 0.05, largeurMax: o.largeur, lignesMax: 2 });
+
+// Boutons de E1 (pavé numérique, consignes…) : libellé canvas remplacé par du texte en relief.
+// Le bouton « Tester la sélection » garde son libellé canvas (il change à chaque essai).
+function relieferBoutonsE1() {
+  const cibles = scene.querySelectorAll('#e1-ui [agora-target]');
+  let i = 0;
+  while (i < cibles.length) {
+    const cible = cibles[i];
+    i++;
+    if (cible.id === 'demo-target') continue;
+    const legende = cible.querySelector('[agora-label]');
+    if (!legende) continue;
+    const valeur = legende.getAttribute('agora-label').value;
+    const pave = cible.id.indexOf('e1-key-') === 0;
+    const largeur = Number(cible.getAttribute('agora-surface')?.width) || 0.8;
+    const texte = creerTexte3D({
+      texte: valeur, taille: pave ? 0.1 : 0.056, largeurMax: largeur - 0.06, lignesMax: 1,
+      couleur: '#FCF9FF', couleurFlanc: '#6A5FB8'
+    });
+    texte.setAttribute('position', '0 0 0.006');
+    legende.setAttribute('visible', false);
+    cible.appendChild(texte);
+  }
+}
+
 function demarrer() {
   solEnArrierePlan();
+  utiliserTexte3D(fabriqueTexte3D);
+  chargerPolice().then(relieferBoutonsE1).catch((e) => console.warn('[agora] police 3D :', e));
   poserDecor(scene);
   // Les panneaux de E1 et des résultats suivent le joueur quand la caméra suit le pion.
   attacherPanneaux(scene, ['#board-root', '#e1-ui'], { jeu: true });
@@ -181,6 +212,8 @@ function demarrer() {
     }
     partie.ui = attachVrUI(game, ancrageUI, {
       cardOnlyForQuestions: true,
+      theme: 'sombre',
+      label3D: (texte, o) => creerTexte3D({ texte, taille: o.taille, largeurMax: o.largeur, lignesMax: 2 }),
       hudText: (etat) => 'Tour ' + Math.min(nbTours, Math.max(1, etat.state === 'playing' ? etat.turn + 1 : etat.turn)) + ' / ' + nbTours
     });
     game.startGame();

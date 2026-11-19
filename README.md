@@ -75,6 +75,7 @@ sur casque avec C3.
 - O*NET 31.0 Database, U.S. Department of Labor, Employment and Training Administration
   (USDOL/ETA), utilisée sous licence CC BY 4.0 ; données modifiées (attributs normalisés).
 - ROME 4.0, France Travail, Licence Ouverte / Etalab.
+- Police Droid Sans Bold (texte en relief, `assets/fonts/`), Google, licence Apache 2.0.
 - Profils et cartes de démonstration fictifs. Aucun Rapport des Possibles réel dans ce dépôt.
 
 ## Publier sur le site du hackathon

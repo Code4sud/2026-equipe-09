@@ -64,7 +64,7 @@ function configureInput(scene) {
       rayOrigin: useGaze ? 'entity' : 'mouse',
       fuse: useGaze,
       fuseTimeout: 1500,
-      mouseCursorStylesEnabled: false
+      mouseCursorStylesEnabled: !useGaze
     })
   }
 
