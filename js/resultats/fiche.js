@@ -136,7 +136,7 @@ export function creerFiche({ onRetour, garde }) {
   const retour = creerBouton({
     largeur: 0.8,
     hauteur: 0.16,
-    libelle: '← Retour',
+    libelle: '← Retour aux résultats',
     couleur: '#2e8b57',
     onClic: function (e) { if (garde(this, e)) onRetour(); }
   });

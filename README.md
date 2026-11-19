@@ -25,7 +25,8 @@ spirale d'autant de cases autour de lui : départ au bord, arrivée au centre. �
 tour, le dé 3D révèle le type de la case suivante et le pion avance d'une case ; la
 caméra suit le pion (en VR, le siège se déplace et la tête reste libre). La face
 « Centre des Possibles » du dé tire au sort un des cinq types de carte. À la fin, un
-podium présente les trois premiers métiers, puis le tableau complet et les fiches.
+tableau présente tous les métiers en trois colonnes (« À explorer », « Très proche de ton
+profil » au centre, « Plus éloigné pour l'instant »), puis les fiches.
 
 Paramètres utiles : `?tours=5` (saute le choix, partie de 5 tours), `?brouillon`
 (joue aussi les cartes pas encore relues), `?gaze=1` (sélection au regard sur PC).
