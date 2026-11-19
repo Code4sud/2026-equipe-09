@@ -28,7 +28,7 @@
         "effets": {}
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "pref-002",
@@ -59,7 +59,7 @@
         "effets": {}
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "pref-003",
@@ -90,7 +90,7 @@
         "effets": {}
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "pref-004",
@@ -123,7 +123,7 @@
         }
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "pref-005",
@@ -155,7 +155,7 @@
         "effets": {}
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "pref-006",
@@ -188,7 +188,7 @@
         }
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "pref-007",
@@ -221,7 +221,7 @@
         }
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "pref-008",
@@ -254,7 +254,7 @@
         }
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "pref-009",
@@ -287,7 +287,7 @@
         }
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "pref-010",
@@ -320,7 +320,7 @@
         }
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "pref-011",
@@ -353,7 +353,7 @@
         }
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "pref-012",
@@ -386,7 +386,7 @@
         }
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "pref-013",
@@ -429,7 +429,7 @@
         }
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "pref-014",
@@ -463,7 +463,7 @@
         }
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "pref-015",
@@ -504,7 +504,7 @@
         }
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "sit-001",
@@ -540,7 +540,7 @@
         }
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "sit-002",
@@ -578,7 +578,7 @@
         }
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "sit-003",
@@ -616,7 +616,7 @@
         }
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "sit-004",
@@ -653,7 +653,7 @@
         }
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "sit-005",
@@ -689,7 +689,7 @@
         }
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "sit-006",
@@ -726,7 +726,7 @@
         }
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "sit-007",
@@ -765,7 +765,7 @@
         }
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "sit-008",
@@ -802,7 +802,7 @@
         }
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "sit-009",
@@ -839,7 +839,7 @@
         }
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "sit-010",
@@ -879,7 +879,7 @@
         }
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "sit-011",
@@ -918,7 +918,7 @@
         }
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "sit-012",
@@ -955,7 +955,7 @@
         }
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "sit-013",
@@ -996,7 +996,7 @@
         }
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "sit-014",
@@ -1038,7 +1038,7 @@
         }
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "sit-015",
@@ -1077,7 +1077,7 @@
         }
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "sit-016",
@@ -1114,7 +1114,7 @@
         }
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "sit-017",
@@ -1154,7 +1154,7 @@
         }
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "sit-018",
@@ -1190,7 +1190,7 @@
         }
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "sit-019",
@@ -1229,7 +1229,7 @@
         }
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "sit-020",
@@ -1267,7 +1267,7 @@
         }
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "sit-021",
@@ -1303,7 +1303,7 @@
         }
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "sit-022",
@@ -1342,7 +1342,7 @@
         }
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "dec-001",
@@ -1377,7 +1377,7 @@
         "effets": {}
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "dec-002",
@@ -1412,7 +1412,7 @@
         "effets": {}
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "dec-003",
@@ -1447,7 +1447,7 @@
         "effets": {}
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "dec-004",
@@ -1482,7 +1482,7 @@
         "effets": {}
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "dec-005",
@@ -1517,7 +1517,7 @@
         "effets": {}
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "dec-006",
@@ -1552,7 +1552,7 @@
         "effets": {}
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "dec-007",
@@ -1587,7 +1587,7 @@
         "effets": {}
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "dec-008",
@@ -1622,7 +1622,7 @@
         "effets": {}
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "dec-009",
@@ -1657,7 +1657,7 @@
         "effets": {}
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "dec-010",
@@ -1692,7 +1692,7 @@
         "effets": {}
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "dec-011",
@@ -1727,7 +1727,7 @@
         "effets": {}
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "dec-012",
@@ -1762,7 +1762,7 @@
         "effets": {}
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "dec-013",
@@ -1797,7 +1797,7 @@
         "effets": {}
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "dec-014",
@@ -1832,7 +1832,7 @@
         "effets": {}
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "dec-015",
@@ -1867,7 +1867,7 @@
         "effets": {}
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "dec-016",
@@ -1902,7 +1902,7 @@
         "effets": {}
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "dec-017",
@@ -1937,7 +1937,7 @@
         "effets": {}
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "dec-018",
@@ -1972,7 +1972,7 @@
         "effets": {}
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "dec-019",
@@ -2007,7 +2007,7 @@
         "effets": {}
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "dec-020",
@@ -2042,7 +2042,7 @@
         "effets": {}
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "dec-021",
@@ -2077,7 +2077,7 @@
         "effets": {}
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "dec-022",
@@ -2112,7 +2112,7 @@
         "effets": {}
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "dec-023",
@@ -2147,7 +2147,7 @@
         "effets": {}
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "dec-024",
@@ -2182,7 +2182,7 @@
         "effets": {}
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "pas-001",
@@ -2191,7 +2191,7 @@
     "de": "19-4012.00",
     "vers": "19-4071.00",
     "reponses": [],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "pas-002",
@@ -2200,7 +2200,7 @@
     "de": "29-1131.00",
     "vers": "19-1029.03",
     "reponses": [],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "pas-003",
@@ -2209,7 +2209,7 @@
     "de": "19-2043.00",
     "vers": "17-2151.00",
     "reponses": [],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "pas-004",
@@ -2218,7 +2218,7 @@
     "de": "47-2111.00",
     "vers": "47-1011.00",
     "reponses": [],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "pas-005",
@@ -2227,7 +2227,7 @@
     "de": "39-7011.00",
     "vers": "41-3041.00",
     "reponses": [],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "pas-006",
@@ -2236,7 +2236,7 @@
     "de": "39-3011.00",
     "vers": "41-9041.00",
     "reponses": [],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "pas-007",
@@ -2245,7 +2245,7 @@
     "de": "29-1023.00",
     "vers": "29-1021.00",
     "reponses": [],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "pas-008",
@@ -2254,7 +2254,7 @@
     "de": "29-1041.00",
     "vers": "29-2092.00",
     "reponses": [],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "pas-009",
@@ -2263,7 +2263,7 @@
     "de": "21-1013.00",
     "vers": "19-3033.00",
     "reponses": [],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "pas-010",
@@ -2272,7 +2272,7 @@
     "de": "29-1129.01",
     "vers": "21-1013.00",
     "reponses": [],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "pas-011",
@@ -2281,7 +2281,7 @@
     "de": "27-3011.00",
     "vers": "15-1255.01",
     "reponses": [],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "pas-012",
@@ -2290,7 +2290,7 @@
     "de": "43-5071.00",
     "vers": "45-2092.00",
     "reponses": [],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "sur-001",
@@ -2332,7 +2332,7 @@
         }
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "sur-002",
@@ -2366,7 +2366,7 @@
         }
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "sur-003",
@@ -2391,7 +2391,7 @@
         }
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "sur-004",
@@ -2424,7 +2424,7 @@
         }
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "sur-005",
@@ -2457,7 +2457,7 @@
         }
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "sur-006",
@@ -2482,7 +2482,7 @@
         }
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "sur-007",
@@ -2507,7 +2507,7 @@
         }
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "sur-008",
@@ -2540,7 +2540,7 @@
         }
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "sur-009",
@@ -2573,41 +2573,41 @@
         }
       }
     ],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "pause-001",
     "type": "pause",
     "texte": "Respire ! Tu as déjà fait une bonne partie du chemin.",
     "reponses": [],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "pause-002",
     "type": "pause",
     "texte": "Pause. Regarde autour de toi : il n'y a pas de mauvaise réponse.",
     "reponses": [],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "pause-003",
     "type": "pause",
     "texte": "Petite pause. Tes choix restent les tiens, prends ton temps.",
     "reponses": [],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "pause-004",
     "type": "pause",
     "texte": "Souffle un instant, puis relance le dé quand tu es prêt.",
     "reponses": [],
-    "statut": "genere"
+    "statut": "relu"
   },
   {
     "id": "pause-005",
     "type": "pause",
     "texte": "Pause : tu peux revoir les consignes si tu le souhaites.",
     "reponses": [],
-    "statut": "genere"
+    "statut": "relu"
   }
 ]
