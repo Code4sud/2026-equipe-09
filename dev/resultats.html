@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dev E3 – Résultats et fiches métiers</title>
+  <script src="https://aframe.io/releases/1.8.0/aframe.min.js"></script>
+</head>
+<body>
+  <!--
+    Page de test standalone (E3). Paramètres d'URL :
+      ?souris              curseur souris au lieu du regard (PC)
+      ?vraies              utilise ../data/metiers.json au lieu des données de test
+      ?ouvrir=35-2014.00   ouvre directement une fiche
+      &onglet=4            onglet de départ (0 à 6)
+    Le vrai curseur de la scène finale appartient à E1.
+  -->
+  <a-scene background="color: #1b2133" renderer="colorManagement: true">
+    <a-entity camera look-controls position="0 1.3 0">
+      <a-entity id="curseur-regard"
+        cursor="fuse: true; fuseTimeout: 1500"
+        raycaster="objects: .clickable; far: 20"
+        position="0 0 -1"
+        geometry="primitive: ring; radiusInner: 0.012; radiusOuter: 0.02"
+        material="shader: flat; color: #ffffff"
+        animation__fusing="property: scale; startEvents: fusing; easing: linear; dur: 1500; from: 1 1 1; to: 0.3 0.3 0.3"
+        animation__quitte="property: scale; startEvents: mouseleave; dur: 1; to: 1 1 1"
+        animation__clic="property: scale; startEvents: click; dur: 150; from: 0.3 0.3 0.3; to: 1 1 1">
+      </a-entity>
+    </a-entity>
+    <a-plane rotation="-90 0 0" width="12" height="12" color="#232a40"></a-plane>
+  </a-scene>
+
+  <script type="module">
+    import { monterResultats } from '../js/resultats/resultats.js';
+
+    const params = new URLSearchParams(location.search);
+    const scene = document.querySelector('a-scene');
+
+    function demarrer() {
+      if (params.has('souris')) {
+        const regard = document.getElementById('curseur-regard');
+        regard.parentNode.removeChild(regard);
+        scene.setAttribute('raycaster', 'objects: .clickable; far: 20');
+        scene.setAttribute('cursor', 'rayOrigin: mouse; fuse: false');
+      }
+
+      const resultats = monterResultats(scene, {
+        metiersUrl: params.has('vraies') ? '../data/metiers.json' : 'mock-metiers.json'
+      });
+
+      scene.addEventListener('resultats-affiches', function () {
+        if (params.has('ouvrir')) resultats.ouvrirFiche(params.get('ouvrir'), Number(params.get('onglet') || 0));
+      });
+
+      // Simule la fin de partie envoyée par E2.
+      fetch('mock-classement.json')
+        .then(function (r) { return r.json(); })
+        .then(function (classement) {
+          scene.emit('partie-terminee', { profil: { id: '4821', fictif: true }, classement });
+        });
+    }
+
+    if (scene.hasLoaded) demarrer();
+    else scene.addEventListener('loaded', demarrer);
+  </script>
+</body>
+</html>

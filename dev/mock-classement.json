@@ -1,0 +1,65 @@
+[
+  {
+    "onet": "35-2014.00",
+    "rang": 1,
+    "categorie": "tres_proche",
+    "score": 4.2,
+    "raisons": [
+      "C'était ton 1er choix avec le psychologue",
+      "Tu aimes travailler avec tes mains",
+      "Les horaires décalés ne te dérangent pas"
+    ]
+  },
+  {
+    "onet": "27-1024.00",
+    "rang": 2,
+    "categorie": "tres_proche",
+    "score": 3.1,
+    "raisons": [
+      "C'était ton 2e choix avec le psychologue",
+      "Tu as souvent choisi des réponses créatives"
+    ]
+  },
+  {
+    "onet": "51-3011.00",
+    "rang": 3,
+    "categorie": "a_explorer",
+    "score": 1.4,
+    "raisons": ["Un métier proche de cuisinier", "Tu aimes les gestes précis"]
+  },
+  {
+    "onet": "47-2111.00",
+    "rang": 4,
+    "categorie": "a_explorer",
+    "score": 0.9,
+    "raisons": ["Tu aimes le travail manuel"]
+  },
+  {
+    "onet": "35-1011.00",
+    "rang": 5,
+    "categorie": "a_explorer",
+    "score": 0.7,
+    "raisons": ["Une évolution possible depuis cuisinier"]
+  },
+  {
+    "onet": "35-2021.00",
+    "rang": 6,
+    "categorie": "a_explorer",
+    "score": 0.4,
+    "raisons": []
+  },
+  {
+    "onet": "43-4171.00",
+    "rang": 7,
+    "categorie": "a_explorer",
+    "score": 0.2,
+    "raisons": ["Tu aimes le contact avec les gens"]
+  },
+  {
+    "onet": "29-1141.00",
+    "rang": 8,
+    "categorie": "plus_eloigne",
+    "score": -0.8,
+    "raisons": []
+  }
+]

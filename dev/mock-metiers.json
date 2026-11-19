@@ -1,0 +1,92 @@
+[
+  {
+    "onet": "35-2014.00",
+    "rome": "G1602",
+    "titre": "Cuisinier",
+    "zone": 2,
+    "description": "Le cuisinier prépare les plats d'un restaurant, de la mise en place au dressage, en respectant les règles d'hygiène et le rythme du service.",
+    "missions": ["Préparer les plats", "Gérer les stocks", "Respecter l'hygiène"],
+    "competences": ["Rapidité", "Travail en équipe", "Résistance au stress"],
+    "formation": {
+      "diplomes": ["CAP Cuisine", "Bac pro Cuisine", "BTS Management en hôtellerie-restauration"],
+      "duree": "2 à 5 ans après la 3e",
+      "source": "ONISEP"
+    },
+    "carriere": [
+      { "niveau": "debut", "postes": ["Commis de cuisine"] },
+      { "niveau": "confirme", "postes": ["Chef de partie", "Sous-chef"] },
+      { "niveau": "senior", "postes": ["Chef de cuisine", "Chef propriétaire"] }
+    ],
+    "salaires": {
+      "unite": "brut mensuel",
+      "zone_geo": "France",
+      "debut": { "min": null, "max": null },
+      "cinq_ans": { "min": null, "max": null },
+      "senior": { "min": null, "max": null },
+      "remarque": "",
+      "source": ""
+    },
+    "sources": ["ROME 4.0 – France Travail", "ONISEP"]
+  },
+  {
+    "onet": "27-1024.00",
+    "titre": "Graphiste",
+    "zone": 3,
+    "description": "TEST PAGINATION – Le graphiste crée des images, des logos, des affiches et des maquettes pour communiquer un message. Il échange avec ses clients pour comprendre leur besoin, propose plusieurs pistes visuelles, puis réalise la version finale sur ordinateur avec des logiciels de création. Il peut travailler en agence, dans le service communication d'une entreprise ou à son compte. Il doit suivre les tendances, respecter des délais parfois serrés et savoir défendre ses idées tout en acceptant les retours.",
+    "missions": ["Comprendre la demande du client", "Proposer des pistes créatives", "Réaliser les maquettes", "Préparer les fichiers pour l'impression ou le web", "Présenter son travail"],
+    "competences": ["Créativité", "Maîtrise des logiciels de création", "Sens de la communication", "Organisation"],
+    "formation": {
+      "diplomes": ["DN MADE", "BUT MMI", "Écoles d'art appliqué"],
+      "duree": "3 à 5 ans après le bac",
+      "source": "ONISEP"
+    },
+    "carriere": [
+      { "niveau": "debut", "postes": ["Graphiste junior"] },
+      { "niveau": "confirme", "postes": ["Graphiste confirmé", "Designer graphique"] },
+      { "niveau": "senior", "postes": ["Directeur artistique"] }
+    ],
+    "salaires": {
+      "unite": "brut mensuel",
+      "zone_geo": "France",
+      "debut": { "min": 1000, "max": 1100 },
+      "cinq_ans": { "min": 1500, "max": null },
+      "senior": { "min": null, "max": 3000 },
+      "remarque": "MONTANTS FICTIFS DE TEST – ne pas réutiliser.",
+      "source": "Données fictives de test (dev/)"
+    },
+    "sources": ["Données fictives de test (dev/)"]
+  },
+  {
+    "onet": "51-3011.00",
+    "titre": "Boulanger",
+    "zone": 2,
+    "description": "TEST CHAMPS MANQUANTS – fiche partielle.",
+    "missions": [],
+    "formation": { "diplomes": ["CAP Boulanger"], "duree": null, "source": "ONISEP" },
+    "carriere": [
+      { "niveau": "debut", "postes": ["Ouvrier boulanger"] },
+      { "niveau": "confirme", "postes": [] }
+    ],
+    "sources": []
+  },
+  {
+    "onet": "47-2111.00",
+    "titre": "Électricien",
+    "zone": 2,
+    "description": "TEST CHAÎNES « non disponible » – fiche au format texte de C2.",
+    "missions": ["non disponible"],
+    "competences": "non disponible",
+    "formation": { "diplomes": ["CAP Électricien"], "duree": "non disponible", "source": "non disponible" },
+    "carriere": "non disponible",
+    "salaires": {
+      "unite": "non disponible",
+      "zone_geo": "non disponible",
+      "debut": "non disponible",
+      "cinq_ans": { "min": "non disponible", "max": "non disponible" },
+      "senior": null,
+      "remarque": "non disponible",
+      "source": "non disponible"
+    },
+    "sources": ["non disponible"]
+  }
+]
