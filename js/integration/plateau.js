@@ -88,10 +88,12 @@ function etiquetteSol(parent, p, taille, contenu) {
 
 export function creerPlateau(racine, game) {
   let arrets = [];
+  let pointsCourants = [];
 
   function construire(board) {
     while (racine.firstChild) racine.removeChild(racine.firstChild);
     const { points, pas } = spirale(board.cases.length);
+    pointsCourants = points;
     const rayon = Math.min(0.3, pas * 0.42);
     const dalles = [];
     const symboles = [];
@@ -165,6 +167,10 @@ export function creerPlateau(racine, game) {
   });
 
   return {
+    // Position au sol de chaque case (pour la caméra qui suit le pion).
+    points() {
+      return pointsCourants;
+    },
     detruire() {
       arreterPret();
       let k = 0;

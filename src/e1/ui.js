@@ -282,8 +282,9 @@ export function buildUi(root) {
       demoTools.setAttribute('visible', screen === 'welcome')
       demoTools.setAttribute('position', screen === 'welcome' ? '0.62 -1.22 0' : '0 0 0')
       replayTools.setAttribute('visible', screen === 'profile' || screen === 'game')
-      // En partie, « Revoir les consignes » passe sous la carte et les réponses du moteur.
-      replayTools.setAttribute('position', screen === 'game' ? '-0.55 -1.74 0' : '0 0 0')
+      // En partie, « Revoir les consignes » passe à gauche de la carte du moteur :
+      // le bas de la vue reste libre pour voir le pion et les cases suivantes.
+      replayTools.setAttribute('position', screen === 'game' ? '-2.05 -0.99 0' : '0 0 0')
     },
 
     drawIntro(step, index, total) {

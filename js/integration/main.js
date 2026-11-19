@@ -3,7 +3,9 @@
 //   E1 émet « agora-start » { profile } quand le code à 4 chiffres est validé ;
 //   le jeune choisit son nombre de tours (10, 15, 20 ou 25) ;
 //   E2 joue la partie sur une spirale d'autant de cases : à chaque tour, le dé animé
-//   révèle le type de la case suivante et le pion avance d'une case, du bord vers le centre ;
+//   révèle le type de la case suivante et le pion avance d'une case, du bord vers le centre.
+//   La caméra suit le pion (rig déplacé, tête libre en VR). Face « Centre des Possibles » du dé :
+//   un type est tiré au hasard puis joué normalement ;
 //   C1 classe les métiers pendant la partie (js/ranking/adaptateur.js) ;
 //   E3 écoute « partie-terminee » { profil, classement } et affiche tableau + fiches.
 //
@@ -16,13 +18,15 @@ import { createGame, CASE_TYPES } from '../../agora-explorer-moteur/engine/game.
 import { attachVrUI } from '../../agora-explorer-moteur/ui/vrUI.js';
 import { creerRankingC1 } from '../ranking/adaptateur.js';
 import { creerPlateau } from './plateau.js';
-import { creerDe } from './de.js';
+import { creerDe, FACES, DUREE_CENTRE } from './de.js';
+import { attacherPanneaux, placerPresDuJoueur, suivreLePion } from './camera.js';
+import { poserDecor } from './decor.js';
 import { choisirNombreDeTours } from './choixTours.js';
 import { monterResultats } from '../resultats/resultats.js';
 
 const params = new URLSearchParams(location.search);
 const scene = document.querySelector('#agora-scene');
-const FACES = ['preference', 'situation', 'decouverte', 'passerelle', 'surprise', 'pause'];
+const TYPES_JOUABLES = ['preference', 'situation', 'passerelle', 'decouverte', 'surprise'];
 
 // Le sol et le disque de E1 sont dessinés en premier et n'écrivent pas la profondeur :
 // sinon le disque masquait le bas des réponses, le plateau et « Revoir les consignes ».
@@ -41,22 +45,21 @@ function solEnArrierePlan() {
 }
 
 // Résultats des lancers de dé, tirés au début de la partie (le joueur les découvre un par un).
-// Règles : 1er tour = préférence (prise en main), pas deux fois de suite le même type,
-// au plus une pause par tranche de 5 tours, jamais de pause au dernier tour.
+// { face, type } : face montrée par le dé ; type de la case. Face « centre » : type tiré
+// au hasard parmi les 5 types jouables, appliqué une seule fois (une case, une carte).
+// Règles : 1er tour = préférence (prise en main), pas deux fois de suite la même face.
 function tirerLancers(nbTours) {
+  const hasard = (liste) => liste[Math.floor(Math.random() * liste.length)];
   const lancers = [];
-  let pauses = 0;
   let i = 0;
   while (i < nbTours) {
-    let type = i === 0 ? 'preference' : FACES[Math.floor(Math.random() * FACES.length)];
+    let face = i === 0 ? 'preference' : hasard(FACES);
     let essais = 0;
-    while (i > 0 && essais < 50 && (type === lancers[i - 1] ||
-           (type === 'pause' && (pauses >= Math.floor(nbTours / 5) || i === nbTours - 1)))) {
-      type = FACES[Math.floor(Math.random() * FACES.length)];
+    while (i > 0 && essais < 50 && face === lancers[i - 1].face) {
+      face = hasard(FACES);
       essais++;
     }
-    if (type === 'pause') pauses++;
-    lancers.push(type);
+    lancers.push({ face, type: face === 'centre' ? hasard(TYPES_JOUABLES) : face });
     i++;
   }
   return lancers;
@@ -86,6 +89,10 @@ function classementDeRepli(profil) {
 
 function demarrer() {
   solEnArrierePlan();
+  poserDecor(scene);
+  // Les panneaux de E1 et des résultats suivent le joueur quand la caméra suit le pion.
+  attacherPanneaux(scene, ['#board-root', '#e1-ui'], { jeu: true });
+  attacherPanneaux(scene, ['#results-root']);
   if (!globalThis.RankingModule) console.warn('[agora] ranking.js absent : classement neutre en fin de partie.');
 
   monterResultats(scene, {
@@ -100,27 +107,56 @@ function demarrer() {
   let resultatsAffiches = false;
   let pauseParIntro = false;
 
+  // Résultats : on retire le bandeau « Profil validé » et le bouton « Revoir les consignes »
+  // de E1, qui passeraient devant le tableau. Cible vidée = plus visée par le curseur (README de E1).
   function masquerBandeauE1() {
     const e1Jeu = scene.querySelector('#e1-game');
     if (e1Jeu) e1Jeu.setAttribute('visible', false);
+    const revoir = scene.querySelector('#e1-replay');
+    if (revoir) {
+      revoir.setAttribute('visible', false);
+      const cibles = revoir.querySelectorAll('[agora-target]');
+      let i = 0;
+      while (i < cibles.length) {
+        cibles[i].setAttribute('agora-target', '');
+        i++;
+      }
+    }
   }
 
   async function lancerPartie(profil, nbTours) {
     const ranking = globalThis.RankingModule ? creerRankingC1(globalThis.RankingModule) : null;
+    // Case 0 = départ (pas de carte), puis une case par tour.
+    const lancers = [{ face: 'preference', type: 'pause' }].concat(tirerLancers(nbTours));
+    let position = 0;
+    const ROLL_MS = 1700;
     const game = createGame({
       dataPath: 'data/',
       ranking,
       acceptedStatuses: params.has('brouillon') ? ['relu', 'genere'] : ['relu'],
       diceFaces: 1,                 // le pion avance d'une case par tour ; le dé 3D montre le type
-      rollMs: 1700,                 // durée de l'animation du dé
+      rollMs: ROLL_MS,              // durée de l'animation du dé
       durationMs: 6 * 60 * 60 * 1000, // pas de chrono : la partie finit au centre de la spirale
-      board: { loop: false, start: 0, cases: ['pause'].concat(tirerLancers(nbTours)) }
+      board: { loop: false, start: 0, cases: lancers.map((l) => l.type) },
+      // Attente du moteur : le lancer qui tombe sur le Centre dure plus longtemps (tirage affiché).
+      wait: (ms) => new Promise((ok) => {
+        const centre = ms === ROLL_MS && lancers[position + 1] && lancers[position + 1].face === 'centre';
+        setTimeout(ok, ms + (centre ? DUREE_CENTRE : 0));
+      })
     });
+    game.on('pawn:moved', ({ to }) => { position = to; });
     window.agoraGame = game;
+    window.agoraLancers = lancers; // pour le débogage : faces du dé et types des cases
     game.bridgeToDom(document);
 
+    // Les colonnes décoratives de E1 (rayon 3,8 m) seraient sur le trajet de la caméra :
+    // pendant la partie, le décor est assuré par le ciel (decor.js).
+    const reperes = scene.querySelector('#landmarks');
+    if (reperes) reperes.setAttribute('visible', false);
     const plateau = creerPlateau(scene.querySelector('#plateau-sol'), game);
-    const de = creerDe(zoneJeu, game, CASE_TYPES, { x: 1.45, y: 1.0, z: -1.75 });
+    const arreterCamera = suivreLePion(scene, game, plateau);
+    const de = creerDe(zoneJeu, game, CASE_TYPES, lancers);
+    placerPresDuJoueur(de.el, { x: 1.45, y: -0.3, z: -1.75 });
 
     const arrets = [game.on('game:ended', ({ results }) => {
       if (partie && partie.ui) {
@@ -128,12 +164,15 @@ function demarrer() {
         partie.ui = null;
       }
       de.detruire();
+      // Podium et tableau : le plateau (pion, « ARRIVÉE ») passerait devant les boutons.
+      scene.querySelector('#plateau-sol').setAttribute('visible', false);
       resultatsAffiches = true;
       masquerBandeauE1();
       const issu = results && results.ranking && Array.isArray(results.ranking.results) ? results.ranking.results : [];
       scene.emit('partie-terminee', { profil, classement: issu.length > 0 ? issu : classementDeRepli(profil) });
     })];
 
+    arrets.push(arreterCamera);
     partie = { game, ui: null, plateau, de, arrets };
     const r = await game.initGame(profil.id);
     if (!r.ok) {
