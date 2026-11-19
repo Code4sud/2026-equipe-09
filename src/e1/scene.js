@@ -86,7 +86,8 @@ function configureInput(scene) {
   scene.addEventListener('exit-vr', updateInput)
 
   return roots => {
-    objects = roots.map(id => `#${id} ${targetSelector}`).join(', ')
+    // Les boutons du moteur (E2) et des résultats (E3) portent la classe .clickable.
+    objects = roots.flatMap(id => [`#${id} ${targetSelector}`, `#${id} .clickable`]).join(', ')
     updateInput()
   }
 }

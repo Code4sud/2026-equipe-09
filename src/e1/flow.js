@@ -7,7 +7,7 @@ const targetRoots = {
   welcome: ['e1-welcome', 'e1-demo'],
   intro: ['e1-intro'],
   profile: ['e1-profile', 'e1-replay'],
-  game: ['e1-game', 'e1-demo', 'e1-replay', 'board-root', 'results-root']
+  game: ['e1-game', 'e1-replay', 'board-root', 'results-root']
 }
 
 export function startFlow(scene, ui, setTargetRoots) {

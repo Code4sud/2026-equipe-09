@@ -266,8 +266,9 @@ export function buildUi(root) {
     target.id = `e1-key-${action.replace(':', '-')}`
   })
 
-  surface(game, { width: 1.04, height: 0.16, position: '0 -0.64 0', variant: 'inset' })
-  const validated = label(game, '', '0 -0.64 0.01', 0.95, 0.14, 0.061, lavender)
+  // Au-dessus de la carte du moteur (E2), pour ne pas la masquer.
+  surface(game, { width: 1.04, height: 0.16, position: '0 1.17 0', variant: 'inset' })
+  const validated = label(game, '', '0 1.17 0.01', 0.95, 0.14, 0.061, lavender)
   const demo = button(demoTools, 'Tester la sélection', 'demo', -0.62, 0.69, 0.70)
   demo.target.id = 'demo-target'
   button(replayTools, 'Revoir les consignes', 'e1:replay', 0.55, 0.69, 0.84)
@@ -278,9 +279,11 @@ export function buildUi(root) {
       for (const [name, element] of Object.entries(screens)) {
         element.setAttribute('visible', screen === name)
       }
-      demoTools.setAttribute('visible', screen === 'welcome' || screen === 'game')
+      demoTools.setAttribute('visible', screen === 'welcome')
       demoTools.setAttribute('position', screen === 'welcome' ? '0.62 -1.22 0' : '0 0 0')
       replayTools.setAttribute('visible', screen === 'profile' || screen === 'game')
+      // En partie, « Revoir les consignes » passe sous la carte et les réponses du moteur.
+      replayTools.setAttribute('position', screen === 'game' ? '-0.55 -1.74 0' : '0 0 0')
     },
 
     drawIntro(step, index, total) {

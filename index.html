@@ -21,6 +21,10 @@
     <script src="https://orientation.code4sud.fr/bandeau.js" data-equipe="09"></script>
     <script src="https://aframe.io/releases/1.8.0/aframe.min.js"></script>
     <script type="module" src="./src/e1/scene.js"></script>
+    <!-- Classement (C1) : script classique qui expose window.RankingModule -->
+    <script src="./js/ranking/ranking.js"></script>
+    <!-- Assemblage E1 -> E2 -> C1 -> E3 -->
+    <script type="module" src="./js/integration/main.js"></script>
   </head>
   <body>
     <a-scene id="agora-scene" renderer="antialias: true"
@@ -31,9 +35,9 @@
              alt="Centre des Possibles">
       </a-assets>
       <a-sky color="#17153F"></a-sky>
-      <a-plane rotation="-90 0 0" width="50" height="50"
+      <a-plane id="sol" rotation="-90 0 0" width="50" height="50"
                material="shader: flat; color: #24204D"></a-plane>
-      <a-cylinder radius="3.4" height="0.05" position="0 0.02 0"
+      <a-cylinder id="disque-sol" radius="3.4" height="0.05" position="0 0.02 0"
                   material="shader: flat; color: #1B1944"></a-cylinder>
       <a-ring rotation="-90 0 0" position="0 0.051 0" radius-inner="3.30" radius-outer="3.32"
               segments-theta="96" material="shader: flat; color: #7468F3"></a-ring>
@@ -60,7 +64,8 @@
       <a-entity id="mouse-pointer"></a-entity>
 
       <a-entity id="game-content" visible="false">
-        <a-entity id="board-root" position="0 1.25 -2.2"></a-entity>
+        <a-entity id="plateau-sol"></a-entity>
+        <a-entity id="board-root" position="0 1.35 -2.2"></a-entity>
         <a-entity id="results-root" position="0 1.25 -2.2"></a-entity>
       </a-entity>
       <a-entity id="e1-ui" position="0 1.28 -2.04"></a-entity>
