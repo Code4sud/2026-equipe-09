@@ -84,21 +84,27 @@ export function creerTableau({ classement, metiers, vus, onChoisir, garde }) {
         onChoisir(item);
       },
       dessiner: function (ctx, w, hp, elCarte) {
+        // Thème sombre : fond violet très sombre, texte clair ; survol : fond plus clair + bordure rose.
+        const survol = elCarte && elCarte.survol;
         ctx.save();
         arrondi(ctx, 0, 0, w, hp, Math.min(26, hp / 3));
-        ctx.fillStyle = elCarte && elCarte.survol ? '#EDE8FF' : '#ffffff';
+        ctx.fillStyle = survol ? '#463B8C' : '#29234F';
         ctx.fill();
         ctx.clip();
         ctx.fillStyle = cat.couleur;
         ctx.fillRect(0, 0, 20, hp);
         ctx.restore();
+        arrondi(ctx, 2, 2, w - 4, hp - 4, Math.min(24, hp / 3));
+        ctx.lineWidth = survol ? 8 : 3;
+        ctx.strokeStyle = survol ? '#FF86D4' : 'rgba(191, 178, 255, 0.35)';
+        ctx.stroke();
 
         const x = 38;
         const largeurTexte = w - x - 20;
         const vu = vus.has(item.onet);
         ctx.textAlign = 'left';
         ctx.textBaseline = 'middle';
-        ctx.fillStyle = '#1b2133';
+        ctx.fillStyle = '#F1EDFF';
         const titreTexte = (vu ? '✓ ' : '') + titreMetier(item, metier);
         if (compacte) {
           // Carte resserrée : le titre seul, sur une ligne, à la taille qui tient.
@@ -113,7 +119,7 @@ export function creerTableau({ classement, metiers, vus, onChoisir, garde }) {
         if (lignes.length > 1) ctx.fillText(ellipse(ctx, lignes.slice(1).join(' '), largeurTexte), x, 72);
         const raisons = liste(item.raisons);
         const sousTitre = !metier ? 'Fiche à venir' : (raisons[0] || 'Ouvre la fiche pour en savoir plus');
-        ctx.fillStyle = '#5b6478';
+        ctx.fillStyle = '#C9C2EE';
         ctx.font = police(30, false, !metier);
         ctx.fillText(ellipse(ctx, sousTitre, largeurTexte), x, lignes.length > 1 ? 136 : 90);
       }

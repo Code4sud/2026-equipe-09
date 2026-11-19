@@ -45,10 +45,41 @@ function decouperExplication(texte) {
   return raisons.slice(0, 3);
 }
 
+// Raisons courtes pour la fiche (« Tu aimes le travail en équipe ») et un point à savoir,
+// à partir des contributions calculées par ranking.js (mêmes règles que son explication).
+function raisonsCourtes(moteur, code, favori) {
+  const m = moteur.metiers.find((x) => x.code === code);
+  const raisons = [];
+  let vigilance = '';
+  if (m) {
+    const seuil = moteur.options.seuilExplication;
+    const analyses = Object.keys(moteur.preferences)
+      .map((attr) => ({ attr, contrib: moteur._contribution(m, attr), pref: moteur.preferences[attr], fort: moteur._centre(m, attr) > 0 }))
+      .filter((a) => Math.abs(a.contrib) >= seuil);
+    const positifs = analyses.filter((a) => a.contrib > 0).sort((a, b) => b.contrib - a.contrib);
+    let i = 0;
+    while (i < positifs.length && raisons.length < 2) {
+      const a = positifs[i];
+      const l = moteur._label(a.attr);
+      raisons.push(a.pref > 0 ? 'Tu aimes ' + l.def : 'Peu ' + l.de + ', comme tu préfères');
+      i++;
+    }
+    const negatifs = analyses.filter((a) => a.contrib < 0).sort((a, b) => a.contrib - b.contrib);
+    if (negatifs.length > 0) {
+      const a = negatifs[0];
+      const l = moteur._label(a.attr);
+      vigilance = a.pref < 0 ? 'Beaucoup ' + l.de + ' dans ce métier.' : 'Peu ' + l.de + ' dans ce métier.';
+    }
+  }
+  if (favori && raisons.length < 2) raisons.unshift('Tu l’avais choisi avec le psychologue');
+  return { raisons: raisons.slice(0, 2), vigilance };
+}
+
 export function creerRankingC1(module, options = {}) {
   const { RankingEngine, CATEGORIES } = module;
   let moteur = null;
   let titres = new Map();
+  let favoris = [];
 
   return {
     // Seuls les métiers du champ des possibles du profil sont classés.
@@ -62,6 +93,7 @@ export function creerRankingC1(module, options = {}) {
       const liste = [];
       const vus = new Set();
       titres = new Map();
+      favoris = (profil && profil.classement_entretien) || [];
       const champ = (profil && profil.champ_des_possibles) || [];
       i = 0;
       while (i < champ.length) {
@@ -115,13 +147,16 @@ export function creerRankingC1(module, options = {}) {
       let i = 0;
       while (i < classement.length) {
         const r = classement[i];
+        const courtes = raisonsCourtes(moteur, r.code, favoris.indexOf(r.code) !== -1);
         sortie.push({
           onet: r.code,
           titre: titres.get(r.code) || r.nom,
           rang: r.rang,
           categorie: cleCategorie(r.categorie, CATEGORIES),
           score: r.scoreInterne,
-          raisons: decouperExplication(r.explication)
+          raisons: courtes.raisons,                          // 2 raisons courtes (fiche, tableau)
+          vigilance: courtes.vigilance,                      // un point à savoir
+          explication: decouperExplication(r.explication)    // explication complète de C1
         });
         i++;
       }

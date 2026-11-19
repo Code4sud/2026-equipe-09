@@ -179,7 +179,7 @@ export function creerBouton({ largeur, hauteur, libelle, onClic, couleur = '#344
     dessiner: function (ctx, w, h, el) {
       const actif = estActif ? estActif() : false;
       const survol = el && el.survol;
-      ctx.fillStyle = actif ? '#ffffff' : survol ? '#5A4CB0' : couleur;
+      ctx.fillStyle = actif ? '#D2CBFF' : survol ? '#5A4CB0' : couleur;
       const bord = survol ? 12 : 4;
       arrondi(ctx, bord / 2, bord / 2, w - bord, h - bord, Math.min(28, h / 3));
       ctx.fill();
