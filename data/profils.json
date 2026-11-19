@@ -1,0 +1,17 @@
+[
+  {
+    "id": "4821",
+    "fictif": true,
+    "riasec": { "R": 72, "I": 40, "A": 65, "S": 55, "E": 30, "C": 20 },
+    "aptitudes": { "aptitude_1": 60, "aptitude_2": 45 },
+    "hexaco": { "H": 50, "E": 60, "X": 40, "A": 70, "C": 55, "O": 65 },
+    "champ_des_possibles": [
+      { "onet": "35-2014.00", "zone": 2 },
+      { "onet": "51-3011.00", "zone": 2 },
+      { "onet": "47-2111.00", "zone": 2 },
+      { "onet": "27-1024.00", "zone": 3 },
+      { "onet": "29-1141.00", "zone": 4 }
+    ],
+    "classement_entretien": ["35-2014.00", "27-1024.00", "51-3011.00"]
+  }
+]

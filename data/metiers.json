@@ -1,0 +1,46 @@
+[
+  {
+    "onet": "35-2014.00",
+    "rome": "G1602",
+    "titre": "Cuisinier",
+    "zone": 2,
+    "riasec": "RAE",
+    "attributs": {
+      "exterieur": 0,
+      "travail_equipe": 0.9,
+      "contact_public": 0.2,
+      "activite_physique": 0.8,
+      "travail_manuel": 1,
+      "horaires_decales": 0.9,
+      "creativite": 0.6,
+      "analyse_chiffres": 0.1,
+      "aide_aux_autres": 0.2,
+      "technologie": 0.1,
+      "encadrement": 0.3,
+      "deplacements": 0
+    },
+    "description": "Le cuisinier prépare les plats d'un restaurant…",
+    "missions": ["Préparer les plats", "Gérer les stocks", "Respecter l'hygiène"],
+    "competences": ["Rapidité", "Travail en équipe", "Résistance au stress"],
+    "formation": {
+      "diplomes": ["CAP Cuisine", "Bac pro Cuisine", "BTS Management en hôtellerie-restauration"],
+      "duree": "2 à 5 ans après la 3e",
+      "source": "ONISEP"
+    },
+    "carriere": [
+      { "niveau": "debut", "postes": ["Commis de cuisine"] },
+      { "niveau": "confirme", "postes": ["Chef de partie", "Sous-chef"] },
+      { "niveau": "senior", "postes": ["Chef de cuisine", "Chef propriétaire"] }
+    ],
+    "salaires": {
+      "unite": "brut mensuel",
+      "zone_geo": "France",
+      "debut": { "min": null, "max": null },
+      "cinq_ans": { "min": null, "max": null },
+      "senior": { "min": null, "max": null },
+      "remarque": "",
+      "source": ""
+    },
+    "sources": ["ROME 4.0 – France Travail", "ONISEP"]
+  }
+]

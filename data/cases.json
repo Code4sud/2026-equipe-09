@@ -1,0 +1,42 @@
+[
+  {
+    "id": "pref-001",
+    "type": "preference",
+    "texte": "Tu préfères travailler…",
+    "metiers_cibles": [],
+    "reponses": [
+      { "id": "a", "texte": "Dehors", "picto": "soleil", "effets": { "exterieur": 1 } },
+      { "id": "b", "texte": "À l'intérieur", "picto": "maison", "effets": { "exterieur": -1 } },
+      { "id": "c", "texte": "Un peu des deux", "picto": "mix", "effets": {} }
+    ],
+    "statut": "relu"
+  },
+  {
+    "id": "sit-001",
+    "type": "situation",
+    "texte": "6h. La livraison est en retard, le service commence dans 2h. Tu fais quoi ?",
+    "metiers_cibles": ["35-2014.00", "35-1011.00"],
+    "reponses": [
+      { "id": "a", "texte": "J'adapte le menu", "picto": "idee", "effets": { "creativite": 1 } },
+      { "id": "b", "texte": "J'appelle l'équipe", "picto": "groupe", "effets": { "travail_equipe": 1 } },
+      { "id": "c", "texte": "Je prépare ce que j'ai", "picto": "mains", "effets": { "travail_manuel": 1 } }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "pas-001",
+    "type": "passerelle",
+    "texte": "Un cuisinier peut devenir boulanger : mêmes gestes précis, mêmes horaires matinaux.",
+    "de": "35-2014.00",
+    "vers": "51-3011.00",
+    "reponses": [],
+    "statut": "genere"
+  },
+  {
+    "id": "pause-001",
+    "type": "pause",
+    "texte": "Respire ! Tu as déjà fait la moitié du chemin.",
+    "reponses": [],
+    "statut": "relu"
+  }
+]
