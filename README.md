@@ -22,11 +22,13 @@ Depuis la racine du dépôt, lancez la commande puis ouvrez
 - Avec <http://localhost:8000/?gaze=1>, le centre de la caméra simule le regard.
   Fixez la cible pendant 1,5 s, puis recommencez en quittant la cible à mi-course.
   Maintenir le regard après l’activation doit laisser le compteur inchangé.
-- Lancez les consignes et attendez 85 s. Au pavé, essayez `9999`, corrigez la
+- Lancez les consignes et attendez 85 s, ou sélectionnez **Passer les consignes**.
+  **Étape suivante** passe uniquement la partie affichée.
+  Au pavé, essayez `9999`, corrigez la
   saisie avec **Eff.**, puis validez le profil fictif `4821` du dépôt. Au regard,
   détournez brièvement les yeux entre deux sélections d’une même touche.
-- Ouvrez **Revoir les consignes** après validation. À la fin, le jeu est de
-  nouveau accessible avec le même profil et les mêmes éléments de scène.
+- Ouvrez **Revoir les consignes** après validation. À la fin ou après avoir
+  passé la relecture, le jeu reprend avec le même profil et les mêmes éléments de scène.
 
 L’absence de `data/profils.json` (HTTP 404) active les profils fictifs de démo
 `0042` et `1709`. Une autre erreur de chargement ou un fichier invalide affiche

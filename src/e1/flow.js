@@ -70,10 +70,7 @@ export function startFlow(scene, ui, setTargetRoots) {
 
     const elapsed = performance.now() - playback.startedAt
     if (elapsed >= introLength) {
-      const { returnScreen, replay } = playback
-      playback = undefined
-      show(returnScreen)
-      scene.emit('agora-intro', { open: false, replay, screen: returnScreen }, false)
+      closeIntro()
       return
     }
 
@@ -91,8 +88,26 @@ export function startFlow(scene, ui, setTargetRoots) {
     ui.animateIntro(elapsed / introLength, elapsed - stepStart)
   }
 
+  function closeIntro() {
+    const { returnScreen, replay } = playback
+    playback = undefined
+    show(returnScreen)
+    scene.emit('agora-intro', { open: false, replay, screen: returnScreen }, false)
+  }
+
   scene.addEventListener('agora-activate', ({ detail: { action, input, target } }) => {
     if (action === 'demo' && target.id === 'demo-target') ui.confirmDemo(input)
+    if (screen === 'intro' && action === 'e1:skip-intro') {
+      closeIntro()
+      return
+    }
+    if (screen === 'intro' && action === 'e1:next-intro-step') {
+      const next = playback.stepIndex + 1
+      const elapsed = introSteps.slice(0, next).reduce((total, step) => total + step.seconds * 1000, 0)
+      playback.startedAt = performance.now() - elapsed
+      tick()
+      return
+    }
     if ((screen === 'welcome' && action === 'e1:intro') ||
         ((screen === 'profile' || screen === 'game') && action === 'e1:replay')) {
       openIntro()

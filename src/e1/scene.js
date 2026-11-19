@@ -91,9 +91,27 @@ function configureInput(scene) {
   }
 }
 
+function fitInterface(scene) {
+  const camera = scene.camera
+  const defaultFov = scene.querySelector('#player-camera').getAttribute('camera').fov
+
+  function resize() {
+    // Garder le panneau et ses commandes dans le champ sur un écran en portrait.
+    const halfWidth = 1.08
+    const distance = 2
+    const portraitFov = 2 * Math.atan(halfWidth / (distance * camera.aspect)) * 180 / Math.PI
+    camera.fov = Math.max(defaultFov, portraitFov)
+    camera.updateProjectionMatrix()
+  }
+
+  scene.addEventListener('rendererresize', resize)
+  resize()
+}
+
 window.AFRAME.registerComponent('agora-e1', {
   init() {
     const scene = this.el
+    fitInterface(scene)
     buildLandmarks(scene.querySelector('#landmarks'))
     const ui = buildUi(scene.querySelector('#e1-ui'))
     this.tickFlow = startFlow(scene, ui, configureInput(scene))
