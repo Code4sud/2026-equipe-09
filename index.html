@@ -1,14 +1,69 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Équipe 09 — Hackathon Azuréen #3</title>
-  <!-- Bandeau commun du hackathon (le numéro d'équipe est déjà renseigné) -->
-  <script src="https://orientation.code4sud.fr/bandeau.js" data-equipe="09"></script>
-</head>
-<body>
-  <h1>Page de départ de l'équipe 09</h1>
-  <p>Remplacez cette page par votre projet. Elle est publiée automatiquement sur GitHub Pages.</p>
-</body>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#17153F">
+    <title>Agora Explorer · Équipe 09</title>
+    <style>
+      body { background: #17153F; }
+      /* Le bandeau précède la scène en plein écran. Ancrer le bouton au viewport. */
+      html.a-fullscreen #agora-scene .a-enter-vr { position: fixed; }
+      #agora-scene .a-enter-vr-button {
+        background-color: #28235B;
+        border-radius: 10px;
+      }
+      #agora-scene .a-enter-vr-button:hover,
+      #agora-scene .a-enter-vr-button:focus-visible {
+        background-color: #4B3CA2;
+      }
+    </style>
+    <script src="https://orientation.code4sud.fr/bandeau.js" data-equipe="09"></script>
+    <script src="https://aframe.io/releases/1.8.0/aframe.min.js"></script>
+    <script type="module" src="./src/e1/scene.js"></script>
+  </head>
+  <body>
+    <a-scene id="agora-scene" renderer="antialias: true"
+             webxr="referenceSpaceType: local"
+             xr-mode-ui="XRMode: vr">
+      <a-assets>
+        <img id="centre-des-possibles" src="./assets/centre-des-possibles.png"
+             alt="Centre des Possibles">
+      </a-assets>
+      <a-sky color="#17153F"></a-sky>
+      <a-plane rotation="-90 0 0" width="50" height="50"
+               material="shader: flat; color: #24204D"></a-plane>
+      <a-cylinder radius="3.4" height="0.05" position="0 0.02 0"
+                  material="shader: flat; color: #1B1944"></a-cylinder>
+      <a-ring rotation="-90 0 0" position="0 0.051 0" radius-inner="3.30" radius-outer="3.32"
+              segments-theta="96" material="shader: flat; color: #7468F3"></a-ring>
+      <a-ring rotation="-90 0 0" position="0 0.051 0" radius-inner="3.15" radius-outer="3.16"
+              segments-theta="96" material="shader: flat; color: #443678"></a-ring>
+      <a-entity id="landmarks"></a-entity>
+
+      <a-entity id="player-rig" position="0 1.30 0">
+        <a-entity id="player-camera" camera
+                  look-controls="magicWindowTrackingEnabled: false">
+          <a-entity id="gaze-pointer">
+            <a-entity id="gaze-hud" position="0 0 -0.9" visible="false">
+              <a-ring radius-inner="0.011" radius-outer="0.017"
+                      material="shader: flat; color: #D2CBFF; depthTest: false; depthWrite: false">
+              </a-ring>
+              <a-ring id="gaze-fill" radius-inner="0.011" radius-outer="0.017"
+                      geometry="segmentsPhi: 1; segmentsTheta: 96; thetaStart: 90"
+                      material="shader: flat; color: #FF63C8; transparent: true; depthTest: false; depthWrite: false">
+              </a-ring>
+            </a-entity>
+          </a-entity>
+        </a-entity>
+      </a-entity>
+      <a-entity id="mouse-pointer"></a-entity>
+
+      <a-entity id="game-content" visible="false">
+        <a-entity id="board-root" position="0 1.25 -2.2"></a-entity>
+        <a-entity id="results-root" position="0 1.25 -2.2"></a-entity>
+      </a-entity>
+      <a-entity id="e1-ui" position="0 1.28 -2.04"></a-entity>
+    </a-scene>
+  </body>
 </html>
