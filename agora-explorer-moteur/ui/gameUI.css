@@ -1,0 +1,794 @@
+/* Interface PC d'Agora Explorer.
+   Parti pris : la pierre et l'encre pour tout le décor ; les six couleurs des
+   types de cases sont les seules couleurs vives, elles portent toujours un sens. */
+
+.agora {
+  --dalle: #e8ebf0;
+  --craie: #ffffff;
+  --encre: #1d2433;
+  --ardoise: #556074;
+  --joint: #c9d0db;
+  --alerte: #b3261e;
+  --type-color: var(--encre);
+  --type-text: #ffffff;
+
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 0 clamp(16px, 4vw, 48px) 48px;
+  background: var(--dalle);
+  color: var(--encre);
+  font-family: ui-rounded, 'SF Pro Rounded', 'Nunito', 'Varela Round', 'Segoe UI', Ubuntu, system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.45;
+}
+
+.agora *,
+.agora *::before,
+.agora *::after {
+  box-sizing: border-box;
+}
+
+.agora [hidden] {
+  display: none !important;
+}
+
+.agora h1,
+.agora h2,
+.agora p,
+.agora ul,
+.agora ol,
+.agora dl,
+.agora dd {
+  margin: 0;
+  padding: 0;
+}
+
+.agora ul,
+.agora ol {
+  list-style: none;
+}
+
+.agora h1 {
+  font-size: clamp(1.7rem, 3.2vw, 2.3rem);
+  line-height: 1.15;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.agora h2 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  margin: 28px 0 10px;
+}
+
+.agora .lead {
+  max-width: 52ch;
+  margin-top: 10px;
+  color: var(--ardoise);
+  font-size: 1.1rem;
+}
+
+.agora :focus-visible {
+  outline: 3px solid var(--encre);
+  outline-offset: 3px;
+}
+
+/* ------------------------------------------------------------------ boutons */
+
+.agora button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.agora button:disabled {
+  cursor: not-allowed;
+}
+
+.agora .button {
+  padding: 0.55em 1.15em;
+  border: 2px solid var(--encre);
+  border-radius: 999px;
+  background: var(--craie);
+  font-weight: 700;
+}
+
+.agora .button:hover:not(:disabled) {
+  background: var(--encre);
+  color: var(--craie);
+}
+
+.agora .button--primary {
+  background: var(--encre);
+  color: var(--craie);
+}
+
+.agora .button--primary:hover:not(:disabled) {
+  background: #323c52;
+}
+
+.agora .button--quiet {
+  border-color: transparent;
+  background: transparent;
+  color: var(--ardoise);
+}
+
+.agora .button--big {
+  margin-top: 28px;
+  padding: 0.75em 1.6em;
+  font-size: 1.15rem;
+}
+
+.agora .button:disabled {
+  opacity: 0.45;
+}
+
+.agora .link-button {
+  margin-top: 18px;
+  padding: 4px 0;
+  border: 0;
+  background: none;
+  color: var(--ardoise);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.agora .chip {
+  min-width: 2.6em;
+  padding: 0.3em 0.8em;
+  border: 2px solid var(--joint);
+  border-radius: 999px;
+  background: var(--craie);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.agora .chip:hover:not(:disabled) {
+  border-color: var(--encre);
+}
+
+.agora .chip:disabled {
+  opacity: 0.4;
+}
+
+/* --------------------------------------------------------------- barre haute */
+
+.agora .topbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 20px;
+  padding: 18px 0;
+  border-bottom: 2px solid var(--joint);
+}
+
+.agora .brand {
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.agora .profile-tag {
+  padding: 0.15em 0.75em;
+  border-radius: 999px;
+  background: var(--craie);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.agora .timer {
+  margin-left: auto;
+  font-size: 2.1rem;
+  font-weight: 800;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.agora .timer.is-low {
+  color: var(--alerte);
+}
+
+.agora .timer.is-paused {
+  color: var(--ardoise);
+}
+
+.agora .topbar-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.agora .timer[hidden] + .topbar-actions {
+  margin-left: auto;
+}
+
+/* -------------------------------------------------------------------- écrans */
+
+.agora .stage {
+  padding-top: clamp(24px, 5vw, 56px);
+}
+
+.agora .screen--login,
+.agora .screen--profile,
+.agora .screen--results {
+  max-width: 760px;
+}
+
+.agora form {
+  margin-top: 28px;
+}
+
+.agora label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.agora .login-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.agora input {
+  width: 7.2em;
+  padding: 0.35em 0.5em;
+  border: 2px solid var(--encre);
+  border-radius: 14px;
+  background: var(--craie);
+  color: var(--encre);
+  font: inherit;
+  font-size: 1.9rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  font-variant-numeric: tabular-nums;
+}
+
+.agora input::placeholder {
+  color: var(--joint);
+}
+
+.agora .login-row .button {
+  font-size: 1.15rem;
+  padding-inline: 1.6em;
+}
+
+.agora .form-error {
+  min-height: 1.5em;
+  margin-top: 12px;
+  color: var(--alerte);
+  font-weight: 700;
+}
+
+.agora .test-profiles {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  color: var(--ardoise);
+}
+
+.agora .profile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 8px 48px;
+}
+
+.agora .meter {
+  display: grid;
+  grid-template-columns: 8.5em 1fr 2.2em;
+  align-items: center;
+  gap: 12px;
+  padding: 5px 0;
+}
+
+.agora .meter-track {
+  height: 10px;
+  border-radius: 999px;
+  background: var(--joint);
+  overflow: hidden;
+}
+
+.agora .meter-fill {
+  display: block;
+  width: var(--value);
+  height: 100%;
+  border-radius: 999px;
+  background: var(--encre);
+}
+
+.agora .meter-value {
+  text-align: right;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.agora .job-list li {
+  padding: 7px 0;
+  border-bottom: 1px solid var(--joint);
+  font-weight: 600;
+}
+
+/* -------------------------------------------------------------------- plateau */
+
+.agora .screen--play {
+  display: grid;
+  grid-template-columns: minmax(300px, 520px) minmax(320px, 1fr);
+  gap: clamp(24px, 4vw, 56px);
+  align-items: start;
+}
+
+.agora .board {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  margin-top: 14px; /* place pour le repère « Départ » au-dessus de la première case */
+}
+
+/* La place ronde : l'agora. Les cases sont posées sur son pourtour. */
+.agora .board::before {
+  content: '';
+  position: absolute;
+  inset: 8%;
+  border-radius: 50%;
+  background: var(--craie);
+}
+
+.agora .ring {
+  position: absolute;
+  inset: 0;
+}
+
+.agora .tile,
+.agora .pawn {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.agora .tile {
+  display: grid;
+  place-items: center;
+  width: var(--tile);
+  background: var(--type-color);
+  color: var(--type-text);
+  font-size: clamp(0.95rem, 2.4vw, 1.45rem);
+  font-weight: 800;
+  line-height: 1;
+  transition: box-shadow 0.2s;
+}
+
+.agora .tile.is-current {
+  box-shadow: 0 0 0 4px var(--craie), 0 0 0 8px var(--encre);
+}
+
+.agora .pawn {
+  width: 7%;
+  border: 4px solid var(--craie);
+  background: var(--encre);
+  box-shadow: 0 3px 0 rgb(29 36 51 / 0.28);
+  transition: left 0.28s cubic-bezier(0.3, 1.4, 0.6, 1), top 0.28s cubic-bezier(0.3, 1.4, 0.6, 1);
+}
+
+.agora .ring-mark {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  transform: translate(-50%, -50%);
+  font-size: 0.8rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.agora .board-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 34%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.agora .dice {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8%;
+  width: 62%;
+  aspect-ratio: 1;
+  margin: 0 auto;
+  padding: 11%;
+  border: 3px solid var(--encre);
+  border-radius: 22%;
+  background: var(--craie);
+  box-shadow: 0 6px 0 var(--encre);
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.agora .dice:hover:not(:disabled) {
+  transform: translateY(2px);
+  box-shadow: 0 4px 0 var(--encre);
+}
+
+.agora .dice:active:not(:disabled) {
+  transform: translateY(6px);
+  box-shadow: 0 0 0 var(--encre);
+}
+
+.agora .dice:disabled {
+  border-color: var(--ardoise);
+  box-shadow: 0 6px 0 var(--joint);
+}
+
+.agora .dice:disabled .pip.is-on {
+  background: var(--ardoise);
+}
+
+.agora .pip {
+  border-radius: 50%;
+}
+
+.agora .pip.is-on {
+  background: var(--encre);
+}
+
+.agora .dice.is-rolling {
+  animation: agora-dice-shake 0.28s linear infinite;
+}
+
+@keyframes agora-dice-shake {
+  0% { transform: rotate(-7deg) translateY(0); }
+  50% { transform: rotate(7deg) translateY(-4px); }
+  100% { transform: rotate(-7deg) translateY(0); }
+}
+
+.agora .dice-status {
+  margin-top: 16px;
+  font-weight: 800;
+}
+
+.agora .legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 18px;
+  margin-top: 20px;
+  font-size: 0.95rem;
+}
+
+.agora .legend li {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.agora .legend-dot {
+  display: grid;
+  place-items: center;
+  width: 1.6em;
+  height: 1.6em;
+  border-radius: 50%;
+  background: var(--type-color);
+  color: var(--type-text);
+  font-size: 0.8rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+/* ---------------------------------------------------------------------- carte */
+
+.agora .card {
+  border-radius: 22px;
+  background: var(--craie);
+  overflow: hidden;
+}
+
+.agora .card--message {
+  padding: clamp(24px, 4vw, 40px);
+}
+
+.agora .card--message p {
+  margin-top: 10px;
+  color: var(--ardoise);
+  font-size: 1.1rem;
+}
+
+.agora .card--question {
+  padding-bottom: clamp(20px, 3vw, 32px);
+}
+
+.agora .card-band {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 12px;
+  padding: 14px clamp(20px, 3vw, 32px);
+  background: var(--type-color);
+  color: var(--type-text);
+  font-weight: 800;
+}
+
+.agora .card-symbol {
+  display: grid;
+  place-items: center;
+  width: 1.9em;
+  height: 1.9em;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  line-height: 1;
+}
+
+.agora .card-type {
+  font-size: 1.15rem;
+}
+
+.agora .card-jobs {
+  margin-left: auto;
+  font-weight: 600;
+}
+
+.agora .card-text,
+.agora .answers,
+.agora .card--question > .button,
+.agora .card--question > .link-button,
+.agora .card-note {
+  margin-inline: clamp(20px, 3vw, 32px);
+}
+
+.agora .card-text {
+  margin-top: clamp(20px, 3vw, 30px);
+  font-size: clamp(1.45rem, 2.6vw, 1.9rem);
+  line-height: 1.25;
+  font-weight: 800;
+  text-wrap: balance;
+}
+
+.agora .answers {
+  display: grid;
+  gap: 12px;
+  margin-top: 26px;
+}
+
+.agora .answer {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  min-height: 66px;
+  padding: 12px 18px;
+  border: 2px solid var(--joint);
+  border-radius: 16px;
+  background: var(--craie);
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-align: left;
+}
+
+.agora .answer:hover {
+  border-color: var(--type-color);
+  box-shadow: inset 0 0 0 2px var(--type-color);
+}
+
+.agora .answer kbd {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 1.9em;
+  height: 1.9em;
+  border-radius: 50%;
+  background: var(--type-color);
+  color: var(--type-text);
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.agora .answer-picto {
+  flex: none;
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+
+.agora .card-note {
+  margin-top: 18px;
+  color: var(--alerte);
+  font-weight: 700;
+}
+
+/* ------------------------------------------------------------------ résultats */
+
+.agora .stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 40px;
+  margin-top: 26px;
+}
+
+.agora .stats dt {
+  color: var(--ardoise);
+}
+
+.agora .stats dd {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+
+.agora .notice {
+  max-width: 62ch;
+  padding: 14px 18px;
+  border-left: 5px solid var(--encre);
+  border-radius: 0 12px 12px 0;
+  background: var(--craie);
+}
+
+.agora .ranking-block {
+  display: grid;
+  gap: 12px;
+}
+
+.agora .ranking-list {
+  counter-reset: rang;
+}
+
+.agora .ranking-list li {
+  counter-increment: rang;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--joint);
+  font-weight: 700;
+}
+
+.agora .ranking-list li::before {
+  content: counter(rang) '.';
+  display: inline-block;
+  width: 2em;
+  font-variant-numeric: tabular-nums;
+}
+
+.agora .effects li,
+.agora .history li {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--joint);
+}
+
+.agora .effect {
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.agora .effect.is-down {
+  color: var(--ardoise);
+}
+
+.agora .history-answer {
+  flex: none;
+  max-width: 45%;
+  font-weight: 700;
+  text-align: right;
+}
+
+/* --------------------------------------------------------------- banc de test */
+
+.agora .bench {
+  margin-top: 56px;
+  border-top: 2px solid var(--joint);
+  font-size: 0.92rem;
+}
+
+.agora .bench summary {
+  padding: 14px 0;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.agora .bench h2 {
+  margin: 0 0 8px;
+  font-size: 0.95rem;
+}
+
+.agora .bench-body {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 22px 40px;
+  padding-bottom: 24px;
+}
+
+.agora .bench-facts {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 32px;
+}
+
+.agora .bench-facts dt {
+  color: var(--ardoise);
+}
+
+.agora .bench-facts dd {
+  font-weight: 800;
+}
+
+.agora .bench-dice {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.agora .bench-list li {
+  padding: 4px 0;
+  border-bottom: 1px solid var(--joint);
+}
+
+.agora .bench-log,
+.agora .bench-json {
+  max-height: 260px;
+  overflow: auto;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: var(--craie);
+}
+
+.agora .bench-log li {
+  display: flex;
+  gap: 10px;
+  padding: 2px 0;
+}
+
+.agora .bench-log strong {
+  flex: none;
+}
+
+.agora .bench-log span {
+  overflow: hidden;
+  color: var(--ardoise);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.agora .bench-json {
+  margin: 0;
+  font-family: ui-monospace, 'Cascadia Code', Menlo, Consolas, monospace;
+  font-size: 0.82rem;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* ----------------------------------------------------------------- adaptations */
+
+@media (max-width: 860px) {
+  .agora .screen--play {
+    grid-template-columns: 1fr;
+  }
+
+  .agora .board-zone {
+    max-width: 460px;
+    margin-inline: auto;
+  }
+
+  .agora .history li {
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .agora .history-answer {
+    max-width: none;
+    text-align: left;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .agora .pawn,
+  .agora .tile,
+  .agora .dice {
+    transition: none;
+    animation: none;
+  }
+}

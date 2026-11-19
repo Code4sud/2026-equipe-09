@@ -1,0 +1,346 @@
+[
+  {
+    "onet": "35-2014.00",
+    "rome": "G1602",
+    "titre": "Cuisinier / Cuisinière",
+    "zone": 2,
+    "riasec": {
+      "R": 80,
+      "I": 30,
+      "A": 65,
+      "S": 40,
+      "E": 45,
+      "C": 35
+    },
+    "attributs": {
+      "exterieur": 0.1,
+      "travail_equipe": 0.9,
+      "contact_public": 0.2,
+      "activite_physique": 0.8,
+      "travail_manuel": 0.9,
+      "horaires_decales": 0.9,
+      "creativite": 0.7,
+      "analyse_chiffres": 0.3,
+      "aide_aux_autres": 0.3,
+      "technologie": 0.2,
+      "encadrement": 0.4,
+      "deplacements": 0.1
+    },
+    "description": "Donnée fictive de test (E2), à remplacer par la fiche de C2.",
+    "missions": [
+      "Donnée fictive de test (E2), à remplacer par la fiche de C2."
+    ],
+    "competences": [
+      "Donnée fictive de test (E2), à remplacer par la fiche de C2."
+    ],
+    "formation": "Donnée fictive de test (E2), à remplacer par la fiche de C2.",
+    "carriere": "Donnée fictive de test (E2), à remplacer par la fiche de C2.",
+    "salaires": {
+      "note": "Donnée fictive de test (E2), à remplacer par la fiche de C2."
+    },
+    "sources": [
+      "Données fictives de test"
+    ]
+  },
+  {
+    "onet": "27-1024.00",
+    "rome": "E1205",
+    "titre": "Graphiste",
+    "zone": 4,
+    "riasec": {
+      "R": 25,
+      "I": 40,
+      "A": 95,
+      "S": 30,
+      "E": 50,
+      "C": 35
+    },
+    "attributs": {
+      "exterieur": 0,
+      "travail_equipe": 0.5,
+      "contact_public": 0.4,
+      "activite_physique": 0.1,
+      "travail_manuel": 0.4,
+      "horaires_decales": 0.2,
+      "creativite": 1,
+      "analyse_chiffres": 0.2,
+      "aide_aux_autres": 0.2,
+      "technologie": 0.9,
+      "encadrement": 0.2,
+      "deplacements": 0.1
+    },
+    "description": "Donnée fictive de test (E2), à remplacer par la fiche de C2.",
+    "missions": [
+      "Donnée fictive de test (E2), à remplacer par la fiche de C2."
+    ],
+    "competences": [
+      "Donnée fictive de test (E2), à remplacer par la fiche de C2."
+    ],
+    "formation": "Donnée fictive de test (E2), à remplacer par la fiche de C2.",
+    "carriere": "Donnée fictive de test (E2), à remplacer par la fiche de C2.",
+    "salaires": {
+      "note": "Donnée fictive de test (E2), à remplacer par la fiche de C2."
+    },
+    "sources": [
+      "Données fictives de test"
+    ]
+  },
+  {
+    "onet": "15-1252.00",
+    "rome": "M1805",
+    "titre": "Développeur / Développeuse",
+    "zone": 4,
+    "riasec": {
+      "R": 35,
+      "I": 90,
+      "A": 45,
+      "S": 20,
+      "E": 35,
+      "C": 65
+    },
+    "attributs": {
+      "exterieur": 0,
+      "travail_equipe": 0.6,
+      "contact_public": 0.1,
+      "activite_physique": 0,
+      "travail_manuel": 0.1,
+      "horaires_decales": 0.2,
+      "creativite": 0.6,
+      "analyse_chiffres": 0.8,
+      "aide_aux_autres": 0.2,
+      "technologie": 1,
+      "encadrement": 0.3,
+      "deplacements": 0.1
+    },
+    "description": "Donnée fictive de test (E2), à remplacer par la fiche de C2.",
+    "missions": [
+      "Donnée fictive de test (E2), à remplacer par la fiche de C2."
+    ],
+    "competences": [
+      "Donnée fictive de test (E2), à remplacer par la fiche de C2."
+    ],
+    "formation": "Donnée fictive de test (E2), à remplacer par la fiche de C2.",
+    "carriere": "Donnée fictive de test (E2), à remplacer par la fiche de C2.",
+    "salaires": {
+      "note": "Donnée fictive de test (E2), à remplacer par la fiche de C2."
+    },
+    "sources": [
+      "Données fictives de test"
+    ]
+  },
+  {
+    "onet": "29-1141.00",
+    "rome": "J1506",
+    "titre": "Infirmier / Infirmière",
+    "zone": 3,
+    "riasec": {
+      "R": 45,
+      "I": 65,
+      "A": 20,
+      "S": 95,
+      "E": 35,
+      "C": 50
+    },
+    "attributs": {
+      "exterieur": 0.1,
+      "travail_equipe": 0.9,
+      "contact_public": 0.9,
+      "activite_physique": 0.7,
+      "travail_manuel": 0.6,
+      "horaires_decales": 0.9,
+      "creativite": 0.2,
+      "analyse_chiffres": 0.5,
+      "aide_aux_autres": 1,
+      "technologie": 0.5,
+      "encadrement": 0.4,
+      "deplacements": 0.2
+    },
+    "description": "Donnée fictive de test (E2), à remplacer par la fiche de C2.",
+    "missions": [
+      "Donnée fictive de test (E2), à remplacer par la fiche de C2."
+    ],
+    "competences": [
+      "Donnée fictive de test (E2), à remplacer par la fiche de C2."
+    ],
+    "formation": "Donnée fictive de test (E2), à remplacer par la fiche de C2.",
+    "carriere": "Donnée fictive de test (E2), à remplacer par la fiche de C2.",
+    "salaires": {
+      "note": "Donnée fictive de test (E2), à remplacer par la fiche de C2."
+    },
+    "sources": [
+      "Données fictives de test"
+    ]
+  },
+  {
+    "onet": "47-2111.00",
+    "rome": "F1602",
+    "titre": "Électricien / Électricienne",
+    "zone": 3,
+    "riasec": {
+      "R": 95,
+      "I": 55,
+      "A": 20,
+      "S": 25,
+      "E": 35,
+      "C": 50
+    },
+    "attributs": {
+      "exterieur": 0.5,
+      "travail_equipe": 0.6,
+      "contact_public": 0.4,
+      "activite_physique": 0.8,
+      "travail_manuel": 1,
+      "horaires_decales": 0.3,
+      "creativite": 0.3,
+      "analyse_chiffres": 0.5,
+      "aide_aux_autres": 0.3,
+      "technologie": 0.6,
+      "encadrement": 0.3,
+      "deplacements": 0.8
+    },
+    "description": "Donnée fictive de test (E2), à remplacer par la fiche de C2.",
+    "missions": [
+      "Donnée fictive de test (E2), à remplacer par la fiche de C2."
+    ],
+    "competences": [
+      "Donnée fictive de test (E2), à remplacer par la fiche de C2."
+    ],
+    "formation": "Donnée fictive de test (E2), à remplacer par la fiche de C2.",
+    "carriere": "Donnée fictive de test (E2), à remplacer par la fiche de C2.",
+    "salaires": {
+      "note": "Donnée fictive de test (E2), à remplacer par la fiche de C2."
+    },
+    "sources": [
+      "Données fictives de test"
+    ]
+  },
+  {
+    "onet": "25-2021.00",
+    "rome": "K2106",
+    "titre": "Professeur / Professeure des écoles",
+    "zone": 4,
+    "riasec": {
+      "R": 20,
+      "I": 50,
+      "A": 60,
+      "S": 95,
+      "E": 55,
+      "C": 45
+    },
+    "attributs": {
+      "exterieur": 0.2,
+      "travail_equipe": 0.6,
+      "contact_public": 0.8,
+      "activite_physique": 0.3,
+      "travail_manuel": 0.3,
+      "horaires_decales": 0.1,
+      "creativite": 0.8,
+      "analyse_chiffres": 0.4,
+      "aide_aux_autres": 1,
+      "technologie": 0.4,
+      "encadrement": 0.9,
+      "deplacements": 0.1
+    },
+    "description": "Donnée fictive de test (E2), à remplacer par la fiche de C2.",
+    "missions": [
+      "Donnée fictive de test (E2), à remplacer par la fiche de C2."
+    ],
+    "competences": [
+      "Donnée fictive de test (E2), à remplacer par la fiche de C2."
+    ],
+    "formation": "Donnée fictive de test (E2), à remplacer par la fiche de C2.",
+    "carriere": "Donnée fictive de test (E2), à remplacer par la fiche de C2.",
+    "salaires": {
+      "note": "Donnée fictive de test (E2), à remplacer par la fiche de C2."
+    },
+    "sources": [
+      "Données fictives de test"
+    ]
+  },
+  {
+    "onet": "37-3011.00",
+    "rome": "A1203",
+    "titre": "Jardinier / Jardinière paysagiste",
+    "zone": 1,
+    "riasec": {
+      "R": 95,
+      "I": 30,
+      "A": 50,
+      "S": 25,
+      "E": 30,
+      "C": 35
+    },
+    "attributs": {
+      "exterieur": 1,
+      "travail_equipe": 0.6,
+      "contact_public": 0.3,
+      "activite_physique": 1,
+      "travail_manuel": 0.9,
+      "horaires_decales": 0.2,
+      "creativite": 0.6,
+      "analyse_chiffres": 0.1,
+      "aide_aux_autres": 0.2,
+      "technologie": 0.1,
+      "encadrement": 0.2,
+      "deplacements": 0.7
+    },
+    "description": "Donnée fictive de test (E2), à remplacer par la fiche de C2.",
+    "missions": [
+      "Donnée fictive de test (E2), à remplacer par la fiche de C2."
+    ],
+    "competences": [
+      "Donnée fictive de test (E2), à remplacer par la fiche de C2."
+    ],
+    "formation": "Donnée fictive de test (E2), à remplacer par la fiche de C2.",
+    "carriere": "Donnée fictive de test (E2), à remplacer par la fiche de C2.",
+    "salaires": {
+      "note": "Donnée fictive de test (E2), à remplacer par la fiche de C2."
+    },
+    "sources": [
+      "Données fictives de test"
+    ]
+  },
+  {
+    "onet": "13-2011.00",
+    "rome": "M1203",
+    "titre": "Comptable",
+    "zone": 4,
+    "riasec": {
+      "R": 15,
+      "I": 60,
+      "A": 15,
+      "S": 30,
+      "E": 55,
+      "C": 95
+    },
+    "attributs": {
+      "exterieur": 0,
+      "travail_equipe": 0.4,
+      "contact_public": 0.3,
+      "activite_physique": 0,
+      "travail_manuel": 0,
+      "horaires_decales": 0.1,
+      "creativite": 0.1,
+      "analyse_chiffres": 1,
+      "aide_aux_autres": 0.3,
+      "technologie": 0.7,
+      "encadrement": 0.3,
+      "deplacements": 0.1
+    },
+    "description": "Donnée fictive de test (E2), à remplacer par la fiche de C2.",
+    "missions": [
+      "Donnée fictive de test (E2), à remplacer par la fiche de C2."
+    ],
+    "competences": [
+      "Donnée fictive de test (E2), à remplacer par la fiche de C2."
+    ],
+    "formation": "Donnée fictive de test (E2), à remplacer par la fiche de C2.",
+    "carriere": "Donnée fictive de test (E2), à remplacer par la fiche de C2.",
+    "salaires": {
+      "note": "Donnée fictive de test (E2), à remplacer par la fiche de C2."
+    },
+    "sources": [
+      "Données fictives de test"
+    ]
+  }
+]

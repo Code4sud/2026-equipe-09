@@ -1,0 +1,387 @@
+[
+  {
+    "id": "pre-001",
+    "type": "preference",
+    "texte": "Tu préfères passer ta journée…",
+    "metiers_cibles": [],
+    "reponses": [
+      { "id": "a", "texte": "Dehors, par tous les temps", "picto": "soleil", "effets": { "exterieur": 1 } },
+      { "id": "b", "texte": "À l'intérieur, au calme", "picto": "maison", "effets": { "exterieur": -1 } }
+    ],
+    "statut": "relu"
+  },
+  {
+    "id": "pre-002",
+    "type": "preference",
+    "texte": "Pour avancer sur un projet, tu es plutôt…",
+    "metiers_cibles": [],
+    "reponses": [
+      { "id": "a", "texte": "En équipe", "picto": "groupe", "effets": { "travail_equipe": 1 } },
+      { "id": "b", "texte": "En solo", "picto": "solo", "effets": { "travail_equipe": -1 } },
+      { "id": "c", "texte": "Un peu des deux", "picto": "equilibre", "effets": {} }
+    ],
+    "statut": "relu"
+  },
+  {
+    "id": "pre-003",
+    "type": "preference",
+    "texte": "Les chiffres et les tableaux, pour toi c'est…",
+    "metiers_cibles": [],
+    "reponses": [
+      { "id": "a", "texte": "Un plaisir", "picto": "chiffres", "effets": { "analyse_chiffres": 1 } },
+      { "id": "b", "texte": "Supportable", "picto": "equilibre", "effets": { "analyse_chiffres": 0.5 } },
+      { "id": "c", "texte": "Un cauchemar", "picto": "non", "effets": { "analyse_chiffres": -1 } }
+    ],
+    "statut": "relu"
+  },
+  {
+    "id": "pre-004",
+    "type": "preference",
+    "texte": "Des horaires qui changent chaque semaine, ça te va ?",
+    "metiers_cibles": [],
+    "reponses": [
+      { "id": "a", "texte": "Oui, j'aime la variété", "picto": "horloge", "effets": { "horaires_decales": 1 } },
+      { "id": "b", "texte": "Non, je veux un rythme fixe", "picto": "calendrier", "effets": { "horaires_decales": -1 } }
+    ],
+    "statut": "relu"
+  },
+  {
+    "id": "pre-005",
+    "type": "preference",
+    "texte": "Fabriquer ou réparer quelque chose de tes mains, ça te parle ?",
+    "metiers_cibles": [],
+    "reponses": [
+      { "id": "a", "texte": "Oui, j'adore ça", "picto": "outils", "effets": { "travail_manuel": 1, "activite_physique": 0.5 } },
+      { "id": "b", "texte": "Pas vraiment", "picto": "non", "effets": { "travail_manuel": -1 } }
+    ],
+    "statut": "relu"
+  },
+  {
+    "id": "pre-006",
+    "type": "preference",
+    "texte": "Être en contact avec le public toute la journée…",
+    "metiers_cibles": [],
+    "reponses": [
+      { "id": "a", "texte": "J'adore échanger", "picto": "public", "effets": { "contact_public": 1 } },
+      { "id": "b", "texte": "Par petites doses", "picto": "equilibre", "effets": { "contact_public": 0 } },
+      { "id": "c", "texte": "Je préfère éviter", "picto": "non", "effets": { "contact_public": -1 } }
+    ],
+    "statut": "relu"
+  },
+  {
+    "id": "pre-007",
+    "type": "preference",
+    "texte": "Créer, imaginer, inventer : c'est important pour toi ?",
+    "metiers_cibles": [],
+    "reponses": [
+      { "id": "a", "texte": "Indispensable", "picto": "idee", "effets": { "creativite": 1 } },
+      { "id": "b", "texte": "De temps en temps", "picto": "equilibre", "effets": { "creativite": 0.5 } },
+      { "id": "c", "texte": "Je préfère suivre un cadre", "picto": "regle", "effets": { "creativite": -1 } }
+    ],
+    "statut": "relu"
+  },
+  {
+    "id": "pre-008",
+    "type": "preference",
+    "texte": "Aider quelqu'un qui en a besoin, dans ton travail, c'est…",
+    "metiers_cibles": [],
+    "reponses": [
+      { "id": "a", "texte": "Ce qui me motive le plus", "picto": "coeur", "effets": { "aide_aux_autres": 1 } },
+      { "id": "b", "texte": "Bien, mais pas l'essentiel", "picto": "equilibre", "effets": { "aide_aux_autres": 0 } },
+      { "id": "c", "texte": "Pas ce que je cherche", "picto": "non", "effets": { "aide_aux_autres": -1 } }
+    ],
+    "statut": "relu"
+  },
+  {
+    "id": "pre-009",
+    "type": "preference",
+    "texte": "Brouillon non relu : cette case ne doit pas apparaître dans la démo.",
+    "metiers_cibles": [],
+    "reponses": [
+      { "id": "a", "texte": "Oui", "picto": "oui", "effets": { "deplacements": 1 } },
+      { "id": "b", "texte": "Non", "picto": "non", "effets": { "deplacements": -1 } }
+    ],
+    "statut": "brouillon"
+  },
+  {
+    "id": "sit-001",
+    "type": "situation",
+    "texte": "6h. La livraison est en retard, le service commence dans 2h. Tu fais quoi ?",
+    "metiers_cibles": ["35-2014.00"],
+    "reponses": [
+      { "id": "a", "texte": "J'adapte le menu", "picto": "idee", "effets": { "creativite": 1 } },
+      { "id": "b", "texte": "J'appelle l'équipe", "picto": "groupe", "effets": { "travail_equipe": 1 } }
+    ],
+    "statut": "relu"
+  },
+  {
+    "id": "sit-002",
+    "type": "situation",
+    "texte": "Ton client refuse ta maquette la veille de la livraison. Tu fais quoi ?",
+    "metiers_cibles": ["27-1024.00"],
+    "reponses": [
+      { "id": "a", "texte": "Je propose une nouvelle idée", "picto": "idee", "effets": { "creativite": 1 } },
+      { "id": "b", "texte": "J'appelle le client pour comprendre", "picto": "public", "effets": { "contact_public": 1 } },
+      { "id": "c", "texte": "Je demande de l'aide à l'équipe", "picto": "groupe", "effets": { "travail_equipe": 1 } }
+    ],
+    "statut": "relu"
+  },
+  {
+    "id": "sit-003",
+    "type": "situation",
+    "texte": "Un bug bloque le site en pleine nuit. Quelle est ta réaction ?",
+    "metiers_cibles": ["15-1252.00"],
+    "reponses": [
+      { "id": "a", "texte": "J'analyse les données pour trouver la cause", "picto": "chiffres", "effets": { "analyse_chiffres": 1, "technologie": 1 } },
+      { "id": "b", "texte": "Je préviens l'équipe et on s'organise", "picto": "groupe", "effets": { "travail_equipe": 1, "encadrement": 0.5 } },
+      { "id": "c", "texte": "Ça attendra demain matin", "picto": "horloge", "effets": { "horaires_decales": -1 } }
+    ],
+    "statut": "relu"
+  },
+  {
+    "id": "sit-004",
+    "type": "situation",
+    "texte": "Un patient angoissé t'appelle pour la troisième fois de la nuit. Tu fais quoi ?",
+    "metiers_cibles": ["29-1141.00"],
+    "reponses": [
+      { "id": "a", "texte": "Je prends le temps de le rassurer", "picto": "coeur", "effets": { "aide_aux_autres": 1, "contact_public": 0.5 } },
+      { "id": "b", "texte": "Je passe le relais à un collègue", "picto": "groupe", "effets": { "travail_equipe": 0.5, "aide_aux_autres": -0.5 } }
+    ],
+    "statut": "relu"
+  },
+  {
+    "id": "sit-005",
+    "type": "situation",
+    "texte": "Sur le chantier, le plan ne correspond pas au mur réel. Tu fais quoi ?",
+    "metiers_cibles": ["47-2111.00"],
+    "reponses": [
+      { "id": "a", "texte": "Je trouve une solution sur place", "picto": "outils", "effets": { "travail_manuel": 1, "creativite": 0.5 } },
+      { "id": "b", "texte": "J'appelle le chef de chantier", "picto": "groupe", "effets": { "travail_equipe": 0.5, "encadrement": -0.5 } },
+      { "id": "c", "texte": "Je refais les calculs", "picto": "chiffres", "effets": { "analyse_chiffres": 1 } }
+    ],
+    "statut": "relu"
+  },
+  {
+    "id": "sit-006",
+    "type": "situation",
+    "texte": "Il pleut depuis ce matin et le jardin du client doit être fini ce soir. Tu fais quoi ?",
+    "metiers_cibles": ["37-3011.00"],
+    "reponses": [
+      { "id": "a", "texte": "J'enfile mon ciré et j'y vais", "picto": "pluie", "effets": { "exterieur": 1, "activite_physique": 1 } },
+      { "id": "b", "texte": "Je réorganise le planning", "picto": "calendrier", "effets": { "encadrement": 1 } }
+    ],
+    "statut": "relu"
+  },
+  {
+    "id": "sit-007",
+    "type": "situation",
+    "texte": "Un élève ne comprend toujours pas après trois explications. Tu fais quoi ?",
+    "metiers_cibles": ["25-2021.00"],
+    "reponses": [
+      { "id": "a", "texte": "J'invente une autre façon d'expliquer", "picto": "idee", "effets": { "creativite": 1, "aide_aux_autres": 1 } },
+      { "id": "b", "texte": "Je le fais travailler avec un camarade", "picto": "groupe", "effets": { "travail_equipe": 1 } }
+    ],
+    "statut": "relu"
+  },
+  {
+    "id": "sit-008",
+    "type": "situation",
+    "texte": "Il manque 200 € dans les comptes du mois. Tu fais quoi ?",
+    "metiers_cibles": ["13-2011.00"],
+    "reponses": [
+      { "id": "a", "texte": "Je reprends tout, ligne par ligne", "picto": "chiffres", "effets": { "analyse_chiffres": 1 } },
+      { "id": "b", "texte": "J'utilise un outil pour repérer l'erreur", "picto": "ordinateur", "effets": { "technologie": 1 } },
+      { "id": "c", "texte": "Je demande aux collègues", "picto": "groupe", "effets": { "travail_equipe": 1 } }
+    ],
+    "statut": "relu"
+  },
+  {
+    "id": "sit-009",
+    "type": "situation",
+    "texte": "Case encore à relire : elle est ignorée tant que son statut n'est pas « relu ».",
+    "metiers_cibles": [],
+    "reponses": [
+      { "id": "a", "texte": "Oui", "picto": "oui", "effets": { "encadrement": 1 } },
+      { "id": "b", "texte": "Non", "picto": "non", "effets": { "encadrement": -1 } }
+    ],
+    "statut": "a_relire"
+  },
+  {
+    "id": "dec-001",
+    "type": "decouverte",
+    "texte": "Le paysagiste crée et entretient jardins et espaces verts, dehors toute l'année. Ça t'attire ?",
+    "metiers_cibles": ["37-3011.00"],
+    "reponses": [
+      { "id": "a", "texte": "Oui, ça m'attire", "picto": "oui", "effets": { "exterieur": 1, "travail_manuel": 0.5 } },
+      { "id": "b", "texte": "Pas pour moi", "picto": "non", "effets": { "exterieur": -0.5 } }
+    ],
+    "statut": "relu"
+  },
+  {
+    "id": "dec-002",
+    "type": "decouverte",
+    "texte": "Le développeur conçoit des applis et des sites : de la logique, souvent en équipe. Ça t'attire ?",
+    "metiers_cibles": ["15-1252.00"],
+    "reponses": [
+      { "id": "a", "texte": "Oui, ça m'attire", "picto": "oui", "effets": { "technologie": 1 } },
+      { "id": "b", "texte": "Pas pour moi", "picto": "non", "effets": { "technologie": -0.5 } }
+    ],
+    "statut": "relu"
+  },
+  {
+    "id": "dec-003",
+    "type": "decouverte",
+    "texte": "L'infirmier soigne et accompagne les patients, de jour comme de nuit, à l'hôpital ou à domicile.",
+    "metiers_cibles": ["29-1141.00"],
+    "reponses": [],
+    "statut": "relu"
+  },
+  {
+    "id": "dec-004",
+    "type": "decouverte",
+    "texte": "Le comptable suit les comptes d'une entreprise : rigueur, chiffres et outils numériques. Ça t'attire ?",
+    "metiers_cibles": ["13-2011.00"],
+    "reponses": [
+      { "id": "a", "texte": "Oui, ça m'attire", "picto": "oui", "effets": { "analyse_chiffres": 1 } },
+      { "id": "b", "texte": "Pas pour moi", "picto": "non", "effets": { "analyse_chiffres": -0.5 } }
+    ],
+    "statut": "relu"
+  },
+  {
+    "id": "dec-005",
+    "type": "decouverte",
+    "texte": "Le graphiste donne forme aux idées : affiches, logos, sites web. Ça t'attire ?",
+    "metiers_cibles": ["27-1024.00"],
+    "reponses": [
+      { "id": "a", "texte": "Oui, ça m'attire", "picto": "oui", "effets": { "creativite": 1, "technologie": 0.5 } },
+      { "id": "b", "texte": "Pas pour moi", "picto": "non", "effets": { "creativite": -0.5 } }
+    ],
+    "statut": "relu"
+  },
+  {
+    "id": "dec-006",
+    "type": "decouverte",
+    "texte": "L'électricien installe et dépanne les circuits des maisons et des immeubles, souvent en déplacement.",
+    "metiers_cibles": ["47-2111.00"],
+    "reponses": [],
+    "statut": "relu"
+  },
+  {
+    "id": "dec-007",
+    "type": "decouverte",
+    "texte": "Le cuisinier prépare les plats d'un restaurant : debout, en équipe, souvent le soir. Ça t'attire ?",
+    "metiers_cibles": ["35-2014.00"],
+    "reponses": [
+      { "id": "a", "texte": "Oui, ça m'attire", "picto": "oui", "effets": { "travail_manuel": 1, "horaires_decales": 0.5 } },
+      { "id": "b", "texte": "Pas pour moi", "picto": "non", "effets": { "horaires_decales": -0.5 } }
+    ],
+    "statut": "relu"
+  },
+  {
+    "id": "pas-001",
+    "type": "passerelle",
+    "texte": "Du graphisme au développement web, il n'y a qu'un pas. Coder tes propres créations, ça te tente ?",
+    "metiers_cibles": [],
+    "de": "27-1024.00",
+    "vers": "15-1252.00",
+    "reponses": [
+      { "id": "a", "texte": "Oui, j'ai envie d'essayer", "picto": "oui", "effets": { "technologie": 1 } },
+      { "id": "b", "texte": "Non, je reste sur la création", "picto": "non", "effets": { "technologie": -0.5, "creativite": 0.5 } }
+    ],
+    "statut": "relu"
+  },
+  {
+    "id": "pas-002",
+    "type": "passerelle",
+    "texte": "Des comptables apprennent à coder pour automatiser leurs calculs. Ça te donnerait envie ?",
+    "metiers_cibles": [],
+    "de": "13-2011.00",
+    "vers": "15-1252.00",
+    "reponses": [
+      { "id": "a", "texte": "Oui, gagner du temps avec le code", "picto": "ordinateur", "effets": { "technologie": 1 } },
+      { "id": "b", "texte": "Non, je préfère mes tableaux", "picto": "chiffres", "effets": { "technologie": -0.5, "analyse_chiffres": 0.5 } }
+    ],
+    "statut": "relu"
+  },
+  {
+    "id": "pas-003",
+    "type": "passerelle",
+    "texte": "Des soignants deviennent enseignants : expliquer, rassurer et accompagner restent au cœur du métier.",
+    "metiers_cibles": [],
+    "de": "29-1141.00",
+    "vers": "25-2021.00",
+    "reponses": [],
+    "statut": "relu"
+  },
+  {
+    "id": "pas-004",
+    "type": "passerelle",
+    "texte": "Du potager à l'assiette, le lien est direct. Cultiver ce que tu cuisines, ça te parle ?",
+    "metiers_cibles": [],
+    "de": "35-2014.00",
+    "vers": "37-3011.00",
+    "reponses": [
+      { "id": "a", "texte": "Oui, j'aimerais travailler dehors", "picto": "soleil", "effets": { "exterieur": 1 } },
+      { "id": "b", "texte": "Non, je préfère la cuisine", "picto": "maison", "effets": { "exterieur": -0.5 } }
+    ],
+    "statut": "relu"
+  },
+  {
+    "id": "pau-001",
+    "type": "pause",
+    "texte": "Pause ! Regarde autour de toi et respire un bon coup. La suite arrive.",
+    "metiers_cibles": [],
+    "reponses": [],
+    "statut": "relu"
+  },
+  {
+    "id": "pau-002",
+    "type": "pause",
+    "texte": "Petite pause : détends tes épaules. Tu avances bien !",
+    "metiers_cibles": [],
+    "reponses": [],
+    "statut": "relu"
+  },
+  {
+    "id": "sur-001",
+    "type": "surprise",
+    "texte": "Surprise ! On te confie l'équipe pendant une semaine. Tu acceptes ?",
+    "metiers_cibles": [],
+    "reponses": [
+      { "id": "a", "texte": "Oui, j'y vais", "picto": "oui", "effets": { "encadrement": 1 } },
+      { "id": "b", "texte": "Non merci", "picto": "non", "effets": { "encadrement": -1 } }
+    ],
+    "statut": "relu"
+  },
+  {
+    "id": "sur-002",
+    "type": "surprise",
+    "texte": "Surprise ! Une mission à l'autre bout de la France, départ demain. Partant ?",
+    "metiers_cibles": [],
+    "reponses": [
+      { "id": "a", "texte": "Je fais ma valise", "picto": "valise", "effets": { "deplacements": 1 } },
+      { "id": "b", "texte": "Je préfère rester ici", "picto": "maison", "effets": { "deplacements": -1 } }
+    ],
+    "statut": "relu"
+  },
+  {
+    "id": "sur-003",
+    "type": "surprise",
+    "texte": "Surprise ! Ton outil de travail tombe en panne en pleine journée. Tu fais quoi ?",
+    "metiers_cibles": [],
+    "reponses": [
+      { "id": "a", "texte": "Je le répare moi-même", "picto": "outils", "effets": { "travail_manuel": 1, "technologie": 0.5 } },
+      { "id": "b", "texte": "J'appelle un spécialiste", "picto": "telephone", "effets": { "travail_manuel": -0.5 } },
+      { "id": "c", "texte": "J'en profite pour aider un collègue", "picto": "coeur", "effets": { "aide_aux_autres": 1, "travail_equipe": 0.5 } }
+    ],
+    "statut": "relu"
+  },
+  {
+    "id": "sur-004",
+    "type": "surprise",
+    "texte": "Surprise ! Aucun parcours n'est tracé d'avance : on peut changer de voie à tout âge.",
+    "metiers_cibles": [],
+    "reponses": [],
+    "statut": "relu"
+  }
+]

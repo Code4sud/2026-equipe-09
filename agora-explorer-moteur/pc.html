@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agora Explorer, version PC</title>
+  <link rel="stylesheet" href="ui/gameUI.css">
+  <style>
+    body { margin: 0; background: #e8ebf0; }
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+  <noscript>Agora Explorer a besoin de JavaScript pour fonctionner.</noscript>
+
+  <!--
+    Version PC jouable + banc de test du moteur (E2). Aucune dépendance, aucun build.
+    À ouvrir via un serveur web (npm start), pas en file://.
+
+    Paramètres d'URL utiles pour tester :
+      ?profil=4821              saute la saisie de l'identifiant
+      ?duree=60                 durée de la partie en secondes (au lieu de 20 min)
+      ?data=mon-dossier/        dossier des JSON (par défaut data/, sinon data-test/)
+      ?ranking=js/ranking.js    module de ranking de C1 à brancher
+      ?ranking=bouchon          faux module qui montre seulement les appels reçus
+  -->
+  <script type="module">
+    import { createGame } from './engine/game.js';
+    import { mountGameUI } from './ui/gameUI.js';
+
+    const params = new URLSearchParams(location.search);
+
+    // Les vraies données sont dans data/. Tant qu'elles n'y sont pas, on joue
+    // avec les données fictives de data-test/.
+    async function findDataPath() {
+      if (params.has('data')) {
+        return params.get('data');
+      }
+      const realData = await fetch('data/cases.json', { method: 'HEAD' }).then((response) => response.ok).catch(() => false);
+      return realData ? 'data/' : 'data-test/';
+    }
+
+    // ranking.js peut être un module ES (export default / export nommé) ou un
+    // script classique qui pose window.ranking : les deux formes sont acceptées.
+    async function loadRanking() {
+      const path = params.get('ranking');
+      if (!path) {
+        return null; // le moteur utilisera window.ranking s'il existe
+      }
+      try {
+        const url = path === 'bouchon' ? './tools/rankingBouchon.js' : path;
+        const module = await import(new URL(url, document.baseURI).href);
+        return module.default ?? module.ranking ?? (Object.keys(module).length > 0 ? module : window.ranking ?? null);
+      } catch (error) {
+        console.warn(`[Agora] ranking « ${path} » introuvable ou invalide`, error);
+        return null;
+      }
+    }
+
+    const dataPath = await findDataPath();
+    const usesTestData = dataPath === 'data-test/';
+    const seconds = Number(params.get('duree'));
+
+    const game = createGame({
+      dataPath,
+      ranking: await loadRanking(),
+      ...(seconds > 0 ? { durationMs: seconds * 1000 } : {}),
+    });
+
+    mountGameUI(game, document.querySelector('#app'), {
+      testProfiles: usesTestData ? ['4821', '1234', '0042'] : [],
+      dataLabel: usesTestData ? 'data-test/ (fictives)' : dataPath,
+    });
+
+    window.agoraGame = game; // pratique dans la console : agoraGame.getGameState()
+
+    if (params.has('profil')) {
+      game.initGame(params.get('profil'));
+    }
+  </script>
+</body>
+</html>
