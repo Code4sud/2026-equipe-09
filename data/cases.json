@@ -5,38 +5,2609 @@
     "texte": "Tu préfères travailler…",
     "metiers_cibles": [],
     "reponses": [
-      { "id": "a", "texte": "Dehors", "picto": "soleil", "effets": { "exterieur": 1 } },
-      { "id": "b", "texte": "À l'intérieur", "picto": "maison", "effets": { "exterieur": -1 } },
-      { "id": "c", "texte": "Un peu des deux", "picto": "mix", "effets": {} }
+      {
+        "id": "a",
+        "texte": "Dehors",
+        "picto": "soleil",
+        "effets": {
+          "exterieur": 1
+        }
+      },
+      {
+        "id": "b",
+        "texte": "À l'intérieur",
+        "picto": "maison",
+        "effets": {
+          "exterieur": -1
+        }
+      },
+      {
+        "id": "c",
+        "texte": "Un peu des deux",
+        "picto": "equilibre",
+        "effets": {}
+      }
     ],
-    "statut": "relu"
+    "statut": "genere"
+  },
+  {
+    "id": "pref-002",
+    "type": "preference",
+    "texte": "Pour avancer sur un projet, tu es plutôt…",
+    "metiers_cibles": [],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "En équipe",
+        "picto": "groupe",
+        "effets": {
+          "travail_equipe": 1
+        }
+      },
+      {
+        "id": "b",
+        "texte": "En solo",
+        "picto": "solo",
+        "effets": {
+          "travail_equipe": -1
+        }
+      },
+      {
+        "id": "c",
+        "texte": "Ça dépend",
+        "picto": "equilibre",
+        "effets": {}
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "pref-003",
+    "type": "preference",
+    "texte": "Bouger toute la journée, ça te va ?",
+    "metiers_cibles": [],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "Oui, j'aime bouger",
+        "picto": "course",
+        "effets": {
+          "activite_physique": 1
+        }
+      },
+      {
+        "id": "b",
+        "texte": "Plutôt assis",
+        "picto": "chaise",
+        "effets": {
+          "activite_physique": -1
+        }
+      },
+      {
+        "id": "c",
+        "texte": "Un peu des deux",
+        "picto": "equilibre",
+        "effets": {}
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "pref-004",
+    "type": "preference",
+    "texte": "Travailler le soir ou le week-end ?",
+    "metiers_cibles": [],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "Ça ne me gêne pas",
+        "picto": "lune",
+        "effets": {
+          "horaires_decales": 1
+        }
+      },
+      {
+        "id": "b",
+        "texte": "Parfois, pourquoi pas",
+        "picto": "equilibre",
+        "effets": {
+          "horaires_decales": 0.3
+        }
+      },
+      {
+        "id": "c",
+        "texte": "Je préfère en journée",
+        "picto": "soleil",
+        "effets": {
+          "horaires_decales": -1
+        }
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "pref-005",
+    "type": "preference",
+    "texte": "Tu aimes mieux travailler…",
+    "metiers_cibles": [],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "Avec mes mains",
+        "picto": "mains",
+        "effets": {
+          "travail_manuel": 1
+        }
+      },
+      {
+        "id": "b",
+        "texte": "Avec ma tête",
+        "picto": "idee",
+        "effets": {
+          "travail_manuel": -0.5,
+          "analyse_chiffres": 0.5
+        }
+      },
+      {
+        "id": "c",
+        "texte": "Les deux",
+        "picto": "equilibre",
+        "effets": {}
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "pref-006",
+    "type": "preference",
+    "texte": "Les chiffres et les tableaux, pour toi c'est…",
+    "metiers_cibles": [],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "Un plaisir",
+        "picto": "chiffres",
+        "effets": {
+          "analyse_chiffres": 1
+        }
+      },
+      {
+        "id": "b",
+        "texte": "Ça va",
+        "picto": "equilibre",
+        "effets": {
+          "analyse_chiffres": 0.3
+        }
+      },
+      {
+        "id": "c",
+        "texte": "Pas mon truc",
+        "picto": "non",
+        "effets": {
+          "analyse_chiffres": -1
+        }
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "pref-007",
+    "type": "preference",
+    "texte": "Aider les autres, c'est important pour toi ?",
+    "metiers_cibles": [],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "Oui, beaucoup",
+        "picto": "coeur",
+        "effets": {
+          "aide_aux_autres": 1
+        }
+      },
+      {
+        "id": "b",
+        "texte": "Un peu",
+        "picto": "equilibre",
+        "effets": {
+          "aide_aux_autres": 0.3
+        }
+      },
+      {
+        "id": "c",
+        "texte": "J'aime d'autres missions",
+        "picto": "etoile",
+        "effets": {
+          "aide_aux_autres": -0.5
+        }
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "pref-008",
+    "type": "preference",
+    "texte": "Inventer, créer, imaginer : ça te ressemble ?",
+    "metiers_cibles": [],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "Totalement",
+        "picto": "palette",
+        "effets": {
+          "creativite": 1
+        }
+      },
+      {
+        "id": "b",
+        "texte": "Parfois",
+        "picto": "equilibre",
+        "effets": {
+          "creativite": 0.3
+        }
+      },
+      {
+        "id": "c",
+        "texte": "Je préfère suivre un modèle",
+        "picto": "liste",
+        "effets": {
+          "creativite": -0.5
+        }
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "pref-009",
+    "type": "preference",
+    "texte": "Les ordinateurs et la technologie, tu…",
+    "metiers_cibles": [],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "Adores",
+        "picto": "ordinateur",
+        "effets": {
+          "technologie": 1
+        }
+      },
+      {
+        "id": "b",
+        "texte": "T'en sers sans plus",
+        "picto": "equilibre",
+        "effets": {
+          "technologie": 0.2
+        }
+      },
+      {
+        "id": "c",
+        "texte": "Préfères t’en passer",
+        "picto": "non",
+        "effets": {
+          "technologie": -1
+        }
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "pref-010",
+    "type": "preference",
+    "texte": "Diriger une équipe un jour ?",
+    "metiers_cibles": [],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "Oui, ça me plairait",
+        "picto": "drapeau",
+        "effets": {
+          "encadrement": 1
+        }
+      },
+      {
+        "id": "b",
+        "texte": "Peut-être plus tard",
+        "picto": "equilibre",
+        "effets": {
+          "encadrement": 0.3
+        }
+      },
+      {
+        "id": "c",
+        "texte": "Je préfère faire moi-même",
+        "picto": "mains",
+        "effets": {
+          "encadrement": -0.5
+        }
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "pref-011",
+    "type": "preference",
+    "texte": "Changer souvent de lieu de travail ?",
+    "metiers_cibles": [],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "Oui, voir du pays !",
+        "picto": "route",
+        "effets": {
+          "deplacements": 1
+        }
+      },
+      {
+        "id": "b",
+        "texte": "De temps en temps",
+        "picto": "equilibre",
+        "effets": {
+          "deplacements": 0.3
+        }
+      },
+      {
+        "id": "c",
+        "texte": "Je préfère un seul lieu",
+        "picto": "maison",
+        "effets": {
+          "deplacements": -1
+        }
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "pref-012",
+    "type": "preference",
+    "texte": "Parler avec des inconnus toute la journée ?",
+    "metiers_cibles": [],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "J'adore",
+        "picto": "bulle",
+        "effets": {
+          "contact_public": 1
+        }
+      },
+      {
+        "id": "b",
+        "texte": "Un peu, ça va",
+        "picto": "equilibre",
+        "effets": {
+          "contact_public": 0.3
+        }
+      },
+      {
+        "id": "c",
+        "texte": "Je préfère être tranquille",
+        "picto": "solo",
+        "effets": {
+          "contact_public": -1
+        }
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "pref-013",
+    "type": "preference",
+    "texte": "Ton lieu de travail idéal ?",
+    "metiers_cibles": [],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "Un atelier",
+        "picto": "outil",
+        "effets": {
+          "travail_manuel": 0.5,
+          "activite_physique": 0.5
+        }
+      },
+      {
+        "id": "b",
+        "texte": "Un bureau",
+        "picto": "ordinateur",
+        "effets": {
+          "technologie": 0.5,
+          "exterieur": -0.5
+        }
+      },
+      {
+        "id": "c",
+        "texte": "La nature",
+        "picto": "arbre",
+        "effets": {
+          "exterieur": 1
+        }
+      },
+      {
+        "id": "d",
+        "texte": "Sur la route",
+        "picto": "route",
+        "effets": {
+          "deplacements": 1
+        }
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "pref-014",
+    "type": "preference",
+    "texte": "Un ami a un problème. Tu…",
+    "metiers_cibles": [],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "L'écoutes",
+        "picto": "coeur",
+        "effets": {
+          "aide_aux_autres": 1
+        }
+      },
+      {
+        "id": "b",
+        "texte": "Cherches une solution",
+        "picto": "idee",
+        "effets": {
+          "analyse_chiffres": 0.5
+        }
+      },
+      {
+        "id": "c",
+        "texte": "L'emmènes se changer les idées",
+        "picto": "course",
+        "effets": {
+          "activite_physique": 0.3,
+          "contact_public": 0.3
+        }
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "pref-015",
+    "type": "preference",
+    "texte": "Projet de groupe : ton rôle préféré ?",
+    "metiers_cibles": [],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "J'organise",
+        "picto": "drapeau",
+        "effets": {
+          "encadrement": 1
+        }
+      },
+      {
+        "id": "b",
+        "texte": "J'apporte les idées",
+        "picto": "palette",
+        "effets": {
+          "creativite": 1
+        }
+      },
+      {
+        "id": "c",
+        "texte": "Je fabrique",
+        "picto": "mains",
+        "effets": {
+          "travail_manuel": 1
+        }
+      },
+      {
+        "id": "d",
+        "texte": "Je présente",
+        "picto": "bulle",
+        "effets": {
+          "contact_public": 1
+        }
+      }
+    ],
+    "statut": "genere"
   },
   {
     "id": "sit-001",
     "type": "situation",
-    "texte": "6h. La livraison est en retard, le service commence dans 2h. Tu fais quoi ?",
-    "metiers_cibles": ["35-2014.00", "35-1011.00"],
+    "texte": "6 h. La livraison est en retard, le service commence dans 2 h. Tu fais quoi ?",
+    "metiers_cibles": [
+      "35-2014.00",
+      "35-2021.00"
+    ],
     "reponses": [
-      { "id": "a", "texte": "J'adapte le menu", "picto": "idee", "effets": { "creativite": 1 } },
-      { "id": "b", "texte": "J'appelle l'équipe", "picto": "groupe", "effets": { "travail_equipe": 1 } },
-      { "id": "c", "texte": "Je prépare ce que j'ai", "picto": "mains", "effets": { "travail_manuel": 1 } }
+      {
+        "id": "a",
+        "texte": "J'adapte le menu",
+        "picto": "idee",
+        "effets": {
+          "creativite": 1
+        }
+      },
+      {
+        "id": "b",
+        "texte": "J'appelle l'équipe",
+        "picto": "groupe",
+        "effets": {
+          "travail_equipe": 1
+        }
+      },
+      {
+        "id": "c",
+        "texte": "Je prépare ce que j’ai",
+        "picto": "mains",
+        "effets": {
+          "travail_manuel": 1
+        }
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "sit-002",
+    "type": "situation",
+    "texte": "Coup de feu : 40 clients arrivent en même temps. Tu fais quoi ?",
+    "metiers_cibles": [
+      "35-3023.01",
+      "35-2014.00"
+    ],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "Je sers vite en souriant",
+        "picto": "bulle",
+        "effets": {
+          "contact_public": 1,
+          "activite_physique": 0.5
+        }
+      },
+      {
+        "id": "b",
+        "texte": "Je prépare en coulisses",
+        "picto": "mains",
+        "effets": {
+          "travail_manuel": 1,
+          "contact_public": -0.5
+        }
+      },
+      {
+        "id": "c",
+        "texte": "Je répartis les tâches",
+        "picto": "drapeau",
+        "effets": {
+          "encadrement": 1
+        }
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "sit-003",
+    "type": "situation",
+    "texte": "Un groupe de touristes est perdu et le bus part dans 10 minutes. Tu fais quoi ?",
+    "metiers_cibles": [
+      "39-7011.00",
+      "43-4081.00",
+      "39-1014.00"
+    ],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "Je pars les chercher",
+        "picto": "course",
+        "effets": {
+          "activite_physique": 0.5,
+          "deplacements": 0.5
+        }
+      },
+      {
+        "id": "b",
+        "texte": "J'appelle et je rassure",
+        "picto": "bulle",
+        "effets": {
+          "contact_public": 1
+        }
+      },
+      {
+        "id": "c",
+        "texte": "Je réorganise le départ",
+        "picto": "drapeau",
+        "effets": {
+          "encadrement": 1
+        }
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "sit-004",
+    "type": "situation",
+    "texte": "Un orage est annoncé cet après-midi et le chantier n'est pas fini. Tu fais quoi ?",
+    "metiers_cibles": [
+      "19-4071.00"
+    ],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "Je finis avant la pluie",
+        "picto": "course",
+        "effets": {
+          "activite_physique": 0.5,
+          "exterieur": 0.5
+        }
+      },
+      {
+        "id": "b",
+        "texte": "Je mets l'équipe à l'abri",
+        "picto": "drapeau",
+        "effets": {
+          "encadrement": 0.5,
+          "travail_equipe": 0.5
+        }
+      },
+      {
+        "id": "c",
+        "texte": "Je prépare le matériel",
+        "picto": "outil",
+        "effets": {
+          "travail_manuel": 0.5
+        }
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "sit-005",
+    "type": "situation",
+    "texte": "Un chien blessé arrive, son maître est très inquiet. Tu fais quoi ?",
+    "metiers_cibles": [
+      "29-1131.00"
+    ],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "Je rassure le maître",
+        "picto": "coeur",
+        "effets": {
+          "aide_aux_autres": 1,
+          "contact_public": 0.5
+        }
+      },
+      {
+        "id": "b",
+        "texte": "Je prépare les soins",
+        "picto": "mains",
+        "effets": {
+          "travail_manuel": 0.5
+        }
+      },
+      {
+        "id": "c",
+        "texte": "J'examine pour comprendre",
+        "picto": "loupe",
+        "effets": {
+          "analyse_chiffres": 0.5
+        }
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "sit-006",
+    "type": "situation",
+    "texte": "Un client veut une pièce unique pour demain. Tu fais quoi ?",
+    "metiers_cibles": [
+      "27-1022.00",
+      "27-1013.00"
+    ],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "J'imagine un modèle",
+        "picto": "palette",
+        "effets": {
+          "creativite": 1
+        }
+      },
+      {
+        "id": "b",
+        "texte": "Je travaille tard pour finir",
+        "picto": "lune",
+        "effets": {
+          "horaires_decales": 0.5,
+          "travail_manuel": 0.5
+        }
+      },
+      {
+        "id": "c",
+        "texte": "Je propose un délai réaliste",
+        "picto": "bulle",
+        "effets": {
+          "contact_public": 0.5
+        }
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "sit-007",
+    "type": "situation",
+    "texte": "Un client hésite depuis 20 minutes entre deux produits. Tu fais quoi ?",
+    "metiers_cibles": [
+      "41-9091.00",
+      "39-5094.00",
+      "39-5011.00",
+      "51-3011.00"
+    ],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "Je le conseille",
+        "picto": "bulle",
+        "effets": {
+          "contact_public": 1,
+          "aide_aux_autres": 0.5
+        }
+      },
+      {
+        "id": "b",
+        "texte": "Je le laisse réfléchir",
+        "picto": "solo",
+        "effets": {
+          "contact_public": -0.5
+        }
+      },
+      {
+        "id": "c",
+        "texte": "Je lui montre un exemple",
+        "picto": "palette",
+        "effets": {
+          "creativite": 0.5
+        }
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "sit-008",
+    "type": "situation",
+    "texte": "Il manque 20 % pour atteindre l’objectif de ventes de la semaine. Tu fais quoi ?",
+    "metiers_cibles": [
+      "41-4012.00",
+      "11-2022.00",
+      "41-9041.00"
+    ],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "J'appelle de nouveaux clients",
+        "picto": "bulle",
+        "effets": {
+          "contact_public": 1
+        }
+      },
+      {
+        "id": "b",
+        "texte": "J'analyse les chiffres",
+        "picto": "chiffres",
+        "effets": {
+          "analyse_chiffres": 1
+        }
+      },
+      {
+        "id": "c",
+        "texte": "Je motive l'équipe",
+        "picto": "drapeau",
+        "effets": {
+          "encadrement": 1
+        }
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "sit-009",
+    "type": "situation",
+    "texte": "Une info tombe à 18 h, le sujet doit sortir ce soir. Tu fais quoi ?",
+    "metiers_cibles": [
+      "27-3043.05"
+    ],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "Je file sur le terrain",
+        "picto": "route",
+        "effets": {
+          "deplacements": 1,
+          "exterieur": 0.5
+        }
+      },
+      {
+        "id": "b",
+        "texte": "J'écris au calme",
+        "picto": "livre",
+        "effets": {
+          "creativite": 0.5,
+          "contact_public": -0.5
+        }
+      },
+      {
+        "id": "c",
+        "texte": "Je vérifie chaque détail",
+        "picto": "loupe",
+        "effets": {
+          "analyse_chiffres": 0.5
+        }
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "sit-010",
+    "type": "situation",
+    "texte": "8 h sur le chantier : la livraison de matériaux est incomplète. Tu fais quoi ?",
+    "metiers_cibles": [
+      "47-2111.00",
+      "51-9123.00",
+      "47-2061.00",
+      "53-7021.00"
+    ],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "Je réorganise le planning",
+        "picto": "liste",
+        "effets": {
+          "encadrement": 0.5,
+          "analyse_chiffres": 0.5
+        }
+      },
+      {
+        "id": "b",
+        "texte": "Je commence une autre tâche",
+        "picto": "outil",
+        "effets": {
+          "travail_manuel": 0.5,
+          "activite_physique": 0.5
+        }
+      },
+      {
+        "id": "c",
+        "texte": "J'appelle le fournisseur",
+        "picto": "telephone",
+        "effets": {
+          "contact_public": 0.5
+        }
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "sit-011",
+    "type": "situation",
+    "texte": "Un client te demande les plans de son futur projet. Tu commences par…",
+    "metiers_cibles": [
+      "27-1025.00",
+      "27-1021.00",
+      "17-1012.00"
+    ],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "Dessiner sur l'ordinateur",
+        "picto": "ordinateur",
+        "effets": {
+          "technologie": 1,
+          "creativite": 0.5
+        }
+      },
+      {
+        "id": "b",
+        "texte": "Mesurer sur place",
+        "picto": "route",
+        "effets": {
+          "deplacements": 0.5,
+          "exterieur": 0.5
+        }
+      },
+      {
+        "id": "c",
+        "texte": "Imaginer plusieurs idées",
+        "picto": "palette",
+        "effets": {
+          "creativite": 1
+        }
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "sit-012",
+    "type": "situation",
+    "texte": "Une machine tombe en panne en pleine production. Tu fais quoi ?",
+    "metiers_cibles": [
+      "11-3051.00"
+    ],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "Je cherche la cause",
+        "picto": "loupe",
+        "effets": {
+          "analyse_chiffres": 0.5,
+          "technologie": 1
+        }
+      },
+      {
+        "id": "b",
+        "texte": "Je répare avec mes outils",
+        "picto": "outil",
+        "effets": {
+          "travail_manuel": 1
+        }
+      },
+      {
+        "id": "c",
+        "texte": "Je préviens et je réorganise",
+        "picto": "groupe",
+        "effets": {
+          "encadrement": 0.5,
+          "travail_equipe": 0.5
+        }
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "sit-013",
+    "type": "situation",
+    "texte": "Un patient a peur avant un examen. Tu fais quoi ?",
+    "metiers_cibles": [
+      "31-1131.00",
+      "29-1141.00",
+      "29-1224.00",
+      "29-2092.00",
+      "29-1041.00"
+    ],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "Je lui explique simplement",
+        "picto": "coeur",
+        "effets": {
+          "aide_aux_autres": 1,
+          "contact_public": 0.5
+        }
+      },
+      {
+        "id": "b",
+        "texte": "Je vérifie son dossier",
+        "picto": "loupe",
+        "effets": {
+          "analyse_chiffres": 0.5,
+          "technologie": 0.5
+        }
+      },
+      {
+        "id": "c",
+        "texte": "J'appelle un collègue",
+        "picto": "groupe",
+        "effets": {
+          "travail_equipe": 1
+        }
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "sit-014",
+    "type": "situation",
+    "texte": "Nuit de garde : trois urgences arrivent en même temps. Tu fais quoi ?",
+    "metiers_cibles": [
+      "29-1141.00",
+      "29-1211.00",
+      "29-1215.00",
+      "29-1221.00",
+      "31-1131.00"
+    ],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "Je trie par gravité",
+        "picto": "liste",
+        "effets": {
+          "analyse_chiffres": 0.5,
+          "encadrement": 0.5,
+          "horaires_decales": 0.5
+        }
+      },
+      {
+        "id": "b",
+        "texte": "Je fais les premiers soins",
+        "picto": "mains",
+        "effets": {
+          "aide_aux_autres": 0.5,
+          "horaires_decales": 0.5
+        }
+      },
+      {
+        "id": "c",
+        "texte": "Je préfère les gardes de jour",
+        "picto": "soleil",
+        "effets": {
+          "horaires_decales": -1
+        }
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "sit-015",
+    "type": "situation",
+    "texte": "Un enfant refuse de participer à l'activité. Tu fais quoi ?",
+    "metiers_cibles": [
+      "25-3021.00",
+      "29-2053.00",
+      "39-9011.00",
+      "29-1129.01",
+      "29-1129.02"
+    ],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "Je l'écoute",
+        "picto": "coeur",
+        "effets": {
+          "aide_aux_autres": 1
+        }
+      },
+      {
+        "id": "b",
+        "texte": "Je propose un jeu créatif",
+        "picto": "palette",
+        "effets": {
+          "creativite": 1
+        }
+      },
+      {
+        "id": "c",
+        "texte": "J'en parle à l'équipe",
+        "picto": "groupe",
+        "effets": {
+          "travail_equipe": 1
+        }
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "sit-016",
+    "type": "situation",
+    "texte": "Alerte : de la fumée sort d’un immeuble. Tu fais quoi ?",
+    "metiers_cibles": [
+      "33-2011.00"
+    ],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "J'interviens",
+        "picto": "course",
+        "effets": {
+          "activite_physique": 1,
+          "exterieur": 0.5
+        }
+      },
+      {
+        "id": "b",
+        "texte": "Je coordonne les secours",
+        "picto": "drapeau",
+        "effets": {
+          "encadrement": 1
+        }
+      },
+      {
+        "id": "c",
+        "texte": "Je rassure les habitants",
+        "picto": "coeur",
+        "effets": {
+          "aide_aux_autres": 1,
+          "contact_public": 0.5
+        }
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "sit-017",
+    "type": "situation",
+    "texte": "Tes résultats ne ressemblent pas du tout à ce que tu attendais. Tu fais quoi ?",
+    "metiers_cibles": [
+      "19-2011.00",
+      "19-3041.00",
+      "19-1023.00",
+      "19-2021.00",
+      "19-2043.00"
+    ],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "Je refais l'analyse",
+        "picto": "chiffres",
+        "effets": {
+          "analyse_chiffres": 1
+        }
+      },
+      {
+        "id": "b",
+        "texte": "J'en discute avec l'équipe",
+        "picto": "groupe",
+        "effets": {
+          "travail_equipe": 1
+        }
+      },
+      {
+        "id": "c",
+        "texte": "Je retourne sur le terrain",
+        "picto": "arbre",
+        "effets": {
+          "exterieur": 1,
+          "deplacements": 0.5
+        }
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "sit-018",
+    "type": "situation",
+    "texte": "Un dossier urgent doit être prêt demain matin. Tu fais quoi ?",
+    "metiers_cibles": [
+      "23-1011.00",
+      "23-1023.00"
+    ],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "Je lis tout en détail",
+        "picto": "livre",
+        "effets": {
+          "analyse_chiffres": 1
+        }
+      },
+      {
+        "id": "b",
+        "texte": "Je prépare ma plaidoirie",
+        "picto": "bulle",
+        "effets": {
+          "contact_public": 1
+        }
+      },
+      {
+        "id": "c",
+        "texte": "Je reste tard",
+        "picto": "lune",
+        "effets": {
+          "horaires_decales": 0.5
+        }
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "sit-019",
+    "type": "situation",
+    "texte": "Soir de spectacle : un projecteur tombe en panne. Tu fais quoi ?",
+    "metiers_cibles": [
+      "27-2011.00",
+      "27-2091.00",
+      "27-1011.00"
+    ],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "Je répare vite",
+        "picto": "outil",
+        "effets": {
+          "technologie": 0.5,
+          "travail_manuel": 0.5
+        }
+      },
+      {
+        "id": "b",
+        "texte": "J'improvise",
+        "picto": "palette",
+        "effets": {
+          "creativite": 1,
+          "contact_public": 0.5
+        }
+      },
+      {
+        "id": "c",
+        "texte": "Je préviens l'équipe",
+        "picto": "groupe",
+        "effets": {
+          "travail_equipe": 0.5
+        }
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "sit-020",
+    "type": "situation",
+    "texte": "On te demande un bilan des dépenses pour demain. Tu fais quoi ?",
+    "metiers_cibles": [
+      "11-3031.00",
+      "11-3061.00"
+    ],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "Je crée un tableau",
+        "picto": "chiffres",
+        "effets": {
+          "analyse_chiffres": 1,
+          "technologie": 0.5
+        }
+      },
+      {
+        "id": "b",
+        "texte": "Je demande l'aide d'un collègue",
+        "picto": "groupe",
+        "effets": {
+          "travail_equipe": 0.5
+        }
+      },
+      {
+        "id": "c",
+        "texte": "Je présente les résultats",
+        "picto": "bulle",
+        "effets": {
+          "contact_public": 0.5,
+          "encadrement": 0.5
+        }
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "sit-021",
+    "type": "situation",
+    "texte": "Le téléphone sonne et un visiteur attend devant toi. Tu fais quoi ?",
+    "metiers_cibles": [
+      "43-4171.00",
+      "43-4081.00"
+    ],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "Je gère les deux en souriant",
+        "picto": "bulle",
+        "effets": {
+          "contact_public": 1
+        }
+      },
+      {
+        "id": "b",
+        "texte": "Je note tout pour rappeler",
+        "picto": "liste",
+        "effets": {
+          "technologie": 0.5
+        }
+      },
+      {
+        "id": "c",
+        "texte": "Je demande de l’aide",
+        "picto": "groupe",
+        "effets": {
+          "travail_equipe": 0.5
+        }
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "sit-022",
+    "type": "situation",
+    "texte": "Une livraison urgente doit partir avant midi. Tu fais quoi ?",
+    "metiers_cibles": [
+      "53-3033.00",
+      "53-7051.00",
+      "11-3071.00"
+    ],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "Je prends le volant",
+        "picto": "route",
+        "effets": {
+          "deplacements": 1
+        }
+      },
+      {
+        "id": "b",
+        "texte": "Je prépare les colis",
+        "picto": "mains",
+        "effets": {
+          "activite_physique": 1,
+          "travail_manuel": 0.5
+        }
+      },
+      {
+        "id": "c",
+        "texte": "J'optimise la tournée",
+        "picto": "chiffres",
+        "effets": {
+          "analyse_chiffres": 1,
+          "technologie": 0.5
+        }
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "dec-001",
+    "type": "decouverte",
+    "texte": "Cuisinier : coordonne une équipe en cuisine lors de la préparation des plats.",
+    "metiers_cibles": [
+      "35-2014.00"
+    ],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "Ça me tente",
+        "picto": "oui",
+        "effets": {
+          "travail_equipe": 0.5,
+          "travail_manuel": 0.5
+        }
+      },
+      {
+        "id": "b",
+        "texte": "Pas pour moi",
+        "picto": "non",
+        "effets": {
+          "travail_equipe": -0.5,
+          "travail_manuel": -0.5
+        }
+      },
+      {
+        "id": "c",
+        "texte": "Je ne sais pas",
+        "picto": "equilibre",
+        "effets": {}
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "dec-002",
+    "type": "decouverte",
+    "texte": "Graphiste : conçoit et réalise des supports graphiques pour différents canaux de communication, imprimés et numériques.",
+    "metiers_cibles": [
+      "27-1024.00"
+    ],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "Ça me tente",
+        "picto": "oui",
+        "effets": {
+          "creativite": 0.5,
+          "travail_equipe": 0.5
+        }
+      },
+      {
+        "id": "b",
+        "texte": "Pas pour moi",
+        "picto": "non",
+        "effets": {
+          "creativite": -0.5,
+          "travail_equipe": -0.5
+        }
+      },
+      {
+        "id": "c",
+        "texte": "Je ne sais pas",
+        "picto": "equilibre",
+        "effets": {}
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "dec-003",
+    "type": "decouverte",
+    "texte": "Boulanger : conçoit de nouvelles recettes de pains et viennoiseries pour diversifier l'offre.",
+    "metiers_cibles": [
+      "51-3011.00"
+    ],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "Ça me tente",
+        "picto": "oui",
+        "effets": {
+          "travail_equipe": 0.5,
+          "activite_physique": 0.5
+        }
+      },
+      {
+        "id": "b",
+        "texte": "Pas pour moi",
+        "picto": "non",
+        "effets": {
+          "travail_equipe": -0.5,
+          "activite_physique": -0.5
+        }
+      },
+      {
+        "id": "c",
+        "texte": "Je ne sais pas",
+        "picto": "equilibre",
+        "effets": {}
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "dec-004",
+    "type": "decouverte",
+    "texte": "Aide-soignant : assure les soins du quotidien, de confort et de bien-être des patients.",
+    "metiers_cibles": [
+      "31-1131.00"
+    ],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "Ça me tente",
+        "picto": "oui",
+        "effets": {
+          "travail_equipe": 0.5,
+          "aide_aux_autres": 0.5
+        }
+      },
+      {
+        "id": "b",
+        "texte": "Pas pour moi",
+        "picto": "non",
+        "effets": {
+          "travail_equipe": -0.5,
+          "aide_aux_autres": -0.5
+        }
+      },
+      {
+        "id": "c",
+        "texte": "Je ne sais pas",
+        "picto": "equilibre",
+        "effets": {}
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "dec-005",
+    "type": "decouverte",
+    "texte": "Soigneur animalier : prépare et distribue les repas adaptés à chaque espèce.",
+    "metiers_cibles": [
+      "39-2021.00"
+    ],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "Ça me tente",
+        "picto": "oui",
+        "effets": {
+          "travail_equipe": 0.5,
+          "exterieur": 0.5
+        }
+      },
+      {
+        "id": "b",
+        "texte": "Pas pour moi",
+        "picto": "non",
+        "effets": {
+          "travail_equipe": -0.5,
+          "exterieur": -0.5
+        }
+      },
+      {
+        "id": "c",
+        "texte": "Je ne sais pas",
+        "picto": "equilibre",
+        "effets": {}
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "dec-006",
+    "type": "decouverte",
+    "texte": "Hydrologue : analyse et interprète les données hydrologiques pour comprendre les cycles de l'eau.",
+    "metiers_cibles": [
+      "19-2043.00"
+    ],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "Ça me tente",
+        "picto": "oui",
+        "effets": {
+          "analyse_chiffres": 0.5,
+          "travail_equipe": 0.5
+        }
+      },
+      {
+        "id": "b",
+        "texte": "Pas pour moi",
+        "picto": "non",
+        "effets": {
+          "analyse_chiffres": -0.5,
+          "travail_equipe": -0.5
+        }
+      },
+      {
+        "id": "c",
+        "texte": "Je ne sais pas",
+        "picto": "equilibre",
+        "effets": {}
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "dec-007",
+    "type": "decouverte",
+    "texte": "Orthodontiste : diagnostique et traite les malpositions dentaires et les anomalies dento-faciales.",
+    "metiers_cibles": [
+      "29-1023.00"
+    ],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "Ça me tente",
+        "picto": "oui",
+        "effets": {
+          "travail_equipe": 0.5,
+          "contact_public": 0.5
+        }
+      },
+      {
+        "id": "b",
+        "texte": "Pas pour moi",
+        "picto": "non",
+        "effets": {
+          "travail_equipe": -0.5,
+          "contact_public": -0.5
+        }
+      },
+      {
+        "id": "c",
+        "texte": "Je ne sais pas",
+        "picto": "equilibre",
+        "effets": {}
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "dec-008",
+    "type": "decouverte",
+    "texte": "Technicien agricole : supervise et optimise les processus de production agricole en respectant l'environnement.",
+    "metiers_cibles": [
+      "19-4012.00"
+    ],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "Ça me tente",
+        "picto": "oui",
+        "effets": {
+          "exterieur": 0.5,
+          "deplacements": 0.5
+        }
+      },
+      {
+        "id": "b",
+        "texte": "Pas pour moi",
+        "picto": "non",
+        "effets": {
+          "exterieur": -0.5,
+          "deplacements": -0.5
+        }
+      },
+      {
+        "id": "c",
+        "texte": "Je ne sais pas",
+        "picto": "equilibre",
+        "effets": {}
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "dec-009",
+    "type": "decouverte",
+    "texte": "Animateur Radio : interagit avec le public à travers divers moyens y compris les appels en direct, les réseaux sociaux.",
+    "metiers_cibles": [
+      "27-3011.00"
+    ],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "Ça me tente",
+        "picto": "oui",
+        "effets": {
+          "creativite": 0.5,
+          "travail_equipe": 0.5
+        }
+      },
+      {
+        "id": "b",
+        "texte": "Pas pour moi",
+        "picto": "non",
+        "effets": {
+          "creativite": -0.5,
+          "travail_equipe": -0.5
+        }
+      },
+      {
+        "id": "c",
+        "texte": "Je ne sais pas",
+        "picto": "equilibre",
+        "effets": {}
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "dec-010",
+    "type": "decouverte",
+    "texte": "Directeur artistique : élabore et met en œuvre la direction créative et esthétique du spectacle.",
+    "metiers_cibles": [
+      "27-1011.00"
+    ],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "Ça me tente",
+        "picto": "oui",
+        "effets": {
+          "creativite": 0.5,
+          "travail_equipe": 0.5
+        }
+      },
+      {
+        "id": "b",
+        "texte": "Pas pour moi",
+        "picto": "non",
+        "effets": {
+          "creativite": -0.5,
+          "travail_equipe": -0.5
+        }
+      },
+      {
+        "id": "c",
+        "texte": "Je ne sais pas",
+        "picto": "equilibre",
+        "effets": {}
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "dec-011",
+    "type": "decouverte",
+    "texte": "Télévendeur : répond aux demandes d'information et résout les problèmes des clients.",
+    "metiers_cibles": [
+      "41-9041.00"
+    ],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "Ça me tente",
+        "picto": "oui",
+        "effets": {
+          "contact_public": 0.5,
+          "aide_aux_autres": 0.5
+        }
+      },
+      {
+        "id": "b",
+        "texte": "Pas pour moi",
+        "picto": "non",
+        "effets": {
+          "contact_public": -0.5,
+          "aide_aux_autres": -0.5
+        }
+      },
+      {
+        "id": "c",
+        "texte": "Je ne sais pas",
+        "picto": "equilibre",
+        "effets": {}
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "dec-012",
+    "type": "decouverte",
+    "texte": "Accompagnateur de voyages : organise et coordonne des excursions et des visites guidées pour des groupes de touristes.",
+    "metiers_cibles": [
+      "39-7012.00"
+    ],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "Ça me tente",
+        "picto": "oui",
+        "effets": {
+          "contact_public": 0.5,
+          "travail_equipe": 0.5
+        }
+      },
+      {
+        "id": "b",
+        "texte": "Pas pour moi",
+        "picto": "non",
+        "effets": {
+          "contact_public": -0.5,
+          "travail_equipe": -0.5
+        }
+      },
+      {
+        "id": "c",
+        "texte": "Je ne sais pas",
+        "picto": "equilibre",
+        "effets": {}
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "dec-013",
+    "type": "decouverte",
+    "texte": "Responsable des achats : définit et promeut une politique d'achats responsables et éthiques.",
+    "metiers_cibles": [
+      "11-3061.00"
+    ],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "Ça me tente",
+        "picto": "oui",
+        "effets": {
+          "travail_equipe": 0.5,
+          "encadrement": 0.5
+        }
+      },
+      {
+        "id": "b",
+        "texte": "Pas pour moi",
+        "picto": "non",
+        "effets": {
+          "travail_equipe": -0.5,
+          "encadrement": -0.5
+        }
+      },
+      {
+        "id": "c",
+        "texte": "Je ne sais pas",
+        "picto": "equilibre",
+        "effets": {}
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "dec-014",
+    "type": "decouverte",
+    "texte": "Croupier : veille à l'application stricte des règles et procédures de jeux.",
+    "metiers_cibles": [
+      "39-3011.00"
+    ],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "Ça me tente",
+        "picto": "oui",
+        "effets": {
+          "horaires_decales": 0.5,
+          "travail_equipe": 0.5
+        }
+      },
+      {
+        "id": "b",
+        "texte": "Pas pour moi",
+        "picto": "non",
+        "effets": {
+          "horaires_decales": -0.5,
+          "travail_equipe": -0.5
+        }
+      },
+      {
+        "id": "c",
+        "texte": "Je ne sais pas",
+        "picto": "equilibre",
+        "effets": {}
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "dec-015",
+    "type": "decouverte",
+    "texte": "Commissionnaire en douane : assure le traitement administratif des opérations de dédouanement.",
+    "metiers_cibles": [
+      "13-1041.08"
+    ],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "Ça me tente",
+        "picto": "oui",
+        "effets": {
+          "travail_equipe": 0.5,
+          "contact_public": 0.5
+        }
+      },
+      {
+        "id": "b",
+        "texte": "Pas pour moi",
+        "picto": "non",
+        "effets": {
+          "travail_equipe": -0.5,
+          "contact_public": -0.5
+        }
+      },
+      {
+        "id": "c",
+        "texte": "Je ne sais pas",
+        "picto": "equilibre",
+        "effets": {}
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "dec-016",
+    "type": "decouverte",
+    "texte": "Magasinier : contrôle la qualité des produits reçus et expédiés.",
+    "metiers_cibles": [
+      "43-5071.00"
+    ],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "Ça me tente",
+        "picto": "oui",
+        "effets": {
+          "travail_equipe": 0.5,
+          "contact_public": 0.5
+        }
+      },
+      {
+        "id": "b",
+        "texte": "Pas pour moi",
+        "picto": "non",
+        "effets": {
+          "travail_equipe": -0.5,
+          "contact_public": -0.5
+        }
+      },
+      {
+        "id": "c",
+        "texte": "Je ne sais pas",
+        "picto": "equilibre",
+        "effets": {}
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "dec-017",
+    "type": "decouverte",
+    "texte": "Électricien : effectue des travaux de dépannage et de maintenance.",
+    "metiers_cibles": [
+      "47-2111.00"
+    ],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "Ça me tente",
+        "picto": "oui",
+        "effets": {
+          "travail_equipe": 0.5,
+          "activite_physique": 0.5
+        }
+      },
+      {
+        "id": "b",
+        "texte": "Pas pour moi",
+        "picto": "non",
+        "effets": {
+          "travail_equipe": -0.5,
+          "activite_physique": -0.5
+        }
+      },
+      {
+        "id": "c",
+        "texte": "Je ne sais pas",
+        "picto": "equilibre",
+        "effets": {}
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "dec-018",
+    "type": "decouverte",
+    "texte": "Manœuvre du bâtiment : prépare le terrain, les outils et les matériaux nécessaires à l'exécution des travaux.",
+    "metiers_cibles": [
+      "47-2061.00"
+    ],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "Ça me tente",
+        "picto": "oui",
+        "effets": {
+          "exterieur": 0.5,
+          "travail_equipe": 0.5
+        }
+      },
+      {
+        "id": "b",
+        "texte": "Pas pour moi",
+        "picto": "non",
+        "effets": {
+          "exterieur": -0.5,
+          "travail_equipe": -0.5
+        }
+      },
+      {
+        "id": "c",
+        "texte": "Je ne sais pas",
+        "picto": "equilibre",
+        "effets": {}
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "dec-019",
+    "type": "decouverte",
+    "texte": "Technicien nucléaire : réalise des tests et des mesures régulières pour prévenir toute anomalie ou défaillance.",
+    "metiers_cibles": [
+      "19-4051.00"
+    ],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "Ça me tente",
+        "picto": "oui",
+        "effets": {
+          "travail_equipe": 0.5,
+          "exterieur": 0.5
+        }
+      },
+      {
+        "id": "b",
+        "texte": "Pas pour moi",
+        "picto": "non",
+        "effets": {
+          "travail_equipe": -0.5,
+          "exterieur": -0.5
+        }
+      },
+      {
+        "id": "c",
+        "texte": "Je ne sais pas",
+        "picto": "equilibre",
+        "effets": {}
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "dec-020",
+    "type": "decouverte",
+    "texte": "Animateur socioculturel : gère les aspects logistiques et administratifs des projets pour assurer leur bon déroulement.",
+    "metiers_cibles": [
+      "25-3021.00"
+    ],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "Ça me tente",
+        "picto": "oui",
+        "effets": {
+          "creativite": 0.5,
+          "travail_equipe": 0.5
+        }
+      },
+      {
+        "id": "b",
+        "texte": "Pas pour moi",
+        "picto": "non",
+        "effets": {
+          "creativite": -0.5,
+          "travail_equipe": -0.5
+        }
+      },
+      {
+        "id": "c",
+        "texte": "Je ne sais pas",
+        "picto": "equilibre",
+        "effets": {}
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "dec-021",
+    "type": "decouverte",
+    "texte": "Guide touristique : organise et coordonne des excursions et des visites guidées pour des groupes de touristes.",
+    "metiers_cibles": [
+      "39-7011.00"
+    ],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "Ça me tente",
+        "picto": "oui",
+        "effets": {
+          "contact_public": 0.5,
+          "travail_equipe": 0.5
+        }
+      },
+      {
+        "id": "b",
+        "texte": "Pas pour moi",
+        "picto": "non",
+        "effets": {
+          "contact_public": -0.5,
+          "travail_equipe": -0.5
+        }
+      },
+      {
+        "id": "c",
+        "texte": "Je ne sais pas",
+        "picto": "equilibre",
+        "effets": {}
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "dec-022",
+    "type": "decouverte",
+    "texte": "Art-thérapeute : évalue les progrès des patients et ajuste les interventions artistiques en conséquence.",
+    "metiers_cibles": [
+      "29-1129.01"
+    ],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "Ça me tente",
+        "picto": "oui",
+        "effets": {
+          "creativite": 0.5,
+          "aide_aux_autres": 0.5
+        }
+      },
+      {
+        "id": "b",
+        "texte": "Pas pour moi",
+        "picto": "non",
+        "effets": {
+          "creativite": -0.5,
+          "aide_aux_autres": -0.5
+        }
+      },
+      {
+        "id": "c",
+        "texte": "Je ne sais pas",
+        "picto": "equilibre",
+        "effets": {}
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "dec-023",
+    "type": "decouverte",
+    "texte": "Architecte naval : collabore avec des ingénieurs et des designers pour intégrer des technologies avancées.",
+    "metiers_cibles": [
+      "17-2121.00"
+    ],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "Ça me tente",
+        "picto": "oui",
+        "effets": {
+          "technologie": 0.5,
+          "analyse_chiffres": 0.5
+        }
+      },
+      {
+        "id": "b",
+        "texte": "Pas pour moi",
+        "picto": "non",
+        "effets": {
+          "technologie": -0.5,
+          "analyse_chiffres": -0.5
+        }
+      },
+      {
+        "id": "c",
+        "texte": "Je ne sais pas",
+        "picto": "equilibre",
+        "effets": {}
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "dec-024",
+    "type": "decouverte",
+    "texte": "Vétérinaire : procède à des analyses biologiques et à des examens d'exploration fonctionnelle.",
+    "metiers_cibles": [
+      "29-1131.00"
+    ],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "Ça me tente",
+        "picto": "oui",
+        "effets": {
+          "travail_equipe": 0.5,
+          "contact_public": 0.5
+        }
+      },
+      {
+        "id": "b",
+        "texte": "Pas pour moi",
+        "picto": "non",
+        "effets": {
+          "travail_equipe": -0.5,
+          "contact_public": -0.5
+        }
+      },
+      {
+        "id": "c",
+        "texte": "Je ne sais pas",
+        "picto": "equilibre",
+        "effets": {}
+      }
     ],
     "statut": "genere"
   },
   {
     "id": "pas-001",
     "type": "passerelle",
-    "texte": "Un cuisinier peut devenir boulanger : mêmes gestes précis, mêmes horaires matinaux.",
-    "de": "35-2014.00",
-    "vers": "51-3011.00",
+    "texte": "Passerelle : on peut passer de technicien agricole à technicien forestier.",
+    "de": "19-4012.00",
+    "vers": "19-4071.00",
     "reponses": [],
+    "statut": "genere"
+  },
+  {
+    "id": "pas-002",
+    "type": "passerelle",
+    "texte": "Passerelle : on peut passer de vétérinaire à généticien.",
+    "de": "29-1131.00",
+    "vers": "19-1029.03",
+    "reponses": [],
+    "statut": "genere"
+  },
+  {
+    "id": "pas-003",
+    "type": "passerelle",
+    "texte": "Passerelle : on peut passer d'hydrologue à ingénieur des mines.",
+    "de": "19-2043.00",
+    "vers": "17-2151.00",
+    "reponses": [],
+    "statut": "genere"
+  },
+  {
+    "id": "pas-004",
+    "type": "passerelle",
+    "texte": "Passerelle : on peut passer d'électricien à chef de chantier.",
+    "de": "47-2111.00",
+    "vers": "47-1011.00",
+    "reponses": [],
+    "statut": "genere"
+  },
+  {
+    "id": "pas-005",
+    "type": "passerelle",
+    "texte": "Passerelle : on peut passer de guide touristique à agent de voyages.",
+    "de": "39-7011.00",
+    "vers": "41-3041.00",
+    "reponses": [],
+    "statut": "genere"
+  },
+  {
+    "id": "pas-006",
+    "type": "passerelle",
+    "texte": "Passerelle : on peut passer de croupier à télévendeur.",
+    "de": "39-3011.00",
+    "vers": "41-9041.00",
+    "reponses": [],
+    "statut": "genere"
+  },
+  {
+    "id": "pas-007",
+    "type": "passerelle",
+    "texte": "Passerelle : on peut passer d'orthodontiste à chirurgien-dentiste.",
+    "de": "29-1023.00",
+    "vers": "29-1021.00",
+    "reponses": [],
+    "statut": "genere"
+  },
+  {
+    "id": "pas-008",
+    "type": "passerelle",
+    "texte": "Passerelle : on peut passer d'opticien-lunetier à audioprothésiste.",
+    "de": "29-1041.00",
+    "vers": "29-2092.00",
+    "reponses": [],
+    "statut": "genere"
+  },
+  {
+    "id": "pas-009",
+    "type": "passerelle",
+    "texte": "Passerelle : on peut passer de conseiller conjugal et familial à psychologue clinicien.",
+    "de": "21-1013.00",
+    "vers": "19-3033.00",
+    "reponses": [],
+    "statut": "genere"
+  },
+  {
+    "id": "pas-010",
+    "type": "passerelle",
+    "texte": "Passerelle : on peut passer d'art-thérapeute à conseiller conjugal et familial.",
+    "de": "29-1129.01",
+    "vers": "21-1013.00",
+    "reponses": [],
+    "statut": "genere"
+  },
+  {
+    "id": "pas-011",
+    "type": "passerelle",
+    "texte": "Passerelle : on peut passer d'animateur radio à concepteur de jeux vidéo.",
+    "de": "27-3011.00",
+    "vers": "15-1255.01",
+    "reponses": [],
+    "statut": "genere"
+  },
+  {
+    "id": "pas-012",
+    "type": "passerelle",
+    "texte": "Passerelle : on peut passer de magasinier à ouvrier agricole.",
+    "de": "43-5071.00",
+    "vers": "45-2092.00",
+    "reponses": [],
+    "statut": "genere"
+  },
+  {
+    "id": "sur-001",
+    "type": "surprise",
+    "texte": "Surprise ! Une journée de stage t'est offerte. Tu choisis…",
+    "metiers_cibles": [],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "À l'hôpital",
+        "picto": "coeur",
+        "effets": {
+          "aide_aux_autres": 0.5
+        }
+      },
+      {
+        "id": "b",
+        "texte": "Sur un chantier",
+        "picto": "outil",
+        "effets": {
+          "activite_physique": 0.5,
+          "exterieur": 0.5
+        }
+      },
+      {
+        "id": "c",
+        "texte": "Dans un studio créatif",
+        "picto": "palette",
+        "effets": {
+          "creativite": 0.5
+        }
+      },
+      {
+        "id": "d",
+        "texte": "Dans un laboratoire",
+        "picto": "loupe",
+        "effets": {
+          "analyse_chiffres": 0.5
+        }
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "sur-002",
+    "type": "surprise",
+    "texte": "Grève des bus ce matin ! Tu…",
+    "metiers_cibles": [],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "Pars à vélo",
+        "picto": "course",
+        "effets": {
+          "activite_physique": 0.5
+        }
+      },
+      {
+        "id": "b",
+        "texte": "Travailles à distance",
+        "picto": "ordinateur",
+        "effets": {
+          "technologie": 0.5
+        }
+      },
+      {
+        "id": "c",
+        "texte": "Organises un covoiturage",
+        "picto": "groupe",
+        "effets": {
+          "encadrement": 0.5,
+          "contact_public": 0.3
+        }
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "sur-003",
+    "type": "surprise",
+    "texte": "Tu gagnes un voyage professionnel à l’étranger !",
+    "metiers_cibles": [],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "Je pars !",
+        "picto": "route",
+        "effets": {
+          "deplacements": 1
+        }
+      },
+      {
+        "id": "b",
+        "texte": "Je reste près de chez moi",
+        "picto": "maison",
+        "effets": {
+          "deplacements": -1
+        }
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "sur-004",
+    "type": "surprise",
+    "texte": "Panne de courant au travail ! Tu…",
+    "metiers_cibles": [],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "Trouves une solution à la main",
+        "picto": "mains",
+        "effets": {
+          "travail_manuel": 0.5
+        }
+      },
+      {
+        "id": "b",
+        "texte": "Rassures tout le monde",
+        "picto": "coeur",
+        "effets": {
+          "aide_aux_autres": 0.5
+        }
+      },
+      {
+        "id": "c",
+        "texte": "Cherches l’origine de la panne",
+        "picto": "loupe",
+        "effets": {
+          "technologie": 0.5
+        }
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "sur-005",
+    "type": "surprise",
+    "texte": "Une personne célèbre arrive à l'improviste ! Tu…",
+    "metiers_cibles": [],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "L'accueilles",
+        "picto": "bulle",
+        "effets": {
+          "contact_public": 1
+        }
+      },
+      {
+        "id": "b",
+        "texte": "Restes discret",
+        "picto": "solo",
+        "effets": {
+          "contact_public": -0.5
+        }
+      },
+      {
+        "id": "c",
+        "texte": "Prépares une surprise",
+        "picto": "palette",
+        "effets": {
+          "creativite": 0.5
+        }
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "sur-006",
+    "type": "surprise",
+    "texte": "Ton responsable est absent : on te confie l’équipe !",
+    "metiers_cibles": [],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "J'accepte avec plaisir",
+        "picto": "drapeau",
+        "effets": {
+          "encadrement": 1
+        }
+      },
+      {
+        "id": "b",
+        "texte": "Je préfère l'aider autrement",
+        "picto": "groupe",
+        "effets": {
+          "travail_equipe": 0.5
+        }
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "sur-007",
+    "type": "surprise",
+    "texte": "Il neige ! Une journée de travail dehors, ce serait…",
+    "metiers_cibles": [],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "Génial",
+        "picto": "arbre",
+        "effets": {
+          "exterieur": 0.5
+        }
+      },
+      {
+        "id": "b",
+        "texte": "Je préfère rester au chaud",
+        "picto": "maison",
+        "effets": {
+          "exterieur": -0.5
+        }
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "sur-008",
+    "type": "surprise",
+    "texte": "Défi : fabrique un objet utile en une heure !",
+    "metiers_cibles": [],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "Je fonce",
+        "picto": "mains",
+        "effets": {
+          "travail_manuel": 1
+        }
+      },
+      {
+        "id": "b",
+        "texte": "Je dessine d'abord",
+        "picto": "palette",
+        "effets": {
+          "creativite": 0.5
+        }
+      },
+      {
+        "id": "c",
+        "texte": "Je calcule tout",
+        "picto": "chiffres",
+        "effets": {
+          "analyse_chiffres": 0.5
+        }
+      }
+    ],
+    "statut": "genere"
+  },
+  {
+    "id": "sur-009",
+    "type": "surprise",
+    "texte": "Nouvelle appli au travail, à apprendre aujourd'hui !",
+    "metiers_cibles": [],
+    "reponses": [
+      {
+        "id": "a",
+        "texte": "Super !",
+        "picto": "ordinateur",
+        "effets": {
+          "technologie": 1
+        }
+      },
+      {
+        "id": "b",
+        "texte": "Je demande qu'on m'explique",
+        "picto": "groupe",
+        "effets": {
+          "travail_equipe": 0.5
+        }
+      },
+      {
+        "id": "c",
+        "texte": "Je préfère mes anciens outils",
+        "picto": "outil",
+        "effets": {
+          "technologie": -0.5
+        }
+      }
+    ],
     "statut": "genere"
   },
   {
     "id": "pause-001",
     "type": "pause",
-    "texte": "Respire ! Tu as déjà fait la moitié du chemin.",
+    "texte": "Respire ! Tu as déjà fait une bonne partie du chemin.",
     "reponses": [],
-    "statut": "relu"
+    "statut": "genere"
+  },
+  {
+    "id": "pause-002",
+    "type": "pause",
+    "texte": "Pause. Regarde autour de toi : il n'y a pas de mauvaise réponse.",
+    "reponses": [],
+    "statut": "genere"
+  },
+  {
+    "id": "pause-003",
+    "type": "pause",
+    "texte": "Petite pause. Tes choix restent les tiens, prends ton temps.",
+    "reponses": [],
+    "statut": "genere"
+  },
+  {
+    "id": "pause-004",
+    "type": "pause",
+    "texte": "Souffle un instant, puis relance le dé quand tu es prêt.",
+    "reponses": [],
+    "statut": "genere"
+  },
+  {
+    "id": "pause-005",
+    "type": "pause",
+    "texte": "Pause : tu peux revoir les consignes si tu le souhaites.",
+    "reponses": [],
+    "statut": "genere"
   }
 ]
