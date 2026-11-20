@@ -234,7 +234,7 @@ export function buildUi(root) {
     src: '#centre-des-possibles', position: '0 0.386 0.012',
     width: 0.52, height: 0.458, material: 'transparent: true; depthWrite: false'
   })
-  label(welcome, 'AGORA EXPLORER', '0 0.079 0.01', 1.83, 0.19, 0.132, ink, 'italic 900')
+  label(welcome, 'LE JEU DES POSSIBLES', '0 0.079 0.01', 1.83, 0.19, 0.105, ink, 'italic 900')
   label(welcome, 'Découvrez des métiers au fil d’un parcours d’orientation.',
     '0 -0.11 0.01', 1.58, 0.21, 0.072, muted)
   button(welcome, 'Lancer les consignes', 'e1:intro', 0, -0.327, 1.18, { primary: true })

@@ -253,7 +253,7 @@ function cardContent(state) {
     [S.PAUSED]: 'Partie en pause.',
     [S.FINISHED]: 'Partie terminée. Tes résultats arrivent.',
   }[state.state] ?? '';
-  return { band: 'Agora Explorer', text };
+  return { band: 'Le Jeu des Possibles', text };
 }
 
 // Les boutons à proposer : libellé, style et action (toujours une fonction du moteur).

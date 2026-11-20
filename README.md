@@ -4,7 +4,7 @@ Projet réalisé à Nice les 18, 19 et 20 novembre 2026, sur le thème **« L'or
 
 ## Le projet
 
-Agora Explorer est un jeu de l'oie en réalité virtuelle, joué assis, qui prolonge
+Le Jeu des Possibles est un jeu de l'oie en réalité virtuelle, joué assis, qui prolonge
 l'entretien avec le psychologue du Centre des Possibles. Le jeune saisit le code de
 son profil, répond à des cartes (préférences, situations de travail, découvertes,
 passerelles, surprises), puis découvre un classement explicable des métiers de son
