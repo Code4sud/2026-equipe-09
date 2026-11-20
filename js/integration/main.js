@@ -11,6 +11,7 @@
 //
 // Paramètres d'URL utiles pour tester :
 //   ?tours=5       saute le choix et joue 5 tours
+//   ?des=preference,centre:situation   impose les premiers lancers (démo : face, ou centre:type tiré)
 //   ?brouillon     joue aussi les cases au statut « genere » (pas encore relues)
 //   ?gaze=1        curseur au regard sur ordinateur (géré par E1)
 
@@ -51,11 +52,33 @@ function solEnArrierePlan() {
 // { face, type } : face montrée par le dé ; type de la case. Face « centre » : type tiré
 // au hasard parmi les 5 types jouables, appliqué une seule fois (une case, une carte).
 // Règles : 1er tour = préférence (prise en main), pas deux fois de suite la même face.
+// Lancers imposés par ?des= (démonstration) : « situation » ou « centre:passerelle ».
+function lancersImposes() {
+  const brut = (params.get('des') || '').split(',');
+  const sortie = [];
+  let i = 0;
+  while (i < brut.length) {
+    const [face, tire] = brut[i].trim().split(':');
+    if (FACES.indexOf(face) !== -1) {
+      const type = face === 'centre' ? (TYPES_JOUABLES.indexOf(tire) !== -1 ? tire : 'situation') : face;
+      sortie.push({ face, type });
+    }
+    i++;
+  }
+  return sortie;
+}
+
 function tirerLancers(nbTours) {
   const hasard = (liste) => liste[Math.floor(Math.random() * liste.length)];
+  const imposes = lancersImposes();
   const lancers = [];
   let i = 0;
   while (i < nbTours) {
+    if (i < imposes.length) {
+      lancers.push(imposes[i]);
+      i++;
+      continue;
+    }
     let face = i === 0 ? 'preference' : hasard(FACES);
     let essais = 0;
     while (i > 0 && essais < 50 && face === lancers[i - 1].face) {
